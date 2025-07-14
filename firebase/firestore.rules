@@ -1,0 +1,67 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{document} {
+      allow create: if request.auth.uid == document;
+      allow read: if request.auth.uid == document;
+      allow write: if request.auth.uid == document;
+      allow delete: if request.auth.uid == document;
+    }
+
+    match /users/{parent}/dog/{document} {
+      allow create: if request.auth.uid == parent;
+      allow read: if request.auth.uid == parent;
+      allow write: if request.auth.uid == parent;
+      allow delete: if request.auth.uid == parent;
+    }
+
+    match /users/{parent}/activity/{document} {
+      allow create: if request.auth.uid == parent;
+      allow read: if request.auth.uid == parent;
+      allow write: if request.auth.uid == parent;
+      allow delete: if request.auth.uid == parent;
+    }
+
+    match /users/{parent}/friends/{document} {
+      allow create: if request.auth.uid == parent;
+      allow read: if request.auth.uid == parent;
+      allow write: if request.auth.uid == parent;
+      allow delete: if request.auth.uid == parent;
+    }
+
+    match /friendsRequests/{document} {
+      allow create: if request.resource.data.user_from == /databases/$(database)/documents/users/$(request.auth.uid);
+      allow read: if resource.data.user_from == /databases/$(database)/documents/users/$(request.auth.uid);
+      allow write: if resource.data.user_from == /databases/$(database)/documents/users/$(request.auth.uid);
+      allow delete: if resource.data.user_from == /databases/$(database)/documents/users/$(request.auth.uid);
+    }
+
+    match /notifications/{document} {
+      allow create: if request.resource.data.user_to == /databases/$(database)/documents/users/$(request.auth.uid);
+      allow read: if resource.data.user_to == /databases/$(database)/documents/users/$(request.auth.uid);
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /chat/{document} {
+      allow create: if /databases/$(database)/documents/users/$(request.auth.uid) in request.resource.data.users;
+      allow read: if /databases/$(database)/documents/users/$(request.auth.uid) in resource.data.users;
+      allow write: if /databases/$(database)/documents/users/$(request.auth.uid) in resource.data.users;
+      allow delete: if /databases/$(database)/documents/users/$(request.auth.uid) in resource.data.users;
+    }
+
+    match /chat/{parent}/messages/{document} {
+      allow create: if /databases/$(database)/documents/users/$(request.auth.uid) in get(/databases/$(database)/documents/chat/$(parent)).data.users;
+      allow read: if /databases/$(database)/documents/users/$(request.auth.uid) in get(/databases/$(database)/documents/chat/$(parent)).data.users;
+      allow write: if /databases/$(database)/documents/users/$(request.auth.uid) in get(/databases/$(database)/documents/chat/$(parent)).data.users;
+      allow delete: if /databases/$(database)/documents/users/$(request.auth.uid) in get(/databases/$(database)/documents/chat/$(parent)).data.users;
+    }
+
+    match /posts/{document} {
+      allow create: if request.resource.data.user_ref == /databases/$(database)/documents/users/$(request.auth.uid);
+      allow read: if resource.data.user_ref == /databases/$(database)/documents/users/$(request.auth.uid);
+      allow write: if resource.data.user_ref == /databases/$(database)/documents/users/$(request.auth.uid);
+      allow delete: if resource.data.user_ref == /databases/$(database)/documents/users/$(request.auth.uid);
+    }
+  }
+}

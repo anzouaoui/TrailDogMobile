@@ -1,0 +1,6 @@
+NSCameraUsageDescription = "Autorisez l’accès à l’appareil photo pour capturer des photos pendant l’activité.";
+NSPhotoLibraryUsageDescription = "Autorisez l’accès à votre galerie pour sélectionner et ajouter des photos à l’activité.";
+NSLocationWhenInUseUsageDescription = "Nécessaire pour suivre votre trajet en activité.";
+NSLocationAlwaysAndWhenInUseUsageDescription = "Pour suivre l’activité même en fond.";
+NSLocationAlwaysUsageDescription = "Pour l’enregistrement continu de votre parcours.";
+NSMotionUsageDescription = "Utilisé pour compter vos pas pendant l'activité";

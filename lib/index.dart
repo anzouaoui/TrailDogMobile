@@ -1,0 +1,54 @@
+// Export pages
+export '/pages/activity/update_activity_page/update_activity_page_widget.dart'
+    show UpdateActivityPageWidget;
+export '/pages/activity/activity_page/activity_page_widget.dart'
+    show ActivityPageWidget;
+export '/pages/profile/edit_profil_page/edit_profil_page_widget.dart'
+    show EditProfilPageWidget;
+export '/pages/profile/performance_page/performance_page_widget.dart'
+    show PerformancePageWidget;
+export '/pages/profile/profil_page/profil_page_widget.dart'
+    show ProfilPageWidget;
+export '/pages/authentication/create_profile_page/create_profile_page_widget.dart'
+    show CreateProfilePageWidget;
+export '/pages/home/home_page/home_page_widget.dart' show HomePageWidget;
+export '/pages/profile/edit_profil_dog_page/edit_profil_dog_page_widget.dart'
+    show EditProfilDogPageWidget;
+export '/pages/settings/dogs_page/dogs_page_widget.dart' show DogsPageWidget;
+export '/pages/authentication/login_page/login_page_widget.dart'
+    show LoginPageWidget;
+export '/pages/settings/settings_page/settings_page_widget.dart'
+    show SettingsPageWidget;
+export '/pages/authentication/create_profil_dog_page/create_profil_dog_page_widget.dart'
+    show CreateProfilDogPageWidget;
+export '/pages/messages/messages_page/messages_page_widget.dart'
+    show MessagesPageWidget;
+export '/pages/authentication/onboarding_page/onboarding_page_widget.dart'
+    show OnboardingPageWidget;
+export '/pages/authentication/sign_up_page/sign_up_page_widget.dart'
+    show SignUpPageWidget;
+export '/pages/settings/dog_health_page/dog_health_page_widget.dart'
+    show DogHealthPageWidget;
+export '/pages/activity/track_page/track_page_widget.dart' show TrackPageWidget;
+export '/pages/friends/ask_friend_page/ask_friend_page_widget.dart'
+    show AskFriendPageWidget;
+export '/advanced_analytics_page/advanced_analytics_page_widget.dart'
+    show AdvancedAnalyticsPageWidget;
+export '/alert_dog_health_page/alert_dog_health_page_widget.dart'
+    show AlertDogHealthPageWidget;
+export '/ai_recommanded_page/ai_recommanded_page_widget.dart'
+    show AiRecommandedPageWidget;
+export '/pages/friends/friends_page/friends_page_widget.dart'
+    show FriendsPageWidget;
+export '/pages/home/notification_page/notification_page_widget.dart'
+    show NotificationPageWidget;
+export '/pages/messages/chat_view_page/chat_view_page_widget.dart'
+    show ChatViewPageWidget;
+export '/pages/activity/activities_page/activities_page_widget.dart'
+    show ActivitiesPageWidget;
+export '/pages/home/new_post_page/new_post_page_widget.dart'
+    show NewPostPageWidget;
+export '/pages/settings/notification_settings_page/notification_settings_page_widget.dart'
+    show NotificationSettingsPageWidget;
+export '/pages/settings/applications_page/applications_page_widget.dart'
+    show ApplicationsPageWidget;

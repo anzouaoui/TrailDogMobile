@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "155891952495",
+    "project_id": "traildog-1e3c9",
+    "storage_bucket": "traildog-1e3c9.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:155891952495:android:fe91db08e3bdc8b7fe169a",
+        "android_client_info": {
+          "package_name": "com.mycompany.traildog"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "155891952495-unlq05h98r10kldog3eqlalqrg4jjvi0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycompany.traildog",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "155891952495-87serq4m3h7kdk8ou132p9362ii0h5ek.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFtZ6dBDmB4NhgIxnHFllNMbNbp40gNmc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "155891952495-87serq4m3h7kdk8ou132p9362ii0h5ek.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "155891952495-m5c17p6c3gpgne6kuiteil2luc71dg1c.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.trailpawsconnect.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:155891952495:android:76428baa04cc4759fe169a",
+        "android_client_info": {
+          "package_name": "com.trailpawsconnect.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "155891952495-vpc65120keannk5auvhco72ieb5hv1ei.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.trailpawsconnect.app",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "155891952495-87serq4m3h7kdk8ou132p9362ii0h5ek.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFtZ6dBDmB4NhgIxnHFllNMbNbp40gNmc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "155891952495-87serq4m3h7kdk8ou132p9362ii0h5ek.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "155891952495-m5c17p6c3gpgne6kuiteil2luc71dg1c.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.trailpawsconnect.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
