@@ -1,8 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/component/post/comments_component/comments_component_widget.dart';
 import '/component/post/delete_post_component/delete_post_component_widget.dart';
+import '/component/post/image_zoomed_component/image_zoomed_component_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_toggle_icon.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -254,13 +257,41 @@ class _FeedComponentWidgetState extends State<FeedComponentWidget> {
                                   .primaryBackground,
                               borderRadius: BorderRadius.circular(8.0),
                             ),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(8.0),
-                              child: Image.network(
-                                containerPostsRecord.pictureUrl,
-                                width: double.infinity,
-                                height: 180.0,
-                                fit: BoxFit.cover,
+                            child: Builder(
+                              builder: (context) => InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  await showDialog(
+                                    context: context,
+                                    builder: (dialogContext) {
+                                      return Dialog(
+                                        elevation: 0,
+                                        insetPadding: EdgeInsets.zero,
+                                        backgroundColor: Colors.transparent,
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0)
+                                                .resolve(
+                                                    Directionality.of(context)),
+                                        child: ImageZoomedComponentWidget(
+                                          mediaParameter:
+                                              containerPostsRecord.pictureUrl,
+                                        ),
+                                      );
+                                    },
+                                  );
+                                },
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  child: Image.network(
+                                    containerPostsRecord.pictureUrl,
+                                    width: double.infinity,
+                                    height: 200.0,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
                               ),
                             ),
                           );
@@ -285,10 +316,49 @@ class _FeedComponentWidgetState extends State<FeedComponentWidget> {
                         Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            Icon(
-                              Icons.favorite_border,
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              size: 20.0,
+                            ToggleIcon(
+                              onPressed: () async {
+                                safeSetState(() =>
+                                    _model.postIsLiked = !_model.postIsLiked);
+                                if (containerPostsRecord.likedBy
+                                    .contains(currentUserReference)) {
+                                  await containerPostsRecord.reference.update({
+                                    ...mapToFirestore(
+                                      {
+                                        'likes_count':
+                                            FieldValue.increment(-(1)),
+                                        'liked_by': FieldValue.arrayRemove(
+                                            [currentUserReference]),
+                                      },
+                                    ),
+                                  });
+                                  _model.postIsLiked = false;
+                                  safeSetState(() {});
+                                } else {
+                                  await containerPostsRecord.reference.update({
+                                    ...mapToFirestore(
+                                      {
+                                        'likes_count': FieldValue.increment(1),
+                                        'liked_by': FieldValue.arrayUnion(
+                                            [currentUserReference]),
+                                      },
+                                    ),
+                                  });
+                                  _model.postIsLiked = true;
+                                  safeSetState(() {});
+                                }
+                              },
+                              value: _model.postIsLiked,
+                              onIcon: Icon(
+                                Icons.favorite,
+                                color: FlutterFlowTheme.of(context).secondary,
+                                size: 24.0,
+                              ),
+                              offIcon: Icon(
+                                Icons.favorite_border,
+                                color: FlutterFlowTheme.of(context).primary,
+                                size: 24.0,
+                              ),
                             ),
                             Text(
                               containerPostsRecord.likesCount.toString(),
@@ -314,37 +384,66 @@ class _FeedComponentWidgetState extends State<FeedComponentWidget> {
                             ),
                           ].divide(SizedBox(width: 4.0)),
                         ),
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Icon(
-                              Icons.chat_bubble_outline,
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              size: 20.0,
-                            ),
-                            Text(
-                              containerPostsRecord.commentsCount.toString(),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    font: GoogleFonts.inter(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontStyle,
-                                    ),
-                                    letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontStyle,
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            await showModalBottomSheet(
+                              isScrollControlled: true,
+                              backgroundColor: Colors.transparent,
+                              enableDrag: false,
+                              context: context,
+                              builder: (context) {
+                                return Padding(
+                                  padding: MediaQuery.viewInsetsOf(context),
+                                  child: CommentsComponentWidget(
+                                    postParameter:
+                                        containerPostsRecord.reference,
                                   ),
+                                );
+                              },
+                            ).then((value) => safeSetState(() {}));
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Icon(
+                                  Icons.chat_bubble_outline,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  size: 20.0,
+                                ),
+                                Text(
+                                  containerPostsRecord.commentsCount.toString(),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        font: GoogleFonts.inter(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
+                                        letterSpacing: 0.0,
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
+                                ),
+                              ].divide(SizedBox(width: 4.0)),
                             ),
-                          ].divide(SizedBox(width: 4.0)),
+                          ),
                         ),
                       ],
                     ),

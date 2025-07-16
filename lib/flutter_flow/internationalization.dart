@@ -2831,6 +2831,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Sauvegarder les Préférences',
     },
   },
+  // CommentsComponent
+  {
+    '3b8x91yw': {
+      'en': 'Comments',
+      'fr': 'Commentaires',
+    },
+    'uii732q5': {
+      'en': 'No comments yet',
+      'fr': 'Aucun commentaire pour le moment',
+    },
+    'oaygg5x8': {
+      'en': 'Add a comment...',
+      'fr': 'Ajouter un commentaire...',
+    },
+  },
   // Miscellaneous
   {
     'p85ny83o': {
