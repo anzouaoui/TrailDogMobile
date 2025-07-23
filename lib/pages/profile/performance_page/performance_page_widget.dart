@@ -54,166 +54,169 @@ class _PerformancePageWidgetState extends State<PerformancePageWidget>
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        body: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      FlutterFlowIconButton(
-                        borderRadius: 8.0,
-                        buttonSize: 40.0,
-                        fillColor:
-                            FlutterFlowTheme.of(context).primaryBackground,
-                        icon: Icon(
-                          Icons.arrow_back,
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          size: 24.0,
+        body: SafeArea(
+          top: true,
+          child: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        FlutterFlowIconButton(
+                          borderRadius: 8.0,
+                          buttonSize: 40.0,
+                          fillColor:
+                              FlutterFlowTheme.of(context).primaryBackground,
+                          icon: Icon(
+                            Icons.arrow_back,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            size: 24.0,
+                          ),
+                          onPressed: () {
+                            print('IconButton pressed ...');
+                          },
                         ),
-                        onPressed: () {
-                          print('IconButton pressed ...');
-                        },
-                      ),
-                      Text(
-                        FFLocalizations.of(context).getText(
-                          '1v2fbx63' /* Performance */,
-                        ),
-                        style: FlutterFlowTheme.of(context)
-                            .headlineMedium
-                            .override(
-                              font: GoogleFonts.interTight(
+                        Text(
+                          FFLocalizations.of(context).getText(
+                            '1v2fbx63' /* Performance */,
+                          ),
+                          style: FlutterFlowTheme.of(context)
+                              .headlineMedium
+                              .override(
+                                font: GoogleFonts.interTight(
+                                  fontWeight: FontWeight.w600,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .headlineMedium
+                                      .fontStyle,
+                                ),
+                                letterSpacing: 0.0,
                                 fontWeight: FontWeight.w600,
                                 fontStyle: FlutterFlowTheme.of(context)
                                     .headlineMedium
                                     .fontStyle,
                               ),
-                              letterSpacing: 0.0,
-                              fontWeight: FontWeight.w600,
-                              fontStyle: FlutterFlowTheme.of(context)
-                                  .headlineMedium
-                                  .fontStyle,
-                            ),
-                      ),
-                    ].divide(SizedBox(width: 12.0)),
-                  ),
-                ].divide(SizedBox(height: 8.0)),
-              ),
-              Expanded(
-                child: Column(
-                  children: [
-                    Align(
-                      alignment: Alignment(0.0, 0),
-                      child: FlutterFlowButtonTabBar(
-                        useToggleButtonStyle: true,
-                        labelStyle:
-                            FlutterFlowTheme.of(context).titleMedium.override(
-                                  font: GoogleFonts.interTight(
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .titleMedium
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleMedium
-                                        .fontStyle,
-                                  ),
-                                  letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .titleMedium
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .titleMedium
-                                      .fontStyle,
-                                ),
-                        unselectedLabelStyle:
-                            FlutterFlowTheme.of(context).titleMedium.override(
-                                  font: GoogleFonts.interTight(
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .titleMedium
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleMedium
-                                        .fontStyle,
-                                  ),
-                                  letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .titleMedium
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .titleMedium
-                                      .fontStyle,
-                                ),
-                        labelColor: FlutterFlowTheme.of(context).tertiary,
-                        unselectedLabelColor:
-                            FlutterFlowTheme.of(context).secondaryText,
-                        backgroundColor: FlutterFlowTheme.of(context).primary,
-                        unselectedBackgroundColor:
-                            FlutterFlowTheme.of(context).alternate,
-                        unselectedBorderColor:
-                            FlutterFlowTheme.of(context).alternate,
-                        borderWidth: 2.0,
-                        borderRadius: 8.0,
-                        elevation: 0.0,
-                        buttonMargin:
-                            EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
-                        tabs: [
-                          Tab(
-                            text: FFLocalizations.of(context).getText(
-                              'hp25tlxa' /* Me */,
-                            ),
-                          ),
-                          Tab(
-                            text: FFLocalizations.of(context).getText(
-                              'eiidx4g4' /* Bella */,
-                            ),
-                          ),
-                          Tab(
-                            text: FFLocalizations.of(context).getText(
-                              'c8weplk0' /* Max */,
-                            ),
-                          ),
-                        ],
-                        controller: _model.tabBarController,
-                        onTap: (i) async {
-                          [() async {}, () async {}, () async {}][i]();
-                        },
-                      ),
+                        ),
+                      ].divide(SizedBox(width: 12.0)),
                     ),
-                    Expanded(
-                      child: TabBarView(
-                        controller: _model.tabBarController,
-                        children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 16.0, 0.0, 16.0),
-                            child: wrapWithModel(
-                              model:
-                                  _model.statsPersonPerformanceComponentModel,
-                              updateCallback: () => safeSetState(() {}),
-                              child: StatsPersonPerformanceComponentWidget(),
-                            ),
-                          ),
-                          wrapWithModel(
-                            model: _model.statsDogPerformanceComponentModel1,
-                            updateCallback: () => safeSetState(() {}),
-                            child: StatsDogPerformanceComponentWidget(),
-                          ),
-                          wrapWithModel(
-                            model: _model.statsDogPerformanceComponentModel2,
-                            updateCallback: () => safeSetState(() {}),
-                            child: StatsDogPerformanceComponentWidget(),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+                  ].divide(SizedBox(height: 8.0)),
                 ),
-              ),
-            ].divide(SizedBox(height: 16.0)),
+                Expanded(
+                  child: Column(
+                    children: [
+                      Align(
+                        alignment: Alignment(0.0, 0),
+                        child: FlutterFlowButtonTabBar(
+                          useToggleButtonStyle: true,
+                          labelStyle:
+                              FlutterFlowTheme.of(context).titleMedium.override(
+                                    font: GoogleFonts.interTight(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .fontStyle,
+                                    ),
+                                    letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleMedium
+                                        .fontStyle,
+                                  ),
+                          unselectedLabelStyle:
+                              FlutterFlowTheme.of(context).titleMedium.override(
+                                    font: GoogleFonts.interTight(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .fontStyle,
+                                    ),
+                                    letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleMedium
+                                        .fontStyle,
+                                  ),
+                          labelColor: FlutterFlowTheme.of(context).tertiary,
+                          unselectedLabelColor:
+                              FlutterFlowTheme.of(context).secondaryText,
+                          backgroundColor: FlutterFlowTheme.of(context).primary,
+                          unselectedBackgroundColor:
+                              FlutterFlowTheme.of(context).alternate,
+                          unselectedBorderColor:
+                              FlutterFlowTheme.of(context).alternate,
+                          borderWidth: 2.0,
+                          borderRadius: 8.0,
+                          elevation: 0.0,
+                          buttonMargin: EdgeInsetsDirectional.fromSTEB(
+                              8.0, 0.0, 8.0, 0.0),
+                          tabs: [
+                            Tab(
+                              text: FFLocalizations.of(context).getText(
+                                'hp25tlxa' /* Me */,
+                              ),
+                            ),
+                            Tab(
+                              text: FFLocalizations.of(context).getText(
+                                'eiidx4g4' /* Bella */,
+                              ),
+                            ),
+                            Tab(
+                              text: FFLocalizations.of(context).getText(
+                                'c8weplk0' /* Max */,
+                              ),
+                            ),
+                          ],
+                          controller: _model.tabBarController,
+                          onTap: (i) async {
+                            [() async {}, () async {}, () async {}][i]();
+                          },
+                        ),
+                      ),
+                      Expanded(
+                        child: TabBarView(
+                          controller: _model.tabBarController,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 16.0, 0.0, 16.0),
+                              child: wrapWithModel(
+                                model:
+                                    _model.statsPersonPerformanceComponentModel,
+                                updateCallback: () => safeSetState(() {}),
+                                child: StatsPersonPerformanceComponentWidget(),
+                              ),
+                            ),
+                            wrapWithModel(
+                              model: _model.statsDogPerformanceComponentModel1,
+                              updateCallback: () => safeSetState(() {}),
+                              child: StatsDogPerformanceComponentWidget(),
+                            ),
+                            wrapWithModel(
+                              model: _model.statsDogPerformanceComponentModel2,
+                              updateCallback: () => safeSetState(() {}),
+                              child: StatsDogPerformanceComponentWidget(),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ].divide(SizedBox(height: 16.0)),
+            ),
           ),
         ),
       ),

@@ -13,11 +13,6 @@ class CreateProfilePageModel extends FlutterFlowModel<CreateProfilePageWidget> {
       FFUploadedFile(bytes: Uint8List.fromList([]));
   String uploadedFileUrl_uploadData1mc = '';
 
-  bool isDataUploading_profileUploaded = false;
-  FFUploadedFile uploadedLocalFile_profileUploaded =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl_profileUploaded = '';
-
   // State field(s) for yourName widget.
   FocusNode? yourNameFocusNode1;
   TextEditingController? yourNameTextController1;

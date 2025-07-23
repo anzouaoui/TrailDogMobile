@@ -176,4 +176,97 @@ class FFAppState extends ChangeNotifier {
   set currentElevationDiff(double value) {
     _currentElevationDiff = value;
   }
+
+  bool _isGoogleFitConnected = false;
+  bool get isGoogleFitConnected => _isGoogleFitConnected;
+  set isGoogleFitConnected(bool value) {
+    _isGoogleFitConnected = value;
+  }
+
+  /// Fréquence cardiaque pendant l'activité
+  double _liveAverageHR = 0.0;
+  double get liveAverageHR => _liveAverageHR;
+  set liveAverageHR(double value) {
+    _liveAverageHR = value;
+  }
+
+  /// Calories consommées pendant l'activité
+  double _liveCalories = 0.0;
+  double get liveCalories => _liveCalories;
+  set liveCalories(double value) {
+    _liveCalories = value;
+  }
+
+  List<dynamic> _heartRateSeries = [];
+  List<dynamic> get heartRateSeries => _heartRateSeries;
+  set heartRateSeries(List<dynamic> value) {
+    _heartRateSeries = value;
+  }
+
+  void addToHeartRateSeries(dynamic value) {
+    heartRateSeries.add(value);
+  }
+
+  void removeFromHeartRateSeries(dynamic value) {
+    heartRateSeries.remove(value);
+  }
+
+  void removeAtIndexFromHeartRateSeries(int index) {
+    heartRateSeries.removeAt(index);
+  }
+
+  void updateHeartRateSeriesAtIndex(
+    int index,
+    dynamic Function(dynamic) updateFn,
+  ) {
+    heartRateSeries[index] = updateFn(_heartRateSeries[index]);
+  }
+
+  void insertAtIndexInHeartRateSeries(int index, dynamic value) {
+    heartRateSeries.insert(index, value);
+  }
+
+  /// Récupère la position actuelle
+  LatLng? _currentPosition = LatLng(49.050966, 2.100645);
+  LatLng? get currentPosition => _currentPosition;
+  set currentPosition(LatLng? value) {
+    _currentPosition = value;
+  }
+
+  /// Ville du premier point de l'activité
+  String _cityPostion = '';
+  String get cityPostion => _cityPostion;
+  set cityPostion(String value) {
+    _cityPostion = value;
+  }
+
+  /// Liste de dénivelé pour chaque point
+  List<double> _pathAltitudes = [];
+  List<double> get pathAltitudes => _pathAltitudes;
+  set pathAltitudes(List<double> value) {
+    _pathAltitudes = value;
+  }
+
+  void addToPathAltitudes(double value) {
+    pathAltitudes.add(value);
+  }
+
+  void removeFromPathAltitudes(double value) {
+    pathAltitudes.remove(value);
+  }
+
+  void removeAtIndexFromPathAltitudes(int index) {
+    pathAltitudes.removeAt(index);
+  }
+
+  void updatePathAltitudesAtIndex(
+    int index,
+    double Function(double) updateFn,
+  ) {
+    pathAltitudes[index] = updateFn(_pathAltitudes[index]);
+  }
+
+  void insertAtIndexInPathAltitudes(int index, double value) {
+    pathAltitudes.insert(index, value);
+  }
 }

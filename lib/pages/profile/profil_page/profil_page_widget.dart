@@ -78,11 +78,11 @@ class _ProfilPageWidgetState extends State<ProfilPageWidget> {
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-            body: Stack(
-              children: [
-                SingleChildScrollView(
-                  primary: false,
-                  child: Column(
+            body: SafeArea(
+              top: true,
+              child: Stack(
+                children: [
+                  Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -611,38 +611,374 @@ class _ProfilPageWidgetState extends State<ProfilPageWidget> {
                                     ].divide(SizedBox(height: 8.0)),
                                   ),
                                 ),
-                                Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Builder(
-                                      builder: (context) {
-                                        if (_model.profileState == 'dogs') {
-                                          return Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Builder(
+                                SingleChildScrollView(
+                                  primary: false,
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Builder(
+                                        builder: (context) {
+                                          if (_model.profileState == 'dogs') {
+                                            return Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              children: [
+                                                Builder(
+                                                  builder: (context) {
+                                                    final dogList =
+                                                        profilPageDogRecordList
+                                                            .toList();
+
+                                                    return ListView.separated(
+                                                      padding: EdgeInsets.zero,
+                                                      primary: false,
+                                                      shrinkWrap: true,
+                                                      scrollDirection:
+                                                          Axis.vertical,
+                                                      itemCount: dogList.length,
+                                                      separatorBuilder: (_,
+                                                              __) =>
+                                                          SizedBox(height: 8.0),
+                                                      itemBuilder: (context,
+                                                          dogListIndex) {
+                                                        final dogListItem =
+                                                            dogList[
+                                                                dogListIndex];
+                                                        return wrapWithModel(
+                                                          model: _model
+                                                              .profilDogComponentModels1
+                                                              .getModel(
+                                                            dogListIndex
+                                                                .toString(),
+                                                            dogListIndex,
+                                                          ),
+                                                          updateCallback: () =>
+                                                              safeSetState(
+                                                                  () {}),
+                                                          child:
+                                                              ProfilDogComponentWidget(
+                                                            key: Key(
+                                                              'Keyf17_${dogListIndex.toString()}',
+                                                            ),
+                                                            dogParameter:
+                                                                dogListItem
+                                                                    .reference,
+                                                          ),
+                                                        );
+                                                      },
+                                                    );
+                                                  },
+                                                ),
+                                                FFButtonWidget(
+                                                  onPressed: () async {
+                                                    context.pushNamed(
+                                                        CreateProfilDogPageWidget
+                                                            .routeName);
+                                                  },
+                                                  text: FFLocalizations.of(
+                                                          context)
+                                                      .getText(
+                                                    'vg4hd24h' /* Add a new dog */,
+                                                  ),
+                                                  icon: Icon(
+                                                    FFIcons.kchien,
+                                                    size: 30.0,
+                                                  ),
+                                                  options: FFButtonOptions(
+                                                    width: double.infinity,
+                                                    height: 50.0,
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(16.0, 0.0,
+                                                                16.0, 0.0),
+                                                    iconPadding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          font: GoogleFonts
+                                                              .interTight(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontStyle,
+                                                          ),
+                                                          color: Colors.white,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontStyle,
+                                                        ),
+                                                    elevation: 0.0,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                ),
+                                              ].divide(SizedBox(height: 24.0)),
+                                            );
+                                          } else if (_model.profileState ==
+                                              'friends') {
+                                            return Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 16.0, 0.0, 16.0),
+                                                  child: StreamBuilder<
+                                                      List<FriendsRecord>>(
+                                                    stream: queryFriendsRecord(
+                                                      parent:
+                                                          currentUserReference,
+                                                    ),
+                                                    builder:
+                                                        (context, snapshot) {
+                                                      // Customize what your widget looks like when it's loading.
+                                                      if (!snapshot.hasData) {
+                                                        return Center(
+                                                          child: SizedBox(
+                                                            width: 50.0,
+                                                            height: 50.0,
+                                                            child:
+                                                                CircularProgressIndicator(
+                                                              valueColor:
+                                                                  AlwaysStoppedAnimation<
+                                                                      Color>(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        );
+                                                      }
+                                                      List<FriendsRecord>
+                                                          listViewFriendsRecordList =
+                                                          snapshot.data!;
+
+                                                      return ListView.separated(
+                                                        padding:
+                                                            EdgeInsets.zero,
+                                                        primary: false,
+                                                        shrinkWrap: true,
+                                                        scrollDirection:
+                                                            Axis.vertical,
+                                                        itemCount:
+                                                            listViewFriendsRecordList
+                                                                .length,
+                                                        separatorBuilder:
+                                                            (_, __) => SizedBox(
+                                                                height: 8.0),
+                                                        itemBuilder: (context,
+                                                            listViewIndex) {
+                                                          final listViewFriendsRecord =
+                                                              listViewFriendsRecordList[
+                                                                  listViewIndex];
+                                                          return StreamBuilder<
+                                                              UsersRecord>(
+                                                            stream: UsersRecord
+                                                                .getDocument(
+                                                                    listViewFriendsRecord
+                                                                        .friendRef!),
+                                                            builder: (context,
+                                                                snapshot) {
+                                                              // Customize what your widget looks like when it's loading.
+                                                              if (!snapshot
+                                                                  .hasData) {
+                                                                return Center(
+                                                                  child:
+                                                                      SizedBox(
+                                                                    width: 50.0,
+                                                                    height:
+                                                                        50.0,
+                                                                    child:
+                                                                        CircularProgressIndicator(
+                                                                      valueColor:
+                                                                          AlwaysStoppedAnimation<
+                                                                              Color>(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .primary,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              }
+
+                                                              final friendsCompoenntUsersRecord =
+                                                                  snapshot
+                                                                      .data!;
+
+                                                              return wrapWithModel(
+                                                                model: _model
+                                                                    .friendsCompoenntModels
+                                                                    .getModel(
+                                                                  friendsCompoenntUsersRecord
+                                                                      .uid,
+                                                                  listViewIndex,
+                                                                ),
+                                                                updateCallback: () =>
+                                                                    safeSetState(
+                                                                        () {}),
+                                                                child:
+                                                                    FriendsCompoenntWidget(
+                                                                  key: Key(
+                                                                    'Keyuu8_${friendsCompoenntUsersRecord.uid}',
+                                                                  ),
+                                                                  userParameter:
+                                                                      friendsCompoenntUsersRecord
+                                                                          .reference,
+                                                                ),
+                                                              );
+                                                            },
+                                                          );
+                                                        },
+                                                      );
+                                                    },
+                                                  ),
+                                                ),
+                                                FFButtonWidget(
+                                                  onPressed: () async {
+                                                    context.pushNamed(
+                                                        AskFriendPageWidget
+                                                            .routeName);
+                                                  },
+                                                  text: FFLocalizations.of(
+                                                          context)
+                                                      .getText(
+                                                    '163tp1dk' /* Add a new friend */,
+                                                  ),
+                                                  icon: Icon(
+                                                    FFIcons.kusers,
+                                                    size: 15.0,
+                                                  ),
+                                                  options: FFButtonOptions(
+                                                    width: double.infinity,
+                                                    height: 50.0,
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(16.0, 0.0,
+                                                                16.0, 0.0),
+                                                    iconPadding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          font: GoogleFonts
+                                                              .interTight(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontStyle,
+                                                          ),
+                                                          color: Colors.white,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontStyle,
+                                                        ),
+                                                    elevation: 0.0,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                ),
+                                              ].divide(SizedBox(height: 24.0)),
+                                            );
+                                          } else if (_model.profileState ==
+                                              'rewards') {
+                                            return Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                wrapWithModel(
+                                                  model: _model
+                                                      .noRewardsComponentModel,
+                                                  updateCallback: () =>
+                                                      safeSetState(() {}),
+                                                  child:
+                                                      NoRewardsComponentWidget(),
+                                                ),
+                                              ].divide(SizedBox(height: 8.0)),
+                                            );
+                                          } else if (_model.profileState ==
+                                              'stats') {
+                                            return Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                wrapWithModel(
+                                                  model: _model
+                                                      .noStatsComponentModel,
+                                                  updateCallback: () =>
+                                                      safeSetState(() {}),
+                                                  child:
+                                                      NoStatsComponentWidget(),
+                                                ),
+                                              ],
+                                            );
+                                          } else {
+                                            return Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 16.0, 0.0, 0.0),
+                                              child: Builder(
                                                 builder: (context) {
                                                   final dogList =
                                                       profilPageDogRecordList
                                                           .toList();
 
-                                                  return ListView.separated(
-                                                    padding: EdgeInsets.zero,
-                                                    shrinkWrap: true,
-                                                    scrollDirection:
-                                                        Axis.vertical,
-                                                    itemCount: dogList.length,
-                                                    separatorBuilder: (_, __) =>
-                                                        SizedBox(height: 8.0),
-                                                    itemBuilder: (context,
-                                                        dogListIndex) {
+                                                  return Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: List.generate(
+                                                        dogList.length,
+                                                        (dogListIndex) {
                                                       final dogListItem =
                                                           dogList[dogListIndex];
                                                       return wrapWithModel(
                                                         model: _model
-                                                            .profilDogComponentModels1
+                                                            .profilDogComponentModels2
                                                             .getModel(
                                                           dogListIndex
                                                               .toString(),
@@ -653,346 +989,24 @@ class _ProfilPageWidgetState extends State<ProfilPageWidget> {
                                                         child:
                                                             ProfilDogComponentWidget(
                                                           key: Key(
-                                                            'Keyf17_${dogListIndex.toString()}',
+                                                            'Key0zt_${dogListIndex.toString()}',
                                                           ),
                                                           dogParameter:
                                                               dogListItem
                                                                   .reference,
                                                         ),
                                                       );
-                                                    },
+                                                    }).divide(
+                                                        SizedBox(height: 8.0)),
                                                   );
                                                 },
                                               ),
-                                              FFButtonWidget(
-                                                onPressed: () async {
-                                                  context.pushNamed(
-                                                      CreateProfilDogPageWidget
-                                                          .routeName);
-                                                },
-                                                text:
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                  'vg4hd24h' /* Add a new dog */,
-                                                ),
-                                                icon: Icon(
-                                                  FFIcons.kchien,
-                                                  size: 30.0,
-                                                ),
-                                                options: FFButtonOptions(
-                                                  width: double.infinity,
-                                                  height: 50.0,
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          16.0, 0.0, 16.0, 0.0),
-                                                  iconPadding:
-                                                      EdgeInsetsDirectional
-                                                          .fromSTEB(0.0, 0.0,
-                                                              0.0, 0.0),
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
-                                                  textStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleSmall
-                                                          .override(
-                                                            font: GoogleFonts
-                                                                .interTight(
-                                                              fontWeight:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleSmall
-                                                                      .fontWeight,
-                                                              fontStyle:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleSmall
-                                                                      .fontStyle,
-                                                            ),
-                                                            color: Colors.white,
-                                                            letterSpacing: 0.0,
-                                                            fontWeight:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleSmall
-                                                                    .fontWeight,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleSmall
-                                                                    .fontStyle,
-                                                          ),
-                                                  elevation: 0.0,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                              ),
-                                            ].divide(SizedBox(height: 24.0)),
-                                          );
-                                        } else if (_model.profileState ==
-                                            'friends') {
-                                          return Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 16.0, 0.0, 16.0),
-                                                child: StreamBuilder<
-                                                    List<FriendsRecord>>(
-                                                  stream: queryFriendsRecord(
-                                                    parent:
-                                                        currentUserReference,
-                                                  ),
-                                                  builder: (context, snapshot) {
-                                                    // Customize what your widget looks like when it's loading.
-                                                    if (!snapshot.hasData) {
-                                                      return Center(
-                                                        child: SizedBox(
-                                                          width: 50.0,
-                                                          height: 50.0,
-                                                          child:
-                                                              CircularProgressIndicator(
-                                                            valueColor:
-                                                                AlwaysStoppedAnimation<
-                                                                    Color>(
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .primary,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      );
-                                                    }
-                                                    List<FriendsRecord>
-                                                        listViewFriendsRecordList =
-                                                        snapshot.data!;
-
-                                                    return ListView.separated(
-                                                      padding: EdgeInsets.zero,
-                                                      primary: false,
-                                                      shrinkWrap: true,
-                                                      scrollDirection:
-                                                          Axis.vertical,
-                                                      itemCount:
-                                                          listViewFriendsRecordList
-                                                              .length,
-                                                      separatorBuilder: (_,
-                                                              __) =>
-                                                          SizedBox(height: 8.0),
-                                                      itemBuilder: (context,
-                                                          listViewIndex) {
-                                                        final listViewFriendsRecord =
-                                                            listViewFriendsRecordList[
-                                                                listViewIndex];
-                                                        return StreamBuilder<
-                                                            UsersRecord>(
-                                                          stream: UsersRecord
-                                                              .getDocument(
-                                                                  listViewFriendsRecord
-                                                                      .friendRef!),
-                                                          builder: (context,
-                                                              snapshot) {
-                                                            // Customize what your widget looks like when it's loading.
-                                                            if (!snapshot
-                                                                .hasData) {
-                                                              return Center(
-                                                                child: SizedBox(
-                                                                  width: 50.0,
-                                                                  height: 50.0,
-                                                                  child:
-                                                                      CircularProgressIndicator(
-                                                                    valueColor:
-                                                                        AlwaysStoppedAnimation<
-                                                                            Color>(
-                                                                      FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primary,
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              );
-                                                            }
-
-                                                            final friendsCompoenntUsersRecord =
-                                                                snapshot.data!;
-
-                                                            return wrapWithModel(
-                                                              model: _model
-                                                                  .friendsCompoenntModels
-                                                                  .getModel(
-                                                                friendsCompoenntUsersRecord
-                                                                    .uid,
-                                                                listViewIndex,
-                                                              ),
-                                                              updateCallback: () =>
-                                                                  safeSetState(
-                                                                      () {}),
-                                                              child:
-                                                                  FriendsCompoenntWidget(
-                                                                key: Key(
-                                                                  'Keyuu8_${friendsCompoenntUsersRecord.uid}',
-                                                                ),
-                                                                userParameter:
-                                                                    friendsCompoenntUsersRecord
-                                                                        .reference,
-                                                              ),
-                                                            );
-                                                          },
-                                                        );
-                                                      },
-                                                    );
-                                                  },
-                                                ),
-                                              ),
-                                              FFButtonWidget(
-                                                onPressed: () async {
-                                                  context.pushNamed(
-                                                      AskFriendPageWidget
-                                                          .routeName);
-                                                },
-                                                text:
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                  '163tp1dk' /* Add a new friend */,
-                                                ),
-                                                icon: Icon(
-                                                  FFIcons.kusers,
-                                                  size: 15.0,
-                                                ),
-                                                options: FFButtonOptions(
-                                                  width: double.infinity,
-                                                  height: 50.0,
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          16.0, 0.0, 16.0, 0.0),
-                                                  iconPadding:
-                                                      EdgeInsetsDirectional
-                                                          .fromSTEB(0.0, 0.0,
-                                                              0.0, 0.0),
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
-                                                  textStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleSmall
-                                                          .override(
-                                                            font: GoogleFonts
-                                                                .interTight(
-                                                              fontWeight:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleSmall
-                                                                      .fontWeight,
-                                                              fontStyle:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleSmall
-                                                                      .fontStyle,
-                                                            ),
-                                                            color: Colors.white,
-                                                            letterSpacing: 0.0,
-                                                            fontWeight:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleSmall
-                                                                    .fontWeight,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleSmall
-                                                                    .fontStyle,
-                                                          ),
-                                                  elevation: 0.0,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                              ),
-                                            ].divide(SizedBox(height: 24.0)),
-                                          );
-                                        } else if (_model.profileState ==
-                                            'rewards') {
-                                          return Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              wrapWithModel(
-                                                model: _model
-                                                    .noRewardsComponentModel,
-                                                updateCallback: () =>
-                                                    safeSetState(() {}),
-                                                child:
-                                                    NoRewardsComponentWidget(),
-                                              ),
-                                            ].divide(SizedBox(height: 8.0)),
-                                          );
-                                        } else if (_model.profileState ==
-                                            'stats') {
-                                          return Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              wrapWithModel(
-                                                model: _model
-                                                    .noStatsComponentModel,
-                                                updateCallback: () =>
-                                                    safeSetState(() {}),
-                                                child: NoStatsComponentWidget(),
-                                              ),
-                                            ],
-                                          );
-                                        } else {
-                                          return Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 16.0, 0.0, 0.0),
-                                            child: Builder(
-                                              builder: (context) {
-                                                final dogList =
-                                                    profilPageDogRecordList
-                                                        .toList();
-
-                                                return Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: List.generate(
-                                                      dogList.length,
-                                                      (dogListIndex) {
-                                                    final dogListItem =
-                                                        dogList[dogListIndex];
-                                                    return wrapWithModel(
-                                                      model: _model
-                                                          .profilDogComponentModels2
-                                                          .getModel(
-                                                        dogListIndex.toString(),
-                                                        dogListIndex,
-                                                      ),
-                                                      updateCallback: () =>
-                                                          safeSetState(() {}),
-                                                      child:
-                                                          ProfilDogComponentWidget(
-                                                        key: Key(
-                                                          'Key0zt_${dogListIndex.toString()}',
-                                                        ),
-                                                        dogParameter:
-                                                            dogListItem
-                                                                .reference,
-                                                      ),
-                                                    );
-                                                  }).divide(
-                                                      SizedBox(height: 8.0)),
-                                                );
-                                              },
-                                            ),
-                                          );
-                                        }
-                                      },
-                                    ),
-                                  ].addToEnd(SizedBox(height: 100.0)),
+                                            );
+                                          }
+                                        },
+                                      ),
+                                    ].addToEnd(SizedBox(height: 100.0)),
+                                  ),
                                 ),
                               ]
                                   .divide(SizedBox(height: 8.0))
@@ -1003,16 +1017,16 @@ class _ProfilPageWidgetState extends State<ProfilPageWidget> {
                       ),
                     ].divide(SizedBox(height: 16.0)),
                   ),
-                ),
-                Align(
-                  alignment: AlignmentDirectional(0.0, 1.0),
-                  child: wrapWithModel(
-                    model: _model.navbarComponentModel,
-                    updateCallback: () => safeSetState(() {}),
-                    child: NavbarComponentWidget(),
+                  Align(
+                    alignment: AlignmentDirectional(0.0, 1.0),
+                    child: wrapWithModel(
+                      model: _model.navbarComponentModel,
+                      updateCallback: () => safeSetState(() {}),
+                      child: NavbarComponentWidget(),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         );

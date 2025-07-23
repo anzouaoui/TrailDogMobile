@@ -89,6 +89,7 @@ class _CommentsComponentWidgetState extends State<CommentsComponentWidget> {
               padding: EdgeInsets.all(16.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
                     mainAxisSize: MainAxisSize.max,

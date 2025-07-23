@@ -64,203 +64,211 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        body: Padding(
-          padding: EdgeInsets.all(16.0),
-          child: SingleChildScrollView(
-            primary: false,
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Flexible(
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      FlutterFlowIconButton(
-                        buttonSize: 40.0,
-                        icon: Icon(
-                          Icons.arrow_back,
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          size: 24.0,
+        body: SafeArea(
+          top: true,
+          child: Padding(
+            padding: EdgeInsets.all(16.0),
+            child: SingleChildScrollView(
+              primary: false,
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Flexible(
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        FlutterFlowIconButton(
+                          buttonSize: 40.0,
+                          icon: Icon(
+                            Icons.arrow_back,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            size: 24.0,
+                          ),
+                          onPressed: () async {
+                            context.safePop();
+                          },
                         ),
-                        onPressed: () async {
-                          context.safePop();
-                        },
-                      ),
-                      Text(
-                        FFLocalizations.of(context).getText(
-                          'gbhdjmlx' /* Notifications */,
-                        ),
-                        style:
-                            FlutterFlowTheme.of(context).headlineSmall.override(
-                                  font: GoogleFonts.interTight(
-                                    fontWeight: FontWeight.w600,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .headlineSmall
-                                        .fontStyle,
-                                  ),
-                                  letterSpacing: 0.0,
+                        Text(
+                          FFLocalizations.of(context).getText(
+                            'gbhdjmlx' /* Notifications */,
+                          ),
+                          style: FlutterFlowTheme.of(context)
+                              .headlineSmall
+                              .override(
+                                font: GoogleFonts.interTight(
                                   fontWeight: FontWeight.w600,
                                   fontStyle: FlutterFlowTheme.of(context)
                                       .headlineSmall
                                       .fontStyle,
                                 ),
-                      ),
-                    ].divide(SizedBox(width: 8.0)),
-                  ),
-                ),
-                StreamBuilder<List<NotificationsRecord>>(
-                  stream: queryNotificationsRecord(
-                    queryBuilder: (notificationsRecord) => notificationsRecord
-                        .where(
-                          'user_to',
-                          isEqualTo: currentUserReference,
-                        )
-                        .where(
-                          'read',
-                          isEqualTo: false,
+                                letterSpacing: 0.0,
+                                fontWeight: FontWeight.w600,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .headlineSmall
+                                    .fontStyle,
+                              ),
                         ),
+                      ].divide(SizedBox(width: 8.0)),
+                    ),
                   ),
-                  builder: (context, snapshot) {
-                    // Customize what your widget looks like when it's loading.
-                    if (!snapshot.hasData) {
-                      return Center(
-                        child: SizedBox(
-                          width: 50.0,
-                          height: 50.0,
-                          child: CircularProgressIndicator(
-                            valueColor: AlwaysStoppedAnimation<Color>(
-                              FlutterFlowTheme.of(context).primary,
+                  StreamBuilder<List<NotificationsRecord>>(
+                    stream: queryNotificationsRecord(
+                      queryBuilder: (notificationsRecord) => notificationsRecord
+                          .where(
+                            'user_to',
+                            isEqualTo: currentUserReference,
+                          )
+                          .where(
+                            'read',
+                            isEqualTo: false,
+                          ),
+                    ),
+                    builder: (context, snapshot) {
+                      // Customize what your widget looks like when it's loading.
+                      if (!snapshot.hasData) {
+                        return Center(
+                          child: SizedBox(
+                            width: 50.0,
+                            height: 50.0,
+                            child: CircularProgressIndicator(
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                FlutterFlowTheme.of(context).primary,
+                              ),
                             ),
                           ),
-                        ),
-                      );
-                    }
-                    List<NotificationsRecord> listViewNotificationsRecordList =
-                        snapshot.data!;
+                        );
+                      }
+                      List<NotificationsRecord>
+                          listViewNotificationsRecordList = snapshot.data!;
 
-                    return ListView.separated(
-                      padding: EdgeInsets.symmetric(vertical: 8.0),
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      itemCount: listViewNotificationsRecordList.length,
-                      separatorBuilder: (_, __) => SizedBox(height: 8.0),
-                      itemBuilder: (context, listViewIndex) {
-                        final listViewNotificationsRecord =
-                            listViewNotificationsRecordList[listViewIndex];
-                        return StreamBuilder<UsersRecord>(
-                          stream: UsersRecord.getDocument(
-                              listViewNotificationsRecord.userFrom!),
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 50.0,
-                                  height: 50.0,
-                                  child: CircularProgressIndicator(
-                                    valueColor: AlwaysStoppedAnimation<Color>(
-                                      FlutterFlowTheme.of(context).primary,
+                      return ListView.separated(
+                        padding: EdgeInsets.symmetric(vertical: 8.0),
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        itemCount: listViewNotificationsRecordList.length,
+                        separatorBuilder: (_, __) => SizedBox(height: 8.0),
+                        itemBuilder: (context, listViewIndex) {
+                          final listViewNotificationsRecord =
+                              listViewNotificationsRecordList[listViewIndex];
+                          return StreamBuilder<UsersRecord>(
+                            stream: UsersRecord.getDocument(
+                                listViewNotificationsRecord.userFrom!),
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: SizedBox(
+                                    width: 50.0,
+                                    height: 50.0,
+                                    child: CircularProgressIndicator(
+                                      valueColor: AlwaysStoppedAnimation<Color>(
+                                        FlutterFlowTheme.of(context).primary,
+                                      ),
                                     ),
                                   ),
-                                ),
-                              );
-                            }
+                                );
+                              }
 
-                            final conditionalBuilderUsersRecord =
-                                snapshot.data!;
+                              final conditionalBuilderUsersRecord =
+                                  snapshot.data!;
 
-                            return Builder(
-                              builder: (context) {
-                                if (listViewNotificationsRecord.type ==
-                                    'Friend request') {
-                                  return wrapWithModel(
-                                    model: _model
-                                        .friendRequestNotificationComponentModels
-                                        .getModel(
-                                      conditionalBuilderUsersRecord
-                                          .reference.id,
-                                      listViewIndex,
-                                    ),
-                                    updateCallback: () => safeSetState(() {}),
-                                    child:
-                                        FriendRequestNotificationComponentWidget(
-                                      key: Key(
-                                        'Keyw4q_${conditionalBuilderUsersRecord.reference.id}',
-                                      ),
-                                      userformParamter:
-                                          conditionalBuilderUsersRecord
-                                              .reference,
-                                      referenceFirendRequest:
-                                          listViewNotificationsRecord
-                                              .friendRequestId?.id,
-                                      notificationParameter:
-                                          listViewNotificationsRecord.reference,
-                                    ),
-                                  );
-                                } else if (listViewNotificationsRecord.type ==
-                                    'new message') {
-                                  return InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      context.pushNamed(
-                                        ChatViewPageWidget.routeName,
-                                        queryParameters: {
-                                          'chatParameter': serializeParam(
-                                            listViewNotificationsRecord.chatId,
-                                            ParamType.DocumentReference,
-                                          ),
-                                        }.withoutNulls,
-                                      );
-
-                                      await listViewNotificationsRecord
-                                          .reference
-                                          .update(createNotificationsRecordData(
-                                        read: true,
-                                      ));
-                                    },
-                                    child: wrapWithModel(
+                              return Builder(
+                                builder: (context) {
+                                  if (listViewNotificationsRecord.type ==
+                                      'Friend request') {
+                                    return wrapWithModel(
                                       model: _model
-                                          .newMessageNotificationComponentModels
+                                          .friendRequestNotificationComponentModels
                                           .getModel(
-                                        listViewNotificationsRecord
+                                        conditionalBuilderUsersRecord
                                             .reference.id,
                                         listViewIndex,
                                       ),
                                       updateCallback: () => safeSetState(() {}),
                                       child:
-                                          NewMessageNotificationComponentWidget(
+                                          FriendRequestNotificationComponentWidget(
                                         key: Key(
-                                          'Key4j0_${listViewNotificationsRecord.reference.id}',
+                                          'Keyw4q_${conditionalBuilderUsersRecord.reference.id}',
                                         ),
-                                        userFromParameter:
+                                        userformParamter:
+                                            conditionalBuilderUsersRecord
+                                                .reference,
+                                        referenceFirendRequest:
                                             listViewNotificationsRecord
-                                                .userFrom,
+                                                .friendRequestId?.id,
                                         notificationParameter:
                                             listViewNotificationsRecord
                                                 .reference,
                                       ),
-                                    ),
-                                  );
-                                } else {
-                                  return Container(
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                    ),
-                                  );
-                                }
-                              },
-                            );
-                          },
-                        );
-                      },
-                    );
-                  },
-                ),
-              ],
+                                    );
+                                  } else if (listViewNotificationsRecord.type ==
+                                      'new message') {
+                                    return InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        context.pushNamed(
+                                          ChatViewPageWidget.routeName,
+                                          queryParameters: {
+                                            'chatParameter': serializeParam(
+                                              listViewNotificationsRecord
+                                                  .chatId,
+                                              ParamType.DocumentReference,
+                                            ),
+                                          }.withoutNulls,
+                                        );
+
+                                        await listViewNotificationsRecord
+                                            .reference
+                                            .update(
+                                                createNotificationsRecordData(
+                                          read: true,
+                                        ));
+                                      },
+                                      child: wrapWithModel(
+                                        model: _model
+                                            .newMessageNotificationComponentModels
+                                            .getModel(
+                                          listViewNotificationsRecord
+                                              .reference.id,
+                                          listViewIndex,
+                                        ),
+                                        updateCallback: () =>
+                                            safeSetState(() {}),
+                                        child:
+                                            NewMessageNotificationComponentWidget(
+                                          key: Key(
+                                            'Key4j0_${listViewNotificationsRecord.reference.id}',
+                                          ),
+                                          userFromParameter:
+                                              listViewNotificationsRecord
+                                                  .userFrom,
+                                          notificationParameter:
+                                              listViewNotificationsRecord
+                                                  .reference,
+                                        ),
+                                      ),
+                                    );
+                                  } else {
+                                    return Container(
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                      ),
+                                    );
+                                  }
+                                },
+                              );
+                            },
+                          );
+                        },
+                      );
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
         ),

@@ -101,6 +101,21 @@ class ActivityRecord extends FirestoreRecord {
   int get step => _step ?? 0;
   bool hasStep() => _step != null;
 
+  // "comment" field.
+  String? _comment;
+  String get comment => _comment ?? '';
+  bool hasComment() => _comment != null;
+
+  // "rating" field.
+  int? _rating;
+  int get rating => _rating ?? 0;
+  bool hasRating() => _rating != null;
+
+  // "city" field.
+  String? _city;
+  String get city => _city ?? '';
+  bool hasCity() => _city != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
@@ -121,6 +136,9 @@ class ActivityRecord extends FirestoreRecord {
     _activityName = snapshotData['activity_name'] as String?;
     _durationSec = snapshotData['duration_sec'] as String?;
     _step = castToType<int>(snapshotData['step']);
+    _comment = snapshotData['comment'] as String?;
+    _rating = castToType<int>(snapshotData['rating']);
+    _city = snapshotData['city'] as String?;
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -178,6 +196,9 @@ Map<String, dynamic> createActivityRecordData({
   String? activityName,
   String? durationSec,
   int? step,
+  String? comment,
+  int? rating,
+  String? city,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -196,6 +217,9 @@ Map<String, dynamic> createActivityRecordData({
       'activity_name': activityName,
       'duration_sec': durationSec,
       'step': step,
+      'comment': comment,
+      'rating': rating,
+      'city': city,
     }.withoutNulls,
   );
 
@@ -224,7 +248,10 @@ class ActivityRecordDocumentEquality implements Equality<ActivityRecord> {
         e1?.status == e2?.status &&
         e1?.activityName == e2?.activityName &&
         e1?.durationSec == e2?.durationSec &&
-        e1?.step == e2?.step;
+        e1?.step == e2?.step &&
+        e1?.comment == e2?.comment &&
+        e1?.rating == e2?.rating &&
+        e1?.city == e2?.city;
   }
 
   @override
@@ -245,7 +272,10 @@ class ActivityRecordDocumentEquality implements Equality<ActivityRecord> {
         e?.status,
         e?.activityName,
         e?.durationSec,
-        e?.step
+        e?.step,
+        e?.comment,
+        e?.rating,
+        e?.city
       ]);
 
   @override

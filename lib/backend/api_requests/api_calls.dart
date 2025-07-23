@@ -35,16 +35,6 @@ class GetCityCall {
       alwaysAllowBody: false,
     );
   }
-
-  static List<String>? city(dynamic response) => (getJsonField(
-        response,
-        r'''$.results[0].address_components[2].long_name''',
-        true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => castToType<String>(x))
-          .withoutNulls
-          .toList();
 }
 
 class ApiPagingParams {

@@ -6,6 +6,11 @@ import 'package:flutter/material.dart';
 class EditProfilPageModel extends FlutterFlowModel<EditProfilPageWidget> {
   ///  State fields for stateful widgets in this page.
 
+  bool isDataUploading_uploadDataHbt = false;
+  FFUploadedFile uploadedLocalFile_uploadDataHbt =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+  String uploadedFileUrl_uploadDataHbt = '';
+
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode1;
   TextEditingController? textController1;

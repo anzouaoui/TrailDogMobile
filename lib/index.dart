@@ -1,6 +1,4 @@
 // Export pages
-export '/pages/activity/update_activity_page/update_activity_page_widget.dart'
-    show UpdateActivityPageWidget;
 export '/pages/activity/activity_page/activity_page_widget.dart'
     show ActivityPageWidget;
 export '/pages/profile/edit_profil_page/edit_profil_page_widget.dart'
@@ -27,17 +25,9 @@ export '/pages/authentication/onboarding_page/onboarding_page_widget.dart'
     show OnboardingPageWidget;
 export '/pages/authentication/sign_up_page/sign_up_page_widget.dart'
     show SignUpPageWidget;
-export '/pages/settings/dog_health_page/dog_health_page_widget.dart'
-    show DogHealthPageWidget;
 export '/pages/activity/track_page/track_page_widget.dart' show TrackPageWidget;
 export '/pages/friends/ask_friend_page/ask_friend_page_widget.dart'
     show AskFriendPageWidget;
-export '/advanced_analytics_page/advanced_analytics_page_widget.dart'
-    show AdvancedAnalyticsPageWidget;
-export '/alert_dog_health_page/alert_dog_health_page_widget.dart'
-    show AlertDogHealthPageWidget;
-export '/ai_recommanded_page/ai_recommanded_page_widget.dart'
-    show AiRecommandedPageWidget;
 export '/pages/friends/friends_page/friends_page_widget.dart'
     show FriendsPageWidget;
 export '/pages/home/notification_page/notification_page_widget.dart'
@@ -52,3 +42,9 @@ export '/pages/settings/notification_settings_page/notification_settings_page_wi
     show NotificationSettingsPageWidget;
 export '/pages/settings/applications_page/applications_page_widget.dart'
     show ApplicationsPageWidget;
+export '/pages/settings/dog_health_page/dog_health_page_widget.dart'
+    show DogHealthPageWidget;
+export '/pages/settings/dog_analytics_page/dog_analytics_page_widget.dart'
+    show DogAnalyticsPageWidget;
+export '/pages/activity/activity_rate_page/activity_rate_page_widget.dart'
+    show ActivityRatePageWidget;

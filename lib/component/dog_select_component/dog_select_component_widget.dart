@@ -141,6 +141,12 @@ class _DogSelectComponentWidgetState extends State<DogSelectComponentWidget> {
                     ),
                   ),
                 ),
+                if (widget.isSelectedParameter == true)
+                  Icon(
+                    Icons.check_circle,
+                    color: FlutterFlowTheme.of(context).accent2,
+                    size: 24.0,
+                  ),
               ],
             ),
           ),

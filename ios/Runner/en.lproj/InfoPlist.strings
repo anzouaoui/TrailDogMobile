@@ -4,3 +4,5 @@ NSLocationWhenInUseUsageDescription = "Nécessaire pour suivre votre trajet en a
 NSLocationAlwaysAndWhenInUseUsageDescription = "Pour suivre l’activité même en fond.";
 NSLocationAlwaysUsageDescription = "Pour l’enregistrement continu de votre parcours.";
 NSMotionUsageDescription = "Utilisé pour compter vos pas pendant l'activité";
+NSHealthShareUsageDescription = "Utiliser pour lire vos données Apple Santé.";
+NSHealthUpdateUsageDescription = "	Utiliser pour synchroniser vos données santé avec l’application.";

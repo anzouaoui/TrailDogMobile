@@ -144,175 +144,6 @@ bool _isSupportedLocale(Locale locale) {
 }
 
 final kTranslationsMap = <Map<String, Map<String, String>>>[
-  // UpdateActivityPage
-  {
-    'h2cwxnu5': {
-      'en': 'Update activity',
-      'fr': 'Mettre à jour l\'activité',
-    },
-    'nnxo73cp': {
-      'en': 'Cancel',
-      'fr': 'Annuler',
-    },
-    '9027c39u': {
-      'en': 'General information',
-      'fr': 'informations générales',
-    },
-    'k5predkw': {
-      'en': 'Activity title',
-      'fr': 'Titre de l\'activité',
-    },
-    'pm4dvzb7': {
-      'en': 'Morning Run with Max',
-      'fr': 'Course matinale avec Max',
-    },
-    '70k9ybn9': {
-      'en': 'Type d\'activité',
-      'fr': 'Type d\'activité',
-    },
-    'yrdjkk22': {
-      'en': 'Select...',
-      'fr': 'Sélectionner...',
-    },
-    '5e299hjn': {
-      'en': 'Search...',
-      'fr': 'Recherche...',
-    },
-    'zwtd9idk': {
-      'en': 'Cani-cross',
-      'fr': 'Cani-cross',
-    },
-    'iq8l2c1j': {
-      'en': 'Cani-VTT',
-      'fr': 'Cani-VTT',
-    },
-    '1vlkzerb': {
-      'en': 'Cani-hicking',
-      'fr': 'Cani-randonnée',
-    },
-    'ik5pntt1': {
-      'en': 'Date',
-      'fr': 'Date',
-    },
-    'hkifjnp5': {
-      'en': '21/05/2025',
-      'fr': '21/05/2025',
-    },
-    '89r4xoh7': {
-      'en': 'Durée',
-      'fr': 'Durée',
-    },
-    'ohbpw0vz': {
-      'en': '45:32',
-      'fr': '45:32',
-    },
-    'ivxp0r02': {
-      'en': 'Distance (km)',
-      'fr': 'Distance (km)',
-    },
-    'bugqnicz': {
-      'en': '21/05/2025',
-      'fr': '21/05/2025',
-    },
-    'b91q4kfi': {
-      'en': 'avg. pace',
-      'fr': 'rythme moyen',
-    },
-    'sz1uv5kh': {
-      'en': '45:32',
-      'fr': '45:32',
-    },
-    '7ed8pn2k': {
-      'en': 'Performance Statistics',
-      'fr': 'Statistiques de performance',
-    },
-    'p0bqc624': {
-      'en': 'Steps',
-      'fr': 'Mesures',
-    },
-    'h46gulpe': {
-      'en': 'Cadence',
-      'fr': 'Cadence',
-    },
-    'jra2zmyo': {
-      'en': '5:12',
-      'fr': '5:12',
-    },
-    'afehji04': {
-      'en': 'Average heart rate',
-      'fr': 'Fréquence cardiaque moyenne',
-    },
-    'hhcf69kv': {
-      'en': '145',
-      'fr': '145',
-    },
-    'vzjqgugh': {
-      'en': 'Max heart rate',
-      'fr': 'Fréquence cardiaque maximale',
-    },
-    'zc8eguuh': {
-      'en': '172',
-      'fr': '172',
-    },
-    'ur97umfb': {
-      'en': 'Elevation gain (m)',
-      'fr': 'Dénivelé positif (m)',
-    },
-    'md08w0j3': {
-      'en': '82',
-      'fr': '82',
-    },
-    'x1stre96': {
-      'en': 'Negative elevation (m)',
-      'fr': 'Élévation négative (m)',
-    },
-    'x829h9q0': {
-      'en': '78',
-      'fr': '78',
-    },
-    'b3sx48el': {
-      'en': ' performance of',
-      'fr': 'performance de',
-    },
-    'zkzdho75': {
-      'en': 'Average heart rate',
-      'fr': 'Fréquence cardiaque moyenne',
-    },
-    'zztf2rtp': {
-      'en': '125',
-      'fr': '125',
-    },
-    '7mk0q71a': {
-      'en': 'Max heart rate',
-      'fr': 'Fréquence cardiaque maximale',
-    },
-    'reuf7gif': {
-      'en': '160',
-      'fr': '160',
-    },
-    'rpn9tfpg': {
-      'en': 'Note',
-      'fr': 'Note',
-    },
-    '39cqtp30': {
-      'en': 'Comments on the activity',
-      'fr': 'Commentaires sur l\'activité',
-    },
-    'orn26zsm': {
-      'en':
-          'Great morning run. Max was very energetic today. Weather was perfect with a slight breeze.',
-      'fr':
-          'Superbe course matinale. Max était très dynamique aujourd\'hui. Le temps était parfait avec une légère brise.',
-    },
-    'rx818tuo': {
-      'en': 'Save',
-      'fr': 'Sauvegarder',
-    },
-    'j9r0xbjp': {
-      'en': 'Home',
-      'fr': 'Maison',
-    },
-  },
   // ActivityPage
   {
     'yp372g23': {
@@ -331,119 +162,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Step',
       'fr': 'Étape',
     },
-    'lzw03y75': {
-      'en': 'M',
-      'fr': 'M',
-    },
-    'yoo7ee5s': {
-      'en': 'Great \nPerformance',
-      'fr': 'Excellente performance',
-    },
-    'w1tnny61': {
-      'en': 'Heart Rate',
-      'fr': 'Fréquence cardiaque',
-    },
-    'r19nwiyz': {
-      'en': 'Energy Level',
-      'fr': 'Niveau d\'énergie',
-    },
-    '4agb0i1o': {
-      'en': '125',
-      'fr': '125',
-    },
-    '46krxdc9': {
-      'en': 'bpm avg',
-      'fr': 'bpm moyen',
-    },
-    'dj8itcba': {
-      'en': 'Peak: 160 bpm',
-      'fr': 'Pic : 160 bpm',
-    },
-    't6o8ublr': {
-      'en': '85% - Excellent',
-      'fr': '85% - Excellent',
-    },
-    'ctgd6t08': {
-      'en': 'YOUR PERFORMANCE',
-      'fr': 'VOTRE PERFORMANCE',
-    },
-    '9r2rdnty': {
-      'en': 'Heart Rate',
-      'fr': 'Fréquence cardiaque',
-    },
-    'z8160ibl': {
-      'en': '145',
-      'fr': '145',
-    },
-    'p3qzlw69': {
-      'en': 'bpm avg',
-      'fr': 'bpm moyen',
-    },
-    '0eyzk2oi': {
-      'en': 'Calories',
-      'fr': 'Calories',
-    },
-    'mucktnph': {
-      'en': '450',
-      'fr': '450',
-    },
-    'l31c4fjh': {
-      'en': 'kcal',
-      'fr': 'kcal',
-    },
-    '0i4m4ixv': {
-      'en': 'Elevation Gain',
-      'fr': 'Dénivelé positif',
-    },
-    'iunbqawv': {
-      'en': '82',
-      'fr': '82',
-    },
-    '4omcecaz': {
-      'en': 'm',
-      'fr': 'm',
-    },
-    '2dzrxuoo': {
-      'en': 'Best Pace',
-      'fr': 'Meilleur rythme',
-    },
-    'y7x6pj3y': {
-      'en': '4:45',
-      'fr': '4:45',
-    },
-    'p073i66h': {
-      'en': 'min/km',
-      'fr': 'min/km',
-    },
-    'y6sw62or': {
-      'en': 'LOCATION',
-      'fr': 'EMPLACEMENT',
-    },
-    '7z2jvcj4': {
-      'en': 'Central Park Trail',
-      'fr': 'Sentier du parc central',
-    },
     '9bdvjpst': {
       'en': 'NOTES',
       'fr': 'NOTES',
     },
-    'o75s2bsm': {
-      'en':
-          'Great morning run. Max was very energetic today. Weather was perfect with a slight breeze.',
-      'fr':
-          'Superbe course matinale. Max était très dynamique aujourd\'hui. Le temps était parfait avec une légère brise.',
-    },
-    'xfl1dakx': {
-      'en': 'ACHIEVEMENTS',
-      'fr': 'RÉALISATIONS',
-    },
-    'lyia7l0c': {
-      'en': 'Early Bird',
-      'fr': 'Lève-tôt',
-    },
-    '8iqsujn5': {
-      'en': '5K Club',
-      'fr': 'Club 5K',
+    'ddcjvu7i': {
+      'en': 'Add comment',
+      'fr': 'Ajouter un commentaire',
     },
     'tcbxwj6a': {
       'en': 'Home',
@@ -544,7 +269,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'nfj97rpa': {
       'en': 'Rewards',
-      'fr': 'Récompenses',
+      'fr': 'Badges',
     },
     'eh2h9ogt': {
       'en': 'Stats',
@@ -574,8 +299,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Prénom',
     },
     '5si88i0n': {
-      'en': 'Your Name',
-      'fr': 'Votre nom',
+      'en': 'Your firstname',
+      'fr': 'Votre prénom',
     },
     'o7do2ps9': {
       'en': 'Lastname',
@@ -630,8 +355,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Date de naissance',
     },
     '9lykncxq': {
-      'en': 'Your City',
-      'fr': 'Votre ville',
+      'en': 'Your Birthdate',
+      'fr': 'Votre date de naissance',
     },
     'll34a27q': {
       'en': 'Gender',
@@ -662,16 +387,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Poids (kg)',
     },
     '9vlj86oc': {
-      'en': 'Your Name',
-      'fr': 'Votre nom',
+      'en': 'Your weight',
+      'fr': 'Votre poids',
     },
     'yz33ax9m': {
       'en': 'resting heart rate (bpm)',
       'fr': 'fréquence cardiaque au repos (bpm)',
     },
     'zdddocr2': {
-      'en': 'Your Name',
-      'fr': 'Votre nom',
+      'en': 'Your heatbeat',
+      'fr': 'Votre rythme cardiaque',
     },
     'qawos02j': {
       'en': 'Continue and add a dog',
@@ -1330,61 +1055,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Hom',
     },
   },
-  // DogHealthPage
-  {
-    '9kkl8mw5': {
-      'en': 'Health dogs ',
-      'fr': 'Chiens de santé',
-    },
-    'axbfxlqt': {
-      'en': 'Select...',
-      'fr': 'Sélectionner...',
-    },
-    '4eqtug4h': {
-      'en': 'Search...',
-      'fr': 'Recherche...',
-    },
-    '8jfrunno': {
-      'en': 'Option 1',
-      'fr': 'Option 1',
-    },
-    'dcsg8owk': {
-      'en': 'Option 2',
-      'fr': 'Option 2',
-    },
-    'bmmtl1sb': {
-      'en': 'Option 3',
-      'fr': 'Option 3',
-    },
-    'cpo1va3e': {
-      'en': 'Next vaccination',
-      'fr': 'Prochaine vaccination',
-    },
-    '5l2zfyfq': {
-      'en': '04/07/2025',
-      'fr': '04/07/2025',
-    },
-    'h51ixe1t': {
-      'en': 'Vaccinations',
-      'fr': 'Vaccinations',
-    },
-    'p2sw8t4l': {
-      'en': 'Reports',
-      'fr': 'Rapports',
-    },
-    '6fdozjzf': {
-      'en': 'Meds',
-      'fr': 'Médicaments',
-    },
-    't020vuhk': {
-      'en': 'Tab 4',
-      'fr': 'Onglet 4',
-    },
-    '8m7lt5q2': {
-      'en': 'Home',
-      'fr': 'Maison',
-    },
-  },
   // TrackPage
   {
     'ua5fgffo': {
@@ -1415,6 +1085,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Cani-hicking',
       'fr': 'Cani-randonnée',
     },
+    'n3jand5o': {
+      'en': 'Dogs',
+      'fr': 'Chiens',
+    },
     '1br0go0w': {
       'en': 'Activity statistics',
       'fr': 'Statistiques d\'activité',
@@ -1435,6 +1109,26 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Height difference',
       'fr': 'Différence de hauteur',
     },
+    'shamv7wt': {
+      'en': 'Health',
+      'fr': 'Santé',
+    },
+    'xogejcqc': {
+      'en': '- -',
+      'fr': '- -',
+    },
+    'uze5og1d': {
+      'en': 'Heartbeats',
+      'fr': 'Fqs cardiaque',
+    },
+    '3rabxvzy': {
+      'en': '0',
+      'fr': '0',
+    },
+    'r5v3a59r': {
+      'en': 'Calories',
+      'fr': 'Calories',
+    },
     '5k5lgd50': {
       'en': 'Timer',
       'fr': 'Minuteur',
@@ -1449,7 +1143,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'nxmhw3dw': {
       'en': 'Resume',
-      'fr': 'CV',
+      'fr': 'Reprendre',
     },
     '8s5w3s9h': {
       'en': 'Stop',
@@ -1457,7 +1151,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '76bfdebb': {
       'en': 'Save activity',
-      'fr': 'Enregistrer l\'activité',
+      'fr': 'Chiens de santé',
     },
     'fec3lrvk': {
       'en': 'Home',
@@ -1481,481 +1175,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'i1qkxtle': {
       'en': 'Runners',
       'fr': 'Coureurs',
-    },
-  },
-  // AdvancedAnalyticsPage
-  {
-    'bp1qrbuh': {
-      'en': 'Analyse d\'activité',
-      'fr': 'Analyse d\'activité',
-    },
-    'zxok2ixc': {
-      'en': 'Course matinale',
-      'fr': 'Cours matinal',
-    },
-    'trsk8wyl': {
-      'en': 'Aujourd\'hui • 07:30',
-      'fr': 'Aujourd\'hui • 07:30',
-    },
-    'xq50ztds': {
-      'en': '8.5',
-      'fr': '8,5',
-    },
-    'd02iwsvg': {
-      'en': 'km',
-      'fr': 'km',
-    },
-    '440vaw3g': {
-      'en': 'Distance',
-      'fr': 'Distance',
-    },
-    '7ngq5dpa': {
-      'en': '42:15',
-      'fr': '42:15',
-    },
-    '273tg2mj': {
-      'en': 'min',
-      'fr': 'min',
-    },
-    'l84gb1sc': {
-      'en': 'Durée',
-      'fr': 'Durée',
-    },
-    'mqx8of19': {
-      'en': '4:58',
-      'fr': '4:58',
-    },
-    'n532d8cc': {
-      'en': '/km',
-      'fr': '/km',
-    },
-    'mhxx4qih': {
-      'en': 'Rythme',
-      'fr': 'Rythme',
-    },
-    'gpomhlz0': {
-      'en': 'Analyse des performances',
-      'fr': 'Analyse des performances',
-    },
-    'jk3vejtv': {
-      'en': 'Vitesse',
-      'fr': 'Vitesse',
-    },
-    'y8bhfxly': {
-      'en': 'Dénivelé',
-      'fr': 'Dénivelé',
-    },
-    'pcnrs6in': {
-      'en': 'Cadence',
-      'fr': 'Cadence',
-    },
-    'e2w1xi1o': {
-      'en': 'Vitesse',
-      'fr': 'Vitesse',
-    },
-    'b9k8kupg': {
-      'en': 'Vitesse (km/h)',
-      'fr': 'Vitesse (km/h)',
-    },
-    'n6nqxsho': {
-      'en': 'Vitesse moyenne: 12.1 km/h',
-      'fr': 'Vitesse moyenne : 12,1 km/h',
-    },
-    'xrgpni7r': {
-      'en': '20',
-      'fr': '20',
-    },
-    '1bsa20m3': {
-      'en': '15',
-      'fr': '15',
-    },
-    'sl9kjx5h': {
-      'en': '10',
-      'fr': '10',
-    },
-    'ps1m4fnw': {
-      'en': '5',
-      'fr': '5',
-    },
-    'ujwr0fcz': {
-      'en': '0',
-      'fr': '0',
-    },
-    'xdn6zlzl': {
-      'en': '0',
-      'fr': '0',
-    },
-    'ia3j5f53': {
-      'en': '2',
-      'fr': '2',
-    },
-    'zlgwamk9': {
-      'en': '4',
-      'fr': '4',
-    },
-    'jc8tr6ec': {
-      'en': '6',
-      'fr': '6',
-    },
-    'idmbjshw': {
-      'en': '8 km',
-      'fr': '8 km',
-    },
-    'pvkwrcgn': {
-      'en': 'Point sélectionné',
-      'fr': 'Point sélectionné',
-    },
-    'nnmhzloi': {
-      'en': '14.2 km/h',
-      'fr': '14,2 km/h',
-    },
-    'kye0q3t3': {
-      'en': 'à 3.2 km',
-      'fr': 'à 3,2 km',
-    },
-    'x2cw2e7o': {
-      'en': 'Distance (km)',
-      'fr': 'Distance (km)',
-    },
-    'p9oi74mo': {
-      'en': 'Statistiques détaillées',
-      'fr': 'Statistiques détaillées',
-    },
-    '7roan5vz': {
-      'en': '15.8',
-      'fr': '15,8',
-    },
-    '0704tlbz': {
-      'en': 'km/h',
-      'fr': 'km/h',
-    },
-    '1iarwh7b': {
-      'en': 'Vitesse max',
-      'fr': 'Vitesse max',
-    },
-    'oti5hj0q': {
-      'en': '156',
-      'fr': '156',
-    },
-    'yfyfn9xb': {
-      'en': 'm',
-      'fr': 'm',
-    },
-    'm8g2drpw': {
-      'en': 'Dénivelé +',
-      'fr': 'Dénivelé +',
-    },
-    'c64a2vgn': {
-      'en': '165',
-      'fr': '165',
-    },
-    'v6ucucag': {
-      'en': 'bpm',
-      'fr': 'bpm',
-    },
-    '8a3hguyk': {
-      'en': 'FC moyenne',
-      'fr': 'FC moyenne',
-    },
-    'esqux4qf': {
-      'en': '485',
-      'fr': '485',
-    },
-    'lu1c8jkx': {
-      'en': 'kcal',
-      'fr': 'kcal',
-    },
-    'brwng4xo': {
-      'en': 'Calories',
-      'fr': 'Calories',
-    },
-  },
-  // AlertDogHealthPage
-  {
-    'i3ja4md6': {
-      'en': 'Alertes Santé',
-      'fr': 'Alertes Santé',
-    },
-    '9vmhmln0': {
-      'en': 'Surveillance Active',
-      'fr': 'Surveillance active',
-    },
-    'myvdc1hp': {
-      'en': '3 alertes configurées',
-      'fr': '3 alertes configurées',
-    },
-    'krrf7wcg': {
-      'en': 'Notifications actives',
-      'fr': 'Notifications actives',
-    },
-    'l6j7kmvl': {
-      'en': 'Alertes à venir',
-      'fr': 'Alertes à venir',
-    },
-    '2pebrwpe': {
-      'en': 'Filtrer',
-      'fr': 'Filtrer',
-    },
-    'uvtpdc0g': {
-      'en': 'Toutes',
-      'fr': 'Toutes',
-    },
-    'sph1dto0': {
-      'en': 'Vétérinaire',
-      'fr': 'Vétérinaire',
-    },
-    'q89hhohq': {
-      'en': 'Cardiaque',
-      'fr': 'Cardiaque',
-    },
-    '486gt1rl': {
-      'en': 'Visite vétérinaire',
-      'fr': 'Visite vétérinaire',
-    },
-    '2blc9nac': {
-      'en': 'Dr. Martin - Dans 3 jours',
-      'fr': 'Dr. Martin - Dans 3 jours',
-    },
-    'a182f0lw': {
-      'en': '15 Mars 2024 à 14h30',
-      'fr': '15 mars 2024 à 14h30',
-    },
-    '2qpd8fi2': {
-      'en': 'Actif',
-      'fr': 'Actif',
-    },
-    'egujzrbu': {
-      'en': 'Rappel 24h avant',
-      'fr': 'Rappel 24h avant',
-    },
-    'drwn8xqw': {
-      'en': 'Seuil cardiaque',
-      'fr': 'Seuil cardiaque',
-    },
-    'kbz8c63u': {
-      'en': 'Alerte si > 180 bpm',
-      'fr': 'Alerte si > 180 bpm',
-    },
-    '23njp5pg': {
-      'en': 'Surveillance continue',
-      'fr': 'La surveillance continue',
-    },
-    'nq1dpi1w': {
-      'en': 'Actif',
-      'fr': 'Actif',
-    },
-    'cbhio5b8': {
-      'en': 'Dernière mesure: 165 bpm',
-      'fr': 'Dernière mesure : 165 bpm',
-    },
-    '6f5ien9p': {
-      'en': 'Historique',
-      'fr': 'Historique',
-    },
-    'ruzqmk8g': {
-      'en': 'Visite vétérinaire',
-      'fr': 'Visite vétérinaire',
-    },
-    '2i06qj6o': {
-      'en': 'Dr. Martin - Effectuée',
-      'fr': 'Dr. Martin - Effectuée',
-    },
-    '8kkan3hc': {
-      'en': '28 Février 2024',
-      'fr': '28 février 2024',
-    },
-    '1ujiz4c1': {
-      'en': 'Bilan de santé complet réalisé',
-      'fr': 'Bilan de santé complet réalisé',
-    },
-    'z2v1ocok': {
-      'en': 'Alerte cardiaque',
-      'fr': 'Alerte cardiaque',
-    },
-    'rmz2p92o': {
-      'en': 'Seuil dépassé: 195 bpm',
-      'fr': 'Seuil dépassé : 195 bpm',
-    },
-    'lkg7koy2': {
-      'en': '25 Février 2024 - 16h45',
-      'fr': '25 février 2024 - 16h45',
-    },
-    'je7hsrjg': {
-      'en': 'Pic d\'activité détecté pendant la course',
-      'fr': 'Pic d\'activité détecté pendant la course',
-    },
-    'ynwospzq': {
-      'en': 'Ajouter une alerte',
-      'fr': 'Ajouter une alerte',
-    },
-  },
-  // AiRecommandedPage
-  {
-    '5ycugk3t': {
-      'en': 'Rechercher un parcours...',
-      'fr': 'Rechercher un parcours...',
-    },
-    '5ucxebil': {
-      'en': '< 5 km',
-      'fr': '< 5 km',
-    },
-    'iexvwr50': {
-      'en': 'Distance',
-      'fr': 'Distance',
-    },
-    '7gw4lw3u': {
-      'en': '< 5 km',
-      'fr': '< 5 km',
-    },
-    '43zpkgrx': {
-      'en': '5-10 km',
-      'fr': '5 à 10 km',
-    },
-    '4a11wjq8': {
-      'en': '10-20 km',
-      'fr': '10-20 km',
-    },
-    '5igkg8tt': {
-      'en': '> 20 km',
-      'fr': '> 20 km',
-    },
-    '9cdwz3o2': {
-      'en': 'Facile',
-      'fr': 'Facile',
-    },
-    'ynk790bs': {
-      'en': 'Difficulté',
-      'fr': 'Difficulté',
-    },
-    'f60njnn3': {
-      'en': 'Facile',
-      'fr': 'Facile',
-    },
-    'b580wjjn': {
-      'en': 'Modéré',
-      'fr': 'Modéré',
-    },
-    'uxf5uxl9': {
-      'en': 'Difficile',
-      'fr': 'Difficile',
-    },
-    'o3ukvl9y': {
-      'en': 'Expert',
-      'fr': 'Expert',
-    },
-    'fxc2y4va': {
-      'en': 'Montagne',
-      'fr': 'Montagne',
-    },
-    'xvnhtos9': {
-      'en': 'Lieu',
-      'fr': 'Lieu',
-    },
-    '5oip6je1': {
-      'en': 'Montagne',
-      'fr': 'Montagne',
-    },
-    'la8njjo9': {
-      'en': 'Forêt',
-      'fr': 'Forêt',
-    },
-    'uojsylfc': {
-      'en': 'Ville',
-      'fr': 'Ville',
-    },
-    'tu8dv6xc': {
-      'en': 'Côte',
-      'fr': 'Côte',
-    },
-    '4uf9z7gb': {
-      'en': 'Facile',
-      'fr': 'Facile',
-    },
-    'thwimxp7': {
-      'en': 'Sentier des Cascades',
-      'fr': 'Sentier des Cascades',
-    },
-    '1vlplhyy': {
-      'en':
-          'Un magnifique parcours à travers la forêt de pins avec plusieurs cascades pittoresques. Idéal pour une sortie en famille ou une course matinale relaxante.',
-      'fr':
-          'Un magnifique parcours à travers la forêt de pins avec plusieurs cascades pittoresques. Idéal pour une sortie en famille ou un cours matinale relaxante.',
-    },
-    'd4qggxg5': {
-      'en': '8.2 km',
-      'fr': '8,2 km',
-    },
-    'bai46a5t': {
-      'en': '240m D+',
-      'fr': '240 m D+',
-    },
-    'chr0220m': {
-      'en': '1h 45min',
-      'fr': '1h 45min',
-    },
-    '6vmiksgd': {
-      'en': '4.8',
-      'fr': '4.8',
-    },
-    'ipyoxo3e': {
-      'en': 'Détails',
-      'fr': 'Détails',
-    },
-    'v83a4w6r': {
-      'en': 'Lancer',
-      'fr': 'Lancier',
-    },
-    'kfo3sgll': {
-      'en': 'Modéré',
-      'fr': 'Modéré',
-    },
-    'ykpp6az7': {
-      'en': 'Circuit du Lac Bleu',
-      'fr': 'Circuit du Lac Bleu',
-    },
-    'o3hkmrxo': {
-      'en':
-          'Parcours technique autour du lac avec quelques montées raides. Panorama exceptionnel sur les sommets environnants. Recommandé pour les coureurs expérimentés.',
-      'fr':
-          'Parcours technique autour du lac avec quelques montées raides. Panorama exceptionnel sur les sommets environnants. Recommandé pour les coureurs expérimentés.',
-    },
-    '3luejmcy': {
-      'en': '12.8 km',
-      'fr': '12,8 km',
-    },
-    'jjt308nr': {
-      'en': '580m D+',
-      'fr': '580 m D+',
-    },
-    'k5rbym5j': {
-      'en': '2h 30min',
-      'fr': '2h 30min',
-    },
-    '4sjxcomc': {
-      'en': '4.6',
-      'fr': '4.6',
-    },
-    '3tb5zysf': {
-      'en': 'Détails',
-      'fr': 'Détails',
-    },
-    '212szmp8': {
-      'en': 'Lancer',
-      'fr': 'Lancier',
-    },
-    'pt5kkl0f': {
-      'en': 'Facile',
-      'fr': 'Facile',
-    },
-    'w81o35cs': {
-      'en': 'Tour du Centre-Ville',
-      'fr': 'Tour du Centre-Ville',
-    },
-    '3xefqcre': {
-      'en':
-          'Parcours urbain découvrant les monuments historiques et parcs de la ville. Terrain plat, idéal pour débuter ou pour une séance de récupération active.',
-      'fr':
-          'Parcours urbain découvrant les monuments historiques et parcs de la ville. Terrain plat, idéal pour débuter ou pour une séance de récupération active.',
     },
   },
   // FriendsPage
@@ -2186,6 +1405,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ApplicationsPage
   {
+    '50t69aec': {
+      'en': 'notifications settings',
+      'fr': 'paramètres de notifications',
+    },
     'np9jj0ou': {
       'en': 'Health Sync',
       'fr': 'Synchronisation de la santé',
@@ -2256,9 +1479,260 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr':
           'La synchronisation peut prendre quelques minutes selon la quantité de données à traiter.',
     },
-    '125une5z': {
-      'en': 'notifications settings',
-      'fr': 'paramètres de notifications',
+  },
+  // DogHealthPage
+  {
+    'nu0206hu': {
+      'en': 'Health Records',
+      'fr': 'dossiers de santé',
+    },
+    'pzv7fuxf': {
+      'en': 'Dogs',
+      'fr': 'Chiens',
+    },
+    'rmjry5se': {
+      'en': 'Select...',
+      'fr': '',
+    },
+    'zu36nfr2': {
+      'en': 'Search...',
+      'fr': '',
+    },
+    'dmcyc10h': {
+      'en': 'Option 1',
+      'fr': '',
+    },
+    'q90oj38l': {
+      'en': 'Option 2',
+      'fr': '',
+    },
+    '6fhgf3q2': {
+      'en': 'Option 3',
+      'fr': '',
+    },
+    'wdbzpr9g': {
+      'en': 'Vaccinations',
+      'fr': 'Vaccinations',
+    },
+    '3s65qzcl': {
+      'en': '5',
+      'fr': '5',
+    },
+  },
+  // DogAnalyticsPage
+  {
+    'vrupxs1i': {
+      'en': 'Activity Analytics',
+      'fr': 'Analyse des activités',
+    },
+    'v3nedr0y': {
+      'en': 'Last 7 days',
+      'fr': 'Les 7 derniers jours',
+    },
+    'i9h7io5x': {
+      'en': 'Filter',
+      'fr': 'Filtre',
+    },
+    '3oi472sv': {
+      'en': 'Last 7 days',
+      'fr': 'Les 7 derniers jours',
+    },
+    '2bjmyjo0': {
+      'en': 'Last 30 days',
+      'fr': 'Les 30 derniers jours',
+    },
+    'eq44de3l': {
+      'en': 'Last 90 days',
+      'fr': 'Les 90 derniers jours',
+    },
+    '20ydnso3': {
+      'en': 'Summary',
+      'fr': 'Résumé',
+    },
+    'uy98yo1p': {
+      'en': '24.5',
+      'fr': '24,5',
+    },
+    'ctsk67tz': {
+      'en': 'Total Miles',
+      'fr': 'Total des miles',
+    },
+    'wv1u5ljc': {
+      'en': '3.5',
+      'fr': '3,5',
+    },
+    'lecxpf6m': {
+      'en': 'Avg/Day',
+      'fr': 'Moy./jour',
+    },
+    '5a50uv5i': {
+      'en': '6.2',
+      'fr': '6.2',
+    },
+    'cje58476': {
+      'en': 'Max Day',
+      'fr': 'Journée Max',
+    },
+    'shm7xkur': {
+      'en': 'Distance Walked',
+      'fr': 'Distance parcourue',
+    },
+    'duqxjpaz': {
+      'en': 'Line Chart',
+      'fr': 'Graphique linéaire',
+    },
+    'q2s47kr7': {
+      'en': 'Daily distance tracking',
+      'fr': 'Suivi quotidien de la distance',
+    },
+    'hxdm5pjs': {
+      'en': 'Buddy',
+      'fr': 'Copain',
+    },
+    '5zvhuf2l': {
+      'en': 'Luna',
+      'fr': 'Lune',
+    },
+    'wikx08rg': {
+      'en': 'Max',
+      'fr': 'Max',
+    },
+    'vqg16p47': {
+      'en': 'Activity Duration',
+      'fr': 'Durée de l\'activité',
+    },
+    'xc9siai4': {
+      'en': 'Bar Chart',
+      'fr': 'Graphique à barres',
+    },
+    '4awqxvmr': {
+      'en': 'Weekly activity duration',
+      'fr': 'Durée de l\'activité hebdomadaire',
+    },
+    'd0kfb4d4': {
+      'en': 'Mon',
+      'fr': 'Lun',
+    },
+    'm0hv5mnj': {
+      'en': 'Tue',
+      'fr': 'Mar',
+    },
+    '83ry2mwy': {
+      'en': 'Wed',
+      'fr': 'Épouser',
+    },
+    'nxk8gv7v': {
+      'en': 'Thu',
+      'fr': 'Jeu',
+    },
+    '1ifxu5zw': {
+      'en': 'Fri',
+      'fr': 'Ven',
+    },
+    'oylw58x8': {
+      'en': 'Sat',
+      'fr': 'Assis',
+    },
+    'wh15cqgw': {
+      'en': 'Sun',
+      'fr': 'Soleil',
+    },
+    '542axde4': {
+      'en': 'Activity Breakdown',
+      'fr': 'Répartition des activités',
+    },
+    'n3wf33ro': {
+      'en': 'Walking',
+      'fr': 'Marche',
+    },
+    '87y0gywr': {
+      'en': '18.2 miles',
+      'fr': '18,2 milles',
+    },
+    'zhpta4wk': {
+      'en': 'Running',
+      'fr': 'En cours d\'exécution',
+    },
+    'ulzkb18i': {
+      'en': '6.3 miles',
+      'fr': '6,3 milles',
+    },
+    'qwjam0z2': {
+      'en': 'Buddy',
+      'fr': 'Copain',
+    },
+    'ij7dmb2b': {
+      'en': 'Golden Retriever',
+      'fr': 'Golden Retriever',
+    },
+    'zb5dahxi': {
+      'en': '8.4 mi',
+      'fr': '8,4 milles',
+    },
+    'ectkzicz': {
+      'en': 'Today',
+      'fr': 'Aujourd\'hui',
+    },
+    'chqn321n': {
+      'en': 'Luna',
+      'fr': 'Lune',
+    },
+    'skbnfi56': {
+      'en': 'Border Collie',
+      'fr': 'Border Collie',
+    },
+    'hm0fvjdc': {
+      'en': '6.2 mi',
+      'fr': '6,2 milles',
+    },
+    '8lkb2kg6': {
+      'en': 'Today',
+      'fr': 'Aujourd\'hui',
+    },
+    'jugs6k3y': {
+      'en': 'Max',
+      'fr': 'Max',
+    },
+    '5ahz1s26': {
+      'en': 'German Shepherd',
+      'fr': 'Berger allemand',
+    },
+    'zl1ske54': {
+      'en': '9.9 mi',
+      'fr': '9,9 milles',
+    },
+    'u1thom14': {
+      'en': 'Today',
+      'fr': 'Aujourd\'hui',
+    },
+  },
+  // ActivityRatePage
+  {
+    '7bwwqskc': {
+      'en': 'Rate Activity',
+      'fr': 'Évaluer l\'activité',
+    },
+    '2hhmczhv': {
+      'en': 'How was your experience?',
+      'fr': 'Comment s\'est déroulée votre activité ?',
+    },
+    'q21e2q9o': {
+      'en': 'Rate this activity to help other adventurers',
+      'fr': 'Évaluez cette activité pour aider les autres aventuriers',
+    },
+    'k9u4v85b': {
+      'en': 'Share your thoughts',
+      'fr': 'Partagez vos pensées',
+    },
+    'omb5nap7': {
+      'en':
+          'Tell us about your experience... What did you enjoy most? Any tips for future participants?',
+      'fr':
+          'Parlez-nous de votre activité… Qu\'avez-vous le plus apprécié ? Des conseils pour les futurs participants ?',
+    },
+    '44bwpqdf': {
+      'en': 'Submit Review',
+      'fr': 'Soumettre un avis',
     },
   },
   // NavbarComponent
@@ -2331,10 +1805,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '5of30ef8': {
       'en': 'Pace',
       'fr': 'Rythme',
-    },
-    '7i9rdo9r': {
-      'en': '14',
-      'fr': '14',
     },
   },
   // SantePerformanceComponent
@@ -2901,6 +2371,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'cl8z21jv': {
       'en': 'Utilisé pour compter vos pas pendant l\'activité',
       'fr': 'Utilisé pour vos compter pas pendant l\'activité',
+    },
+    'uo6gn2a6': {
+      'en': 'Pour l\'accès aux capteurs corporels',
+      'fr': '',
+    },
+    '06j02gqb': {
+      'en': 'Utiliser pour lire vos données Apple Santé.',
+      'fr': '',
+    },
+    'ov5xsi9u': {
+      'en':
+          '\tUtiliser pour synchroniser vos données santé avec l’application.',
+      'fr': '',
     },
     'e53x6tpn': {
       'en': '',

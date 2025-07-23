@@ -13,25 +13,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '/backend/schema/enums/enums.dart';
 import '/auth/firebase_auth/auth_util.dart';
 
+/// Transformer une chaine de caractère en date
 DateTime stringToDateTime(String dateString) {
   return DateTime.parse(dateString);
-}
-
-String formatMilliseconds(int ms) {
-  Duration d = Duration(milliseconds: ms);
-
-  String twoDigits(int n) => n.toString().padLeft(2, '0');
-  int hours = d.inHours;
-  int minutes = d.inMinutes.remainder(60);
-  int seconds = d.inSeconds.remainder(60);
-
-  if (hours == 0) {
-    // Affiche MM:SS min
-    return '${twoDigits(minutes)}:${twoDigits(seconds)} min';
-  } else {
-    // Affiche HH:MM h
-    return '${twoDigits(hours)}:${twoDigits(minutes)} h';
-  }
 }
 
 DocumentReference getOtherUserRef(
@@ -53,4 +37,34 @@ String? formatDurationToHMS(int durationSec) {
   final minutes = twoDigits(duration.inMinutes.remainder(60));
   final seconds = twoDigits(duration.inSeconds.remainder(60));
   return '$hours:$minutes:$seconds';
+}
+
+String extractCityFromComponents(dynamic apiResponse) {
+  final results = apiResponse['results'];
+  if (results != null && results is List) {
+    for (final result in results) {
+      final components = result['address_components'];
+      if (components != null && components is List) {
+        for (final component in components) {
+          final types = component['types'];
+          if (types != null && types is List && types.contains('locality')) {
+            return component['long_name'] ?? '';
+          }
+        }
+      }
+    }
+  }
+  return '';
+}
+
+/// Récupérer la latitude d'un point
+double getLatitude(LatLng position) {
+  // gat latitude to a position LatLng
+  return position.latitude;
+}
+
+/// Récupérer la longitude d'un point
+double getLongitude(LatLng position) {
+  // get longitude to a position LatLng
+  return position.longitude;
 }

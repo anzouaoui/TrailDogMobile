@@ -87,18 +87,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : OnboardingPageWidget(),
         ),
         FFRoute(
-          name: UpdateActivityPageWidget.routeName,
-          path: UpdateActivityPageWidget.routePath,
-          builder: (context, params) => UpdateActivityPageWidget(
-            activityParameter: params.getParam(
-              'activityParameter',
-              ParamType.DocumentReference,
-              isList: false,
-              collectionNamePath: ['users', 'activity'],
-            ),
-          ),
-        ),
-        FFRoute(
           name: ActivityPageWidget.routeName,
           path: ActivityPageWidget.routePath,
           builder: (context, params) => ActivityPageWidget(
@@ -183,11 +171,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => SignUpPageWidget(),
         ),
         FFRoute(
-          name: DogHealthPageWidget.routeName,
-          path: DogHealthPageWidget.routePath,
-          builder: (context, params) => DogHealthPageWidget(),
-        ),
-        FFRoute(
           name: TrackPageWidget.routeName,
           path: TrackPageWidget.routePath,
           builder: (context, params) => TrackPageWidget(),
@@ -196,21 +179,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: AskFriendPageWidget.routeName,
           path: AskFriendPageWidget.routePath,
           builder: (context, params) => AskFriendPageWidget(),
-        ),
-        FFRoute(
-          name: AdvancedAnalyticsPageWidget.routeName,
-          path: AdvancedAnalyticsPageWidget.routePath,
-          builder: (context, params) => AdvancedAnalyticsPageWidget(),
-        ),
-        FFRoute(
-          name: AlertDogHealthPageWidget.routeName,
-          path: AlertDogHealthPageWidget.routePath,
-          builder: (context, params) => AlertDogHealthPageWidget(),
-        ),
-        FFRoute(
-          name: AiRecommandedPageWidget.routeName,
-          path: AiRecommandedPageWidget.routePath,
-          builder: (context, params) => AiRecommandedPageWidget(),
         ),
         FFRoute(
           name: FriendsPageWidget.routeName,
@@ -253,6 +221,28 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: ApplicationsPageWidget.routeName,
           path: ApplicationsPageWidget.routePath,
           builder: (context, params) => ApplicationsPageWidget(),
+        ),
+        FFRoute(
+          name: DogHealthPageWidget.routeName,
+          path: DogHealthPageWidget.routePath,
+          builder: (context, params) => DogHealthPageWidget(),
+        ),
+        FFRoute(
+          name: DogAnalyticsPageWidget.routeName,
+          path: DogAnalyticsPageWidget.routePath,
+          builder: (context, params) => DogAnalyticsPageWidget(),
+        ),
+        FFRoute(
+          name: ActivityRatePageWidget.routeName,
+          path: ActivityRatePageWidget.routePath,
+          builder: (context, params) => ActivityRatePageWidget(
+            activityParameter: params.getParam(
+              'activityParameter',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['users', 'activity'],
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

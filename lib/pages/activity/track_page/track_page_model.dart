@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/component/dog_select_component/dog_select_component_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -47,6 +48,24 @@ class TrackPageModel extends FlutterFlowModel<TrackPageWidget> {
 
   String? dogName;
 
+  bool isTracking = false;
+
+  /// Moyenne de fréquence cardiaque pendant l'activité
+  double liveAverageHR = 0.0;
+
+  /// Calories consommé pendant l'activité
+  double liveCalories = 0.0;
+
+  List<dynamic> heartRateSeries = [];
+  void addToHeartRateSeries(dynamic item) => heartRateSeries.add(item);
+  void removeFromHeartRateSeries(dynamic item) => heartRateSeries.remove(item);
+  void removeAtIndexFromHeartRateSeries(int index) =>
+      heartRateSeries.removeAt(index);
+  void insertAtIndexInHeartRateSeries(int index, dynamic item) =>
+      heartRateSeries.insert(index, item);
+  void updateHeartRateSeriesAtIndex(int index, Function(dynamic) updateFn) =>
+      heartRateSeries[index] = updateFn(heartRateSeries[index]);
+
   ///  State fields for stateful widgets in this page.
 
   // State field(s) for DropDownTypeActivite widget.
@@ -55,6 +74,8 @@ class TrackPageModel extends FlutterFlowModel<TrackPageWidget> {
   // Models for DogSelectComponent dynamic component.
   late FlutterFlowDynamicModels<DogSelectComponentModel>
       dogSelectComponentModels;
+  // Stores action output result for [Backend Call - API (getCity)] action in Button widget.
+  ApiCallResponse? cityOutput;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   ActivityRecord? newActivityOutput;
 

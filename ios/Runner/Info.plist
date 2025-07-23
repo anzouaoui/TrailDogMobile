@@ -58,14 +58,14 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 
+	<key>NSLocationWhenInUseUsageDescription</key>
+    <string>In order to search nearby, this app requires access to your current location.</string>
 	<key>NSCameraUsageDescription</key>
     <string>Autorisez l’accès à l’appareil photo pour capturer des photos pendant l’activité.</string>
 	<key>NSMicrophoneUsageDescription</key>
     <string>In order to record audio for video, this app requires permission to access the microphone.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
     <string>Autorisez l’accès à votre galerie pour sélectionner et ajouter des photos à l’activité.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-    <string>Autorisez la localisation pour suivre votre parcours avec précision pendant l'activité.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
     <string>Nécessaire pour suivre votre trajet en activité.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
@@ -74,6 +74,10 @@
     <string>Pour l’enregistrement continu de votre parcours.</string>
 	<key>NSMotionUsageDescription</key>
     <string>Utilisé pour compter vos pas pendant l'activité</string>
+	<key>NSHealthShareUsageDescription</key>
+    <string>Utiliser pour lire vos données Apple Santé.</string>
+	<key>NSHealthUpdateUsageDescription</key>
+    <string>	Utiliser pour synchroniser vos données santé avec l’application.</string>
 
 
 

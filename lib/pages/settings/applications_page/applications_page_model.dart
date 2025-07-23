@@ -7,6 +7,8 @@ class ApplicationsPageModel extends FlutterFlowModel<ApplicationsPageWidget> {
 
   // State field(s) for Switch widget.
   bool? switchValue1;
+  // Stores action output result for [Custom Action - connectGoogleFit] action in Switch widget.
+  bool? connectGoogleFitOutput;
   // State field(s) for Switch widget.
   bool? switchValue2;
   // State field(s) for Switch widget.
