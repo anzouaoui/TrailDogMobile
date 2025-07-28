@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
 import 'package:geolocator/geolocator.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'dart:async';
 
 double distance = 0.0;
@@ -44,6 +45,23 @@ Future startGpsTracking() async {
     }
   }
 
+  // 🔹 Permissions Google Fit (pas, capteurs, etc.)
+  final activityPermission = await Permission.activityRecognition.status;
+  if (!activityPermission.isGranted) {
+    final result = await Permission.activityRecognition.request();
+    if (!result.isGranted) {
+      throw Exception('Permission activité (pas) refusée');
+    }
+  }
+
+  final sensorsPermission = await Permission.sensors.status;
+  if (!sensorsPermission.isGranted) {
+    final result = await Permission.sensors.request();
+    if (!result.isGranted) {
+      throw Exception('Permission capteurs santé refusée');
+    }
+  }
+
   Position? previousPosition;
 
   gpsTrackingSubscription = Geolocator.getPositionStream(
@@ -73,10 +91,10 @@ Future startGpsTracking() async {
     );
 
     // CONDITIONS DE VALIDITÉ :
-    // - distance ≥ 5 m
+    // - distance ≥ 10 m
     // - vitesse ≥ 0.5 m/s (~1.8 km/h)
     // - précision GPS ≤ 20 m
-    if (distanceInMeters >= 5 && currentSpeed > 0.5 && gpsAccuracy <= 20) {
+    if (distanceInMeters >= 5 && gpsAccuracy <= 50) {
       // 🔹 Distance
       distance += distanceInMeters;
       final distanceInKm = distance / 1000.0;

@@ -10,11 +10,11 @@ import 'schema/dog_record.dart';
 import 'schema/activity_record.dart';
 import 'schema/friends_record.dart';
 import 'schema/friends_requests_record.dart';
-import 'schema/notifications_record.dart';
 import 'schema/chat_record.dart';
 import 'schema/messages_record.dart';
 import 'schema/posts_record.dart';
 import 'schema/comments_record.dart';
+import 'schema/notifications_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart' hide Order;
@@ -28,11 +28,11 @@ export 'schema/dog_record.dart';
 export 'schema/activity_record.dart';
 export 'schema/friends_record.dart';
 export 'schema/friends_requests_record.dart';
-export 'schema/notifications_record.dart';
 export 'schema/chat_record.dart';
 export 'schema/messages_record.dart';
 export 'schema/posts_record.dart';
 export 'schema/comments_record.dart';
+export 'schema/notifications_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -228,43 +228,6 @@ Future<List<FriendsRequestsRecord>> queryFriendsRequestsRecordOnce({
       singleRecord: singleRecord,
     );
 
-/// Functions to query NotificationsRecords (as a Stream and as a Future).
-Future<int> queryNotificationsRecordCount({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-}) =>
-    queryCollectionCount(
-      NotificationsRecord.collection,
-      queryBuilder: queryBuilder,
-      limit: limit,
-    );
-
-Stream<List<NotificationsRecord>> queryNotificationsRecord({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollection(
-      NotificationsRecord.collection,
-      NotificationsRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<List<NotificationsRecord>> queryNotificationsRecordOnce({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollectionOnce(
-      NotificationsRecord.collection,
-      NotificationsRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
 /// Functions to query ChatRecords (as a Stream and as a Future).
 Future<int> queryChatRecordCount({
   Query Function(Query)? queryBuilder,
@@ -411,6 +374,46 @@ Future<List<CommentsRecord>> queryCommentsRecordOnce({
     queryCollectionOnce(
       CommentsRecord.collection,
       CommentsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query NotificationsRecords (as a Stream and as a Future).
+Future<int> queryNotificationsRecordCount({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      NotificationsRecord.collection(parent),
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<NotificationsRecord>> queryNotificationsRecord({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      NotificationsRecord.collection(parent),
+      NotificationsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<NotificationsRecord>> queryNotificationsRecordOnce({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      NotificationsRecord.collection(parent),
+      NotificationsRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

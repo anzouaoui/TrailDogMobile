@@ -150,7 +150,8 @@ class _AskFriendsComponentWidgetState extends State<AskFriendsComponentWidget> {
                             safeSetState(() {});
 
                             var notificationsRecordReference =
-                                NotificationsRecord.collection.doc();
+                                NotificationsRecord.createDoc(
+                                    _model.friendsRequestOutput!.userFrom!);
                             await notificationsRecordReference
                                 .set(createNotificationsRecordData(
                               type: 'Friend request',

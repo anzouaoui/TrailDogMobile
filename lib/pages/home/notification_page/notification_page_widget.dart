@@ -113,15 +113,12 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
                   ),
                   StreamBuilder<List<NotificationsRecord>>(
                     stream: queryNotificationsRecord(
-                      queryBuilder: (notificationsRecord) => notificationsRecord
-                          .where(
-                            'user_to',
-                            isEqualTo: currentUserReference,
-                          )
-                          .where(
-                            'read',
-                            isEqualTo: false,
-                          ),
+                      parent: currentUserReference,
+                      queryBuilder: (notificationsRecord) =>
+                          notificationsRecord.where(
+                        'read',
+                        isEqualTo: false,
+                      ),
                     ),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
@@ -152,7 +149,7 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
                               listViewNotificationsRecordList[listViewIndex];
                           return StreamBuilder<UsersRecord>(
                             stream: UsersRecord.getDocument(
-                                listViewNotificationsRecord.userFrom!),
+                                listViewNotificationsRecord.userTo!),
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
                               if (!snapshot.hasData) {

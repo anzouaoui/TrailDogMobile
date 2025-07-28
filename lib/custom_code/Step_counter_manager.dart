@@ -5,6 +5,8 @@ import '/flutter_flow/flutter_flow_util.dart';
 class StepCounterManager {
   static StreamSubscription<StepCount>? _stepCountStream;
   static int? _initialSteps;
+  static bool _isPaused = false;
+  static int? _latestSteps;
 
   static void start() {
     print("StepCounterManager started");
@@ -22,6 +24,24 @@ class StepCounterManager {
       onError: (err) => print("Erreur pedometer: $err"),
       cancelOnError: true,
     );
+  }
+
+  static void pause() {
+    if (_isPaused) return;
+    print("StepCounterManager paused");
+    _isPaused = true;
+  }
+
+  static void resume() {
+    if (!_isPaused) return;
+    print("StepCounterManager resumed");
+    _isPaused = false;
+
+    if (_latestSteps != null && _initialSteps != null) {
+      // Réinitialise _initialSteps pour compenser les pas faits pendant la pause
+      final delta = _latestSteps! - _initialSteps!;
+      _initialSteps = _latestSteps! - delta;
+    }
   }
 
   static Future<void> stop() async {

@@ -138,6 +138,12 @@ class _ActivityPageWidgetState extends State<ActivityPageWidget> {
                               Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
+                                  FaIcon(
+                                    FontAwesomeIcons.pencilAlt,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    size: 24.0,
+                                  ),
                                   Builder(
                                     builder: (context) => InkWell(
                                       splashColor: Colors.transparent,
@@ -382,7 +388,7 @@ class _ActivityPageWidgetState extends State<ActivityPageWidget> {
                                                           .headlineSmall
                                                           .fontStyle,
                                                 ),
-                                                fontSize: 18.0,
+                                                fontSize: 12.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w600,
                                                 fontStyle:
@@ -471,7 +477,7 @@ class _ActivityPageWidgetState extends State<ActivityPageWidget> {
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primary,
-                                                fontSize: 18.0,
+                                                fontSize: 12.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w600,
                                                 fontStyle:
@@ -559,7 +565,7 @@ class _ActivityPageWidgetState extends State<ActivityPageWidget> {
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
-                                                fontSize: 18.0,
+                                                fontSize: 12.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w600,
                                                 fontStyle:
@@ -571,6 +577,96 @@ class _ActivityPageWidgetState extends State<ActivityPageWidget> {
                                         Text(
                                           FFLocalizations.of(context).getText(
                                             '41eub9tl' /* Step */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodySmall
+                                              .override(
+                                                font: GoogleFonts.inter(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodySmall
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodySmall
+                                                          .fontStyle,
+                                                ),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmall
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmall
+                                                        .fontStyle,
+                                              ),
+                                        ),
+                                      ].divide(SizedBox(height: 4.0)),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                child: Container(
+                                  width: 100.0,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFFEDCCCE),
+                                    borderRadius: BorderRadius.circular(12.0),
+                                    border: Border.all(
+                                      color: FlutterFlowTheme.of(context).error,
+                                      width: 2.0,
+                                    ),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        FaIcon(
+                                          FontAwesomeIcons.mountain,
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          size: 24.0,
+                                        ),
+                                        Text(
+                                          stackActivityRecord.elevationGain
+                                              .toString(),
+                                          style: FlutterFlowTheme.of(context)
+                                              .headlineSmall
+                                              .override(
+                                                font: GoogleFonts.interTight(
+                                                  fontWeight: FontWeight.w600,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .headlineSmall
+                                                          .fontStyle,
+                                                ),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                fontSize: 12.0,
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.w600,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineSmall
+                                                        .fontStyle,
+                                              ),
+                                        ),
+                                        Text(
+                                          FFLocalizations.of(context).getText(
+                                            '2uvpm3it' /* Step */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodySmall

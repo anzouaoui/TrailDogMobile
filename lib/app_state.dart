@@ -269,4 +269,46 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInPathAltitudes(int index, double value) {
     pathAltitudes.insert(index, value);
   }
+
+  /// Indique si l’utilisateur a autorisé l’accès à la localisation
+  bool _isLocationGranted = false;
+  bool get isLocationGranted => _isLocationGranted;
+  set isLocationGranted(bool value) {
+    _isLocationGranted = value;
+  }
+
+  /// Indique si l’accès à l’activité physique (pas, calories) est accordé
+  bool _isActivityGranted = false;
+  bool get isActivityGranted => _isActivityGranted;
+  set isActivityGranted(bool value) {
+    _isActivityGranted = value;
+  }
+
+  /// Indique si l’utilisateur a autorisé l’envoi de notifications
+  bool _isNotificationGranted = false;
+  bool get isNotificationGranted => _isNotificationGranted;
+  set isNotificationGranted(bool value) {
+    _isNotificationGranted = value;
+  }
+
+  /// Indique si l’utilisateur a autorisé l’accès à l’appareil photo
+  bool _isCameraGranted = false;
+  bool get isCameraGranted => _isCameraGranted;
+  set isCameraGranted(bool value) {
+    _isCameraGranted = value;
+  }
+
+  /// 	Indique si l’accès aux capteurs corporels est accordé (ex : santé)
+  bool _isSensorsGranted = false;
+  bool get isSensorsGranted => _isSensorsGranted;
+  set isSensorsGranted(bool value) {
+    _isSensorsGranted = value;
+  }
+
+  /// Indique si l’accès aux fichiers et contenus multimédias est autorisé
+  bool _isStorageGranted = false;
+  bool get isStorageGranted => _isStorageGranted;
+  set isStorageGranted(bool value) {
+    _isStorageGranted = value;
+  }
 }

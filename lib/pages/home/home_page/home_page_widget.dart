@@ -121,18 +121,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   ].divide(SizedBox(width: 8.0)),
                                 ),
                               ),
-                              FutureBuilder<List<NotificationsRecord>>(
-                                future: queryNotificationsRecordOnce(
+                              StreamBuilder<List<NotificationsRecord>>(
+                                stream: queryNotificationsRecord(
+                                  parent: currentUserReference,
                                   queryBuilder: (notificationsRecord) =>
-                                      notificationsRecord
-                                          .where(
-                                            'user_to',
-                                            isEqualTo: currentUserReference,
-                                          )
-                                          .where(
-                                            'read',
-                                            isEqualTo: false,
-                                          ),
+                                      notificationsRecord.where(
+                                    'read',
+                                    isEqualTo: false,
+                                  ),
                                 ),
                                 builder: (context, snapshot) {
                                   // Customize what your widget looks like when it's loading.
@@ -336,7 +332,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     0,
                                     100.0,
                                   ),
-                                  reverse: true,
                                   scrollDirection: Axis.vertical,
                                   itemCount: listViewPostsRecordList.length,
                                   separatorBuilder: (_, __) =>

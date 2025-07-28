@@ -8,6 +8,7 @@ class GpsTrackingManager {
   static Position? _previousPosition;
   static double _distanceMeters = 0.0;
   static double _elevationGain = 0.0;
+  static bool _isPaused = false;
 
   static void start() {
     print("GpsTrackingManager started");
@@ -61,16 +62,8 @@ class GpsTrackingManager {
         FFAppState().update(() => FFAppState().totalDistance =
             double.parse((_distanceMeters / 1000).toStringAsFixed(3)));
 
-        final elevationDiff = pos.altitude - _previousPosition!.altitude;
-        if (elevationDiff > 0) {
-          _elevationGain += elevationDiff;
-          FFAppState().update(() => FFAppState().elevationGain =
-              double.parse(_elevationGain.toStringAsFixed(1)));
-        }
-
-        FFAppState().update(() => FFAppState().currentElevationDiff =
-            double.parse(elevationDiff.toStringAsFixed(1)));
-        FFAppState().addToPathList(LatLng(pos.latitude, pos.longitude));
+        FFAppState().update(() => FFAppState().elevationGain =
+            double.parse(pos.altitude.toStringAsFixed(1)));
         _previousPosition = pos;
       }
     }, onError: (e) {
@@ -78,6 +71,7 @@ class GpsTrackingManager {
     });
   }
 
+  //Arreter le tracking
   static Future<void> stop() async {
     await _positionStream?.cancel();
     _positionStream = null;
@@ -88,5 +82,36 @@ class GpsTrackingManager {
     _previousPosition = null;
     _distanceMeters = 0.0;
     _elevationGain = 0.0;
+  }
+
+  //Mettre en pause le trakcing
+  static Future<void> pause() async {
+    print("GpsTrackingManager paused");
+    _isPaused = true;
+    _timer?.cancel();
+    _positionStream?.pause();
+  }
+
+  //Redémarrer le tracking
+  static Future<void> resume() async {
+    if (!_isPaused) return; // sécurité pour éviter un double appel
+
+    print("GpsTrackingManager resumed");
+    _isPaused = false;
+
+    // Redémarrer le timer
+    _timer = Timer.periodic(Duration(seconds: 1), (_) {
+      FFAppState().update(() => FFAppState().durationSec += 1);
+
+      if (FFAppState().durationSec > 0 && FFAppState().totalDistance > 0) {
+        final hours = FFAppState().durationSec / 3600;
+        final speed = FFAppState().totalDistance / hours;
+        FFAppState().update(
+            () => FFAppState().pace = double.parse(speed.toStringAsFixed(2)));
+      }
+    });
+
+    // Reprendre le stream GPS
+    _positionStream?.resume();
   }
 }

@@ -149,17 +149,12 @@ class _FeedComponentWidgetState extends State<FeedComponentWidget> {
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Text(
-                                    '${dateTimeFormat(
-                                      "MMMMEEEEd",
-                                      containerPostsRecord.timestamp,
+                                    dateTimeFormat(
+                                      "relative",
+                                      containerPostsRecord.timestamp!,
                                       locale: FFLocalizations.of(context)
                                           .languageCode,
-                                    )}, ${dateTimeFormat(
-                                      "H:mm",
-                                      containerPostsRecord.timestamp,
-                                      locale: FFLocalizations.of(context)
-                                          .languageCode,
-                                    )}',
+                                    ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodySmall
                                         .override(
@@ -398,9 +393,12 @@ class _FeedComponentWidgetState extends State<FeedComponentWidget> {
                               builder: (context) {
                                 return Padding(
                                   padding: MediaQuery.viewInsetsOf(context),
-                                  child: CommentsComponentWidget(
-                                    postParameter:
-                                        containerPostsRecord.reference,
+                                  child: Container(
+                                    height: 550.0,
+                                    child: CommentsComponentWidget(
+                                      postParameter:
+                                          containerPostsRecord.reference,
+                                    ),
                                   ),
                                 );
                               },

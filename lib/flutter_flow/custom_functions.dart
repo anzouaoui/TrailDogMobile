@@ -18,6 +18,7 @@ DateTime stringToDateTime(String dateString) {
   return DateTime.parse(dateString);
 }
 
+/// Récupérer le documentReference d'un user
 DocumentReference getOtherUserRef(
   List<DocumentReference> users,
   DocumentReference currentUser,
@@ -30,6 +31,7 @@ DocumentReference getOtherUserRef(
   return currentUser; // fallback (au cas où)
 }
 
+/// Durée, en heure, minutes et secondes
 String? formatDurationToHMS(int durationSec) {
   final duration = Duration(seconds: durationSec);
   String twoDigits(int n) => n.toString().padLeft(2, '0');
@@ -39,6 +41,7 @@ String? formatDurationToHMS(int durationSec) {
   return '$hours:$minutes:$seconds';
 }
 
+/// Récupérer la ville à partir du résultat de l'API getCity
 String extractCityFromComponents(dynamic apiResponse) {
   final results = apiResponse['results'];
   if (results != null && results is List) {

@@ -162,6 +162,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Step',
       'fr': 'Étape',
     },
+    '2uvpm3it': {
+      'en': 'Step',
+      'fr': 'Étape',
+    },
     '9bdvjpst': {
       'en': 'NOTES',
       'fr': 'NOTES',
@@ -1103,31 +1107,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '6hbhov8g': {
       'en': 'Steps',
-      'fr': 'Mesures',
+      'fr': 'Pas',
     },
     'nn4ktvc1': {
       'en': 'Height difference',
-      'fr': 'Différence de hauteur',
-    },
-    'shamv7wt': {
-      'en': 'Health',
-      'fr': 'Santé',
-    },
-    'xogejcqc': {
-      'en': '- -',
-      'fr': '- -',
-    },
-    'uze5og1d': {
-      'en': 'Heartbeats',
-      'fr': 'Fqs cardiaque',
-    },
-    '3rabxvzy': {
-      'en': '0',
-      'fr': '0',
-    },
-    'r5v3a59r': {
-      'en': 'Calories',
-      'fr': 'Calories',
+      'fr': 'Dénivelé',
     },
     '5k5lgd50': {
       'en': 'Timer',
