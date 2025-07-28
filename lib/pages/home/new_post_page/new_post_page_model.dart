@@ -4,6 +4,13 @@ import 'new_post_page_widget.dart' show NewPostPageWidget;
 import 'package:flutter/material.dart';
 
 class NewPostPageModel extends FlutterFlowModel<NewPostPageWidget> {
+  ///  Local state fields for this page.
+  /// URL de l'image uploadée
+  String? uploadedImageUrl;
+
+  /// Activité sélectionné
+  DocumentReference? selectedActivity;
+
   ///  State fields for stateful widgets in this page.
 
   // State field(s) for TextField widget.

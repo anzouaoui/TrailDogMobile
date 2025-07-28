@@ -7,6 +7,10 @@ import 'package:flutter/material.dart';
 
 class SelectActivityComponentModel
     extends FlutterFlowModel<SelectActivityComponentWidget> {
+  ///  Local state fields for this component.
+  /// Activité sélectionné
+  DocumentReference? activitySelected;
+
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for ChoiceChips widget.

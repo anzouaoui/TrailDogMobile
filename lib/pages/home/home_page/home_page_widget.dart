@@ -303,8 +303,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           Flexible(
                             child: StreamBuilder<List<PostsRecord>>(
                               stream: queryPostsRecord(
-                                queryBuilder: (postsRecord) =>
-                                    postsRecord.orderBy('timestamp'),
+                                queryBuilder: (postsRecord) => postsRecord
+                                    .orderBy('timestamp', descending: true),
                               ),
                               builder: (context, snapshot) {
                                 // Customize what your widget looks like when it's loading.
@@ -332,6 +332,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     0,
                                     100.0,
                                   ),
+                                  reverse: true,
                                   scrollDirection: Axis.vertical,
                                   itemCount: listViewPostsRecordList.length,
                                   separatorBuilder: (_, __) =>

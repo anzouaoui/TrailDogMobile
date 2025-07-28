@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/component/post/comments_component/comments_component_widget.dart';
 import '/component/post/delete_post_component/delete_post_component_widget.dart';
+import '/component/post/feed_activity_compoennt/feed_activity_compoennt_widget.dart';
 import '/component/post/image_zoomed_component/image_zoomed_component_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -287,6 +288,21 @@ class _FeedComponentWidgetState extends State<FeedComponentWidget> {
                                     fit: BoxFit.cover,
                                   ),
                                 ),
+                              ),
+                            ),
+                          );
+                        } else if (containerPostsRecord.activityRef != null) {
+                          return Container(
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                            ),
+                            child: wrapWithModel(
+                              model: _model.feedActivityCompoenntModel,
+                              updateCallback: () => safeSetState(() {}),
+                              child: FeedActivityCompoenntWidget(
+                                activityParamter:
+                                    containerPostsRecord.activityRef!,
                               ),
                             ),
                           );

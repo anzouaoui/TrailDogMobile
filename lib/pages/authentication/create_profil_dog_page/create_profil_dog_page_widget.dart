@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import '/index.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'create_profil_dog_page_model.dart';
@@ -34,23 +35,23 @@ class _CreateProfilDogPageWidgetState extends State<CreateProfilDogPageWidget> {
     super.initState();
     _model = createModel(context, () => CreateProfilDogPageModel());
 
-    _model.textController1 ??= TextEditingController();
-    _model.textFieldFocusNode1 ??= FocusNode();
+    _model.textFieldDogNameTextController ??= TextEditingController();
+    _model.textFieldDogNameFocusNode ??= FocusNode();
 
-    _model.textController2 ??= TextEditingController();
-    _model.textFieldFocusNode2 ??= FocusNode();
+    _model.textFieldOtherBreedTextController ??= TextEditingController();
+    _model.textFieldOtherBreedFocusNode ??= FocusNode();
 
     _model.textFieldAgeTextController ??= TextEditingController();
     _model.textFieldAgeFocusNode ??= FocusNode();
 
-    _model.textController4 ??= TextEditingController();
-    _model.textFieldFocusNode3 ??= FocusNode();
+    _model.textFieldWeightTextController ??= TextEditingController();
+    _model.textFieldWeightFocusNode ??= FocusNode();
 
-    _model.textController5 ??= TextEditingController();
-    _model.textFieldFocusNode4 ??= FocusNode();
+    _model.textFieldHealthTextController ??= TextEditingController();
+    _model.textFieldHealthFocusNode ??= FocusNode();
 
-    _model.textController6 ??= TextEditingController();
-    _model.textFieldFocusNode5 ??= FocusNode();
+    _model.textFieldTattooTextController ??= TextEditingController();
+    _model.textFieldTattooFocusNode ??= FocusNode();
   }
 
   @override
@@ -281,8 +282,9 @@ class _CreateProfilDogPageWidgetState extends State<CreateProfilDogPageWidget> {
                             Container(
                               width: double.infinity,
                               child: TextFormField(
-                                controller: _model.textController1,
-                                focusNode: _model.textFieldFocusNode1,
+                                controller:
+                                    _model.textFieldDogNameTextController,
+                                focusNode: _model.textFieldDogNameFocusNode,
                                 autofocus: false,
                                 obscureText: false,
                                 decoration: InputDecoration(
@@ -362,7 +364,8 @@ class _CreateProfilDogPageWidgetState extends State<CreateProfilDogPageWidget> {
                                           .bodyMedium
                                           .fontStyle,
                                     ),
-                                validator: _model.textController1Validator
+                                validator: _model
+                                    .textFieldDogNameTextControllerValidator
                                     .asValidator(context),
                               ),
                             ),
@@ -374,126 +377,7 @@ class _CreateProfilDogPageWidgetState extends State<CreateProfilDogPageWidget> {
                           children: [
                             Text(
                               FFLocalizations.of(context).getText(
-                                '6y6q7dcf' /* Breed */,
-                              ),
-                              textAlign: TextAlign.center,
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    font: GoogleFonts.inter(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontStyle,
-                                    ),
-                                    letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontStyle,
-                                  ),
-                            ),
-                            Container(
-                              width: double.infinity,
-                              child: TextFormField(
-                                controller: _model.textController2,
-                                focusNode: _model.textFieldFocusNode2,
-                                autofocus: false,
-                                obscureText: false,
-                                decoration: InputDecoration(
-                                  hintText: FFLocalizations.of(context).getText(
-                                    '14b0gobv' /*  */,
-                                  ),
-                                  hintStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        font: GoogleFonts.inter(
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
-                                        ),
-                                        letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontStyle,
-                                      ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context)
-                                          .alternate,
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  errorBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  focusedErrorBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  filled: true,
-                                  fillColor: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      font: GoogleFonts.inter(
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontStyle,
-                                      ),
-                                      letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontStyle,
-                                    ),
-                                validator: _model.textController2Validator
-                                    .asValidator(context),
-                              ),
-                            ),
-                          ].divide(SizedBox(height: 8.0)),
-                        ),
-                        Column(
-                          mainAxisSize: MainAxisSize.max,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              FFLocalizations.of(context).getText(
-                                '6a2jyumw' /* Gender */,
+                                '6a2jyumw' /* Breed */,
                               ),
                               textAlign: TextAlign.center,
                               style: FlutterFlowTheme.of(context)
@@ -517,27 +401,62 @@ class _CreateProfilDogPageWidgetState extends State<CreateProfilDogPageWidget> {
                                   ),
                             ),
                             FlutterFlowDropDown<String>(
-                              controller: _model.dropDownValueController1 ??=
-                                  FormFieldController<String>(
-                                _model.dropDownValue1 ??=
+                              controller:
+                                  _model.dropDownBreedValueController ??=
+                                      FormFieldController<String>(
+                                _model.dropDownBreedValue ??=
                                     FFLocalizations.of(context).getText(
-                                  '21v0b4fi' /* Canicross */,
+                                  '21v0b4fi' /* Golden Retriever */,
                                 ),
                               ),
-                              options: [
-                                FFLocalizations.of(context).getText(
-                                  '4n6ey6ga' /* Canicross */,
-                                ),
-                                FFLocalizations.of(context).getText(
-                                  'c2ozkrxh' /* Cani-VTT */,
-                                ),
-                                FFLocalizations.of(context).getText(
-                                  'jthswp25' /* Cani hiking */,
-                                )
-                              ],
-                              onChanged: (val) => safeSetState(
-                                  () => _model.dropDownValue1 = val),
+                              options: FFAppConstants.dogBreed
+                                  .sortedList(keyOf: (e) => e, desc: false),
+                              onChanged: (val) async {
+                                safeSetState(
+                                    () => _model.dropDownBreedValue = val);
+                                _model.selectedBreed =
+                                    _model.dropDownBreedValue;
+                                safeSetState(() {});
+                              },
                               height: 50.0,
+                              searchHintTextStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
+                                    ),
+                                    letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
+                                  ),
+                              searchTextStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                                    letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
                               textStyle: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
@@ -559,6 +478,242 @@ class _CreateProfilDogPageWidgetState extends State<CreateProfilDogPageWidget> {
                                   ),
                               hintText: FFLocalizations.of(context).getText(
                                 'qjs75u45' /* Select... */,
+                              ),
+                              searchHintText:
+                                  FFLocalizations.of(context).getText(
+                                'jthg25em' /* Search... */,
+                              ),
+                              icon: Icon(
+                                Icons.keyboard_arrow_down_rounded,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                size: 24.0,
+                              ),
+                              fillColor: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              elevation: 2.0,
+                              borderColor:
+                                  FlutterFlowTheme.of(context).alternate,
+                              borderWidth: 2.0,
+                              borderRadius: 8.0,
+                              margin: EdgeInsetsDirectional.fromSTEB(
+                                  12.0, 0.0, 12.0, 0.0),
+                              hidesUnderline: true,
+                              isOverButton: false,
+                              isSearchable: true,
+                              isMultiSelect: false,
+                            ),
+                          ].divide(SizedBox(height: 8.0)),
+                        ),
+                        if (_model.selectedBreed == 'Autre...')
+                          Column(
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                FFLocalizations.of(context).getText(
+                                  'pdo05kta' /* Other breed */,
+                                ),
+                                textAlign: TextAlign.center,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
+                                      letterSpacing: 0.0,
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                              ),
+                              Container(
+                                width: double.infinity,
+                                child: TextFormField(
+                                  controller:
+                                      _model.textFieldOtherBreedTextController,
+                                  focusNode:
+                                      _model.textFieldOtherBreedFocusNode,
+                                  onChanged: (_) => EasyDebounce.debounce(
+                                    '_model.textFieldOtherBreedTextController',
+                                    Duration(milliseconds: 2000),
+                                    () async {
+                                      _model.customBreed = _model
+                                          .textFieldOtherBreedTextController
+                                          .text;
+                                      safeSetState(() {});
+                                    },
+                                  ),
+                                  autofocus: false,
+                                  obscureText: false,
+                                  decoration: InputDecoration(
+                                    hintText:
+                                        FFLocalizations.of(context).getText(
+                                      'nhw8t9c6' /*  */,
+                                    ),
+                                    hintStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          font: GoogleFonts.inter(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
+                                          letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: FlutterFlowTheme.of(context)
+                                            .alternate,
+                                        width: 2.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Color(0x00000000),
+                                        width: 2.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    errorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Color(0x00000000),
+                                        width: 2.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    focusedErrorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Color(0x00000000),
+                                        width: 2.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    filled: true,
+                                    fillColor: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        font: GoogleFonts.inter(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
+                                        letterSpacing: 0.0,
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
+                                  keyboardType: TextInputType.number,
+                                  validator: _model
+                                      .textFieldOtherBreedTextControllerValidator
+                                      .asValidator(context),
+                                ),
+                              ),
+                            ].divide(SizedBox(height: 8.0)),
+                          ),
+                        Column(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              FFLocalizations.of(context).getText(
+                                'zestjl4t' /* Gender */,
+                              ),
+                              textAlign: TextAlign.center,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                                    letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
+                            ),
+                            FlutterFlowDropDown<String>(
+                              controller:
+                                  _model.dropDownDogGenderValueController ??=
+                                      FormFieldController<String>(
+                                _model.dropDownDogGenderValue ??=
+                                    FFLocalizations.of(context).getText(
+                                  'wcl06qyw' /* Male */,
+                                ),
+                              ),
+                              options: [
+                                FFLocalizations.of(context).getText(
+                                  'uvgmp3ou' /* Male */,
+                                ),
+                                FFLocalizations.of(context).getText(
+                                  'l2qt8i1w' /* Female */,
+                                )
+                              ],
+                              onChanged: (val) => safeSetState(
+                                  () => _model.dropDownDogGenderValue = val),
+                              height: 50.0,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                                    letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
+                              hintText: FFLocalizations.of(context).getText(
+                                'gg8p3y8p' /* Select... */,
                               ),
                               icon: Icon(
                                 Icons.keyboard_arrow_down_rounded,
@@ -588,7 +743,7 @@ class _CreateProfilDogPageWidgetState extends State<CreateProfilDogPageWidget> {
                           children: [
                             Text(
                               FFLocalizations.of(context).getText(
-                                'pdo05kta' /* Age */,
+                                's0538zcq' /* Age */,
                               ),
                               textAlign: TextAlign.center,
                               style: FlutterFlowTheme.of(context)
@@ -620,7 +775,7 @@ class _CreateProfilDogPageWidgetState extends State<CreateProfilDogPageWidget> {
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   hintText: FFLocalizations.of(context).getText(
-                                    'nhw8t9c6' /*  */,
+                                    'wzzxoo01' /*  */,
                                   ),
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -734,8 +889,9 @@ class _CreateProfilDogPageWidgetState extends State<CreateProfilDogPageWidget> {
                             Container(
                               width: double.infinity,
                               child: TextFormField(
-                                controller: _model.textController4,
-                                focusNode: _model.textFieldFocusNode3,
+                                controller:
+                                    _model.textFieldWeightTextController,
+                                focusNode: _model.textFieldWeightFocusNode,
                                 autofocus: false,
                                 obscureText: false,
                                 decoration: InputDecoration(
@@ -839,7 +995,8 @@ class _CreateProfilDogPageWidgetState extends State<CreateProfilDogPageWidget> {
                                     ),
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primaryText,
-                                validator: _model.textController4Validator
+                                validator: _model
+                                    .textFieldWeightTextControllerValidator
                                     .asValidator(context),
                               ),
                             ),
@@ -875,9 +1032,10 @@ class _CreateProfilDogPageWidgetState extends State<CreateProfilDogPageWidget> {
                                   ),
                             ),
                             FlutterFlowDropDown<String>(
-                              controller: _model.dropDownValueController2 ??=
-                                  FormFieldController<String>(
-                                _model.dropDownValue2 ??=
+                              controller:
+                                  _model.dropDownActivityValueController ??=
+                                      FormFieldController<String>(
+                                _model.dropDownActivityValue ??=
                                     FFLocalizations.of(context).getText(
                                   'jnceov7i' /* Canicross */,
                                 ),
@@ -894,7 +1052,7 @@ class _CreateProfilDogPageWidgetState extends State<CreateProfilDogPageWidget> {
                                 )
                               ],
                               onChanged: (val) => safeSetState(
-                                  () => _model.dropDownValue2 = val),
+                                  () => _model.dropDownActivityValue = val),
                               height: 50.0,
                               textStyle: FlutterFlowTheme.of(context)
                                   .bodyMedium
@@ -970,9 +1128,10 @@ class _CreateProfilDogPageWidgetState extends State<CreateProfilDogPageWidget> {
                                   ),
                             ),
                             FlutterFlowDropDown<String>(
-                              controller: _model.dropDownValueController3 ??=
-                                  FormFieldController<String>(
-                                _model.dropDownValue3 ??=
+                              controller:
+                                  _model.dropDownExperienceValueController ??=
+                                      FormFieldController<String>(
+                                _model.dropDownExperienceValue ??=
                                     FFLocalizations.of(context).getText(
                                   'pdfn10n4' /* Beginner */,
                                 ),
@@ -992,7 +1151,7 @@ class _CreateProfilDogPageWidgetState extends State<CreateProfilDogPageWidget> {
                                 )
                               ],
                               onChanged: (val) => safeSetState(
-                                  () => _model.dropDownValue3 = val),
+                                  () => _model.dropDownExperienceValue = val),
                               height: 50.0,
                               textStyle: FlutterFlowTheme.of(context)
                                   .bodyMedium
@@ -1069,8 +1228,9 @@ class _CreateProfilDogPageWidgetState extends State<CreateProfilDogPageWidget> {
                             Container(
                               width: double.infinity,
                               child: TextFormField(
-                                controller: _model.textController5,
-                                focusNode: _model.textFieldFocusNode4,
+                                controller:
+                                    _model.textFieldHealthTextController,
+                                focusNode: _model.textFieldHealthFocusNode,
                                 autofocus: false,
                                 obscureText: false,
                                 decoration: InputDecoration(
@@ -1175,7 +1335,8 @@ class _CreateProfilDogPageWidgetState extends State<CreateProfilDogPageWidget> {
                                     ),
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primaryText,
-                                validator: _model.textController5Validator
+                                validator: _model
+                                    .textFieldHealthTextControllerValidator
                                     .asValidator(context),
                               ),
                             ),
@@ -1212,8 +1373,9 @@ class _CreateProfilDogPageWidgetState extends State<CreateProfilDogPageWidget> {
                             Container(
                               width: double.infinity,
                               child: TextFormField(
-                                controller: _model.textController6,
-                                focusNode: _model.textFieldFocusNode5,
+                                controller:
+                                    _model.textFieldTattooTextController,
+                                focusNode: _model.textFieldTattooFocusNode,
                                 autofocus: false,
                                 obscureText: false,
                                 decoration: InputDecoration(
@@ -1317,7 +1479,8 @@ class _CreateProfilDogPageWidgetState extends State<CreateProfilDogPageWidget> {
                                     ),
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primaryText,
-                                validator: _model.textController6Validator
+                                validator: _model
+                                    .textFieldTattooTextControllerValidator
                                     .asValidator(context),
                               ),
                             ),
@@ -1328,33 +1491,43 @@ class _CreateProfilDogPageWidgetState extends State<CreateProfilDogPageWidget> {
                             var dogRecordReference =
                                 DogRecord.createDoc(currentUserReference!);
                             await dogRecordReference.set(createDogRecordData(
-                              name: _model.textController1.text,
-                              breed: _model.textController2.text,
-                              gender: _model.dropDownValue1,
-                              weight: int.tryParse(_model.textController4.text),
-                              mainActivity: _model.dropDownValue2,
-                              experience: _model.dropDownValue3,
-                              healthInformation: _model.textController5.text,
-                              puce: _model.textController6.text,
-                              age: int.tryParse(
-                                  _model.textFieldAgeTextController.text),
+                              name: _model.textFieldDogNameTextController.text,
+                              breed: _model.selectedBreed == 'Autre...'
+                                  ? _model
+                                      .textFieldOtherBreedTextController.text
+                                  : _model.dropDownBreedValue,
+                              gender: _model.dropDownBreedValue,
+                              weight: int.tryParse(
+                                  _model.textFieldWeightTextController.text),
+                              mainActivity: _model.dropDownActivityValue,
+                              experience: _model.dropDownExperienceValue,
+                              healthInformation:
+                                  _model.textFieldHealthTextController.text,
+                              puce: _model.textFieldTattooTextController.text,
+                              age: int.tryParse(_model
+                                  .textFieldOtherBreedTextController.text),
                               activitiesCount: 0,
                               imagePath: _model.uploadedFileUrl_dogUploaded,
                             ));
                             _model.dogOutput = DogRecord.getDocumentFromData(
                                 createDogRecordData(
-                                  name: _model.textController1.text,
-                                  breed: _model.textController2.text,
-                                  gender: _model.dropDownValue1,
-                                  weight:
-                                      int.tryParse(_model.textController4.text),
-                                  mainActivity: _model.dropDownValue2,
-                                  experience: _model.dropDownValue3,
+                                  name: _model
+                                      .textFieldDogNameTextController.text,
+                                  breed: _model.selectedBreed == 'Autre...'
+                                      ? _model.textFieldOtherBreedTextController
+                                          .text
+                                      : _model.dropDownBreedValue,
+                                  gender: _model.dropDownBreedValue,
+                                  weight: int.tryParse(_model
+                                      .textFieldWeightTextController.text),
+                                  mainActivity: _model.dropDownActivityValue,
+                                  experience: _model.dropDownExperienceValue,
                                   healthInformation:
-                                      _model.textController5.text,
-                                  puce: _model.textController6.text,
-                                  age: int.tryParse(
-                                      _model.textFieldAgeTextController.text),
+                                      _model.textFieldHealthTextController.text,
+                                  puce:
+                                      _model.textFieldTattooTextController.text,
+                                  age: int.tryParse(_model
+                                      .textFieldOtherBreedTextController.text),
                                   activitiesCount: 0,
                                   imagePath: _model.uploadedFileUrl_dogUploaded,
                                 ),

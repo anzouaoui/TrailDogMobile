@@ -236,6 +236,7 @@ class _SelectActivityComponentWidgetState
 
                     return ListView.separated(
                       padding: EdgeInsets.zero,
+                      primary: false,
                       shrinkWrap: true,
                       scrollDirection: Axis.vertical,
                       itemCount: listViewActivityRecordList.length,
@@ -243,17 +244,30 @@ class _SelectActivityComponentWidgetState
                       itemBuilder: (context, listViewIndex) {
                         final listViewActivityRecord =
                             listViewActivityRecordList[listViewIndex];
-                        return wrapWithModel(
-                          model: _model.activityComponentModels.getModel(
-                            listViewActivityRecord.reference.id,
-                            listViewIndex,
-                          ),
-                          updateCallback: () => safeSetState(() {}),
-                          child: ActivityComponentWidget(
-                            key: Key(
-                              'Keyqj1_${listViewActivityRecord.reference.id}',
+                        return InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            FFAppState().activitySelected =
+                                listViewActivityRecord.reference;
+                            safeSetState(() {});
+                            Navigator.pop(context);
+                          },
+                          child: wrapWithModel(
+                            model: _model.activityComponentModels.getModel(
+                              listViewActivityRecord.reference.id,
+                              listViewIndex,
                             ),
-                            activityParameter: listViewActivityRecord.reference,
+                            updateCallback: () => safeSetState(() {}),
+                            child: ActivityComponentWidget(
+                              key: Key(
+                                'Keyqj1_${listViewActivityRecord.reference.id}',
+                              ),
+                              activityParameter:
+                                  listViewActivityRecord.reference,
+                            ),
                           ),
                         );
                       },

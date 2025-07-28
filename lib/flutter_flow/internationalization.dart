@@ -789,21 +789,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Max',
       'fr': 'Max',
     },
-    '6y6q7dcf': {
+    '6a2jyumw': {
       'en': 'Breed',
       'fr': 'Race',
     },
-    '14b0gobv': {
-      'en': '',
-      'fr': '',
-    },
-    '6a2jyumw': {
-      'en': 'Gender',
-      'fr': 'Genre',
-    },
     '21v0b4fi': {
-      'en': 'Canicross',
-      'fr': 'Canicross',
+      'en': 'Golden Retriever',
+      'fr': 'Golden Retriever',
     },
     'qjs75u45': {
       'en': 'Select...',
@@ -813,23 +805,43 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Search...',
       'fr': 'Recherche...',
     },
-    '4n6ey6ga': {
-      'en': 'Canicross',
-      'fr': 'Canicross',
-    },
-    'c2ozkrxh': {
-      'en': 'Cani-VTT',
-      'fr': 'Cani-VTT',
-    },
-    'jthswp25': {
-      'en': 'Cani hiking',
-      'fr': 'Cani-randonnée',
-    },
     'pdo05kta': {
+      'en': 'Other breed',
+      'fr': 'Autre race',
+    },
+    'nhw8t9c6': {
+      'en': '',
+      'fr': '',
+    },
+    'zestjl4t': {
+      'en': 'Gender',
+      'fr': 'Genre',
+    },
+    'wcl06qyw': {
+      'en': 'Male',
+      'fr': 'Mâle',
+    },
+    'gg8p3y8p': {
+      'en': 'Select...',
+      'fr': 'Sélectionner...',
+    },
+    '7i8oxywk': {
+      'en': 'Search...',
+      'fr': 'Recherche...',
+    },
+    'uvgmp3ou': {
+      'en': 'Male',
+      'fr': 'Mâle',
+    },
+    'l2qt8i1w': {
+      'en': 'Female',
+      'fr': 'Femelle',
+    },
+    's0538zcq': {
       'en': 'Age',
       'fr': 'Âge',
     },
-    'nhw8t9c6': {
+    'wzzxoo01': {
       'en': '',
       'fr': '',
     },
@@ -2298,6 +2310,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'oaygg5x8': {
       'en': 'Add a comment...',
       'fr': 'Ajouter un commentaire...',
+    },
+  },
+  // FeedActivityCompoennt
+  {
+    'f178vfur': {
+      'en': 'Distance',
+      'fr': 'Distance',
+    },
+    'gnsfs51g': {
+      'en': 'Step',
+      'fr': 'Pas',
+    },
+    'ydz9m7yl': {
+      'en': 'Duration',
+      'fr': 'Durée',
     },
   },
   // Miscellaneous

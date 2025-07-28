@@ -311,4 +311,11 @@ class FFAppState extends ChangeNotifier {
   set isStorageGranted(bool value) {
     _isStorageGranted = value;
   }
+
+  /// Activité sélectionné lors d'un post
+  DocumentReference? _activitySelected;
+  DocumentReference? get activitySelected => _activitySelected;
+  set activitySelected(DocumentReference? value) {
+    _activitySelected = value;
+  }
 }

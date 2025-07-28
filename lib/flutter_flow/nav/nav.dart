@@ -210,7 +210,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: NewPostPageWidget.routeName,
           path: NewPostPageWidget.routePath,
-          builder: (context, params) => NewPostPageWidget(),
+          builder: (context, params) => NewPostPageWidget(
+            activityParamter: params.getParam(
+              'activityParamter',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['users', 'activity'],
+            ),
+          ),
         ),
         FFRoute(
           name: NotificationSettingsPageWidget.routeName,

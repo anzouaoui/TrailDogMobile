@@ -72,6 +72,11 @@ class PostsRecord extends FirestoreRecord {
   List<DocumentReference> get likedBy => _likedBy ?? const [];
   bool hasLikedBy() => _likedBy != null;
 
+  // "activity_ref" field.
+  DocumentReference? _activityRef;
+  DocumentReference? get activityRef => _activityRef;
+  bool hasActivityRef() => _activityRef != null;
+
   void _initializeFields() {
     _userRef = snapshotData['user_ref'] as DocumentReference?;
     _timestamp = snapshotData['timestamp'] as DateTime?;
@@ -84,6 +89,7 @@ class PostsRecord extends FirestoreRecord {
     _likesCount = castToType<int>(snapshotData['likes_count']);
     _commentsCount = castToType<int>(snapshotData['comments_count']);
     _likedBy = getDataList(snapshotData['liked_by']);
+    _activityRef = snapshotData['activity_ref'] as DocumentReference?;
   }
 
   static CollectionReference get collection =>
@@ -130,6 +136,7 @@ Map<String, dynamic> createPostsRecordData({
   String? activityType,
   int? likesCount,
   int? commentsCount,
+  DocumentReference? activityRef,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -143,6 +150,7 @@ Map<String, dynamic> createPostsRecordData({
       'activity_type': activityType,
       'likes_count': likesCount,
       'comments_count': commentsCount,
+      'activity_ref': activityRef,
     }.withoutNulls,
   );
 
@@ -165,7 +173,8 @@ class PostsRecordDocumentEquality implements Equality<PostsRecord> {
         e1?.activityType == e2?.activityType &&
         e1?.likesCount == e2?.likesCount &&
         e1?.commentsCount == e2?.commentsCount &&
-        listEquality.equals(e1?.likedBy, e2?.likedBy);
+        listEquality.equals(e1?.likedBy, e2?.likedBy) &&
+        e1?.activityRef == e2?.activityRef;
   }
 
   @override
@@ -180,7 +189,8 @@ class PostsRecordDocumentEquality implements Equality<PostsRecord> {
         e?.activityType,
         e?.likesCount,
         e?.commentsCount,
-        e?.likedBy
+        e?.likedBy,
+        e?.activityRef
       ]);
 
   @override
