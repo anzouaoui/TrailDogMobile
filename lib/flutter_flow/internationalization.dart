@@ -1168,6 +1168,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'TextField',
       'fr': 'Champ de texte',
     },
+    '5cj6uve4': {
+      'en': '',
+      'fr': '',
+    },
     'i1qkxtle': {
       'en': 'Runners',
       'fr': 'Coureurs',
@@ -2025,13 +2029,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // AskFriendsComponent
   {
-    '7jalmnxd': {
-      'en': 'Follow',
-      'fr': 'Suivre',
-    },
     'nmanwo3z': {
       'en': 'Request sended',
       'fr': 'Demande envoyée',
+    },
+    '7jalmnxd': {
+      'en': 'Follow',
+      'fr': 'Suivre',
     },
   },
   // DemandeFriendsCompoennt
@@ -2325,6 +2329,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'ydz9m7yl': {
       'en': 'Duration',
       'fr': 'Durée',
+    },
+  },
+  // NotFoundFriendComponent
+  {
+    '913qp5te': {
+      'en': 'not friends found',
+      'fr': 'pas d\'amis trouvés',
+    },
+    'r3a3ux48': {
+      'en': 'You haven\'t found any friends',
+      'fr': 'Tu n\'as pas trouvé d\'amis',
     },
   },
   // Miscellaneous

@@ -78,6 +78,10 @@ class TrackPageModel extends FlutterFlowModel<TrackPageWidget> {
   ApiCallResponse? cityOutput;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   ActivityRecord? newActivityOutput;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  BadgesRecord? badgeFirstActivityOutput;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  UsersBadgeRecord? checkUserBadgesOutput;
 
   @override
   void initState(BuildContext context) {

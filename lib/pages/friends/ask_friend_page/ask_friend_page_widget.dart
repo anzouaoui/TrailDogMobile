@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/component/friends/ask_friends_component/ask_friends_component_widget.dart';
+import '/component/friends/not_found_friend_component/not_found_friend_component_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -41,6 +42,12 @@ class _AskFriendPageWidgetState extends State<AskFriendPageWidget> {
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {
+          _model.textController?.text = FFLocalizations.of(context).getText(
+            '5cj6uve4' /*  */,
+          );
+        }));
   }
 
   @override
@@ -293,7 +300,13 @@ class _AskFriendPageWidgetState extends State<AskFriendPageWidget> {
                                 padding: EdgeInsets.all(16.0),
                                 child: FutureBuilder<List<UsersRecord>>(
                                   future: UsersRecord.search(
-                                    term: _model.textController.text,
+                                    term: _model.textController.text != ''
+                                        ? _model.textController.text
+                                        : FFLocalizations.of(context)
+                                            .getVariableText(
+                                            enText: 'unknown name',
+                                            frText: 'Nom inconnu',
+                                          ),
                                   ),
                                   builder: (context, snapshot) {
                                     // Customize what your widget looks like when it's loading.
@@ -314,14 +327,8 @@ class _AskFriendPageWidgetState extends State<AskFriendPageWidget> {
                                     }
                                     List<UsersRecord> listViewUsersRecordList =
                                         snapshot.data!;
-                                    // Customize what your widget looks like with no search results.
-                                    if (snapshot.data!.isEmpty) {
-                                      return Container(
-                                        height: 100,
-                                        child: Center(
-                                          child: Text('No results.'),
-                                        ),
-                                      );
+                                    if (listViewUsersRecordList.isEmpty) {
+                                      return NotFoundFriendComponentWidget();
                                     }
                                     return ListView.builder(
                                       padding: EdgeInsets.zero,

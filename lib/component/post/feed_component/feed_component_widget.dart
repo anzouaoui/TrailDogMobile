@@ -329,37 +329,45 @@ class _FeedComponentWidgetState extends State<FeedComponentWidget> {
                           children: [
                             ToggleIcon(
                               onPressed: () async {
-                                safeSetState(() =>
-                                    _model.postIsLiked = !_model.postIsLiked);
+                                final likedByElement = currentUserReference;
+                                final likedByUpdate = containerPostsRecord
+                                        .likedBy
+                                        .contains(likedByElement)
+                                    ? FieldValue.arrayRemove([likedByElement])
+                                    : FieldValue.arrayUnion([likedByElement]);
+                                await containerPostsRecord.reference.update({
+                                  ...mapToFirestore(
+                                    {
+                                      'liked_by': likedByUpdate,
+                                    },
+                                  ),
+                                });
                                 if (containerPostsRecord.likedBy
                                     .contains(currentUserReference)) {
                                   await containerPostsRecord.reference.update({
                                     ...mapToFirestore(
                                       {
-                                        'likes_count':
-                                            FieldValue.increment(-(1)),
                                         'liked_by': FieldValue.arrayRemove(
                                             [currentUserReference]),
+                                        'likes_count':
+                                            FieldValue.increment(-(1)),
                                       },
                                     ),
                                   });
-                                  _model.postIsLiked = false;
-                                  safeSetState(() {});
                                 } else {
                                   await containerPostsRecord.reference.update({
                                     ...mapToFirestore(
                                       {
-                                        'likes_count': FieldValue.increment(1),
                                         'liked_by': FieldValue.arrayUnion(
                                             [currentUserReference]),
+                                        'likes_count': FieldValue.increment(1),
                                       },
                                     ),
                                   });
-                                  _model.postIsLiked = true;
-                                  safeSetState(() {});
                                 }
                               },
-                              value: _model.postIsLiked,
+                              value: containerPostsRecord.likedBy
+                                  .contains(currentUserReference),
                               onIcon: Icon(
                                 Icons.favorite,
                                 color: FlutterFlowTheme.of(context).secondary,

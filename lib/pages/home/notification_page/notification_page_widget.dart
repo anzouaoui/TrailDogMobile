@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/component/notification/friend_request_notification_component/friend_request_notification_component_widget.dart';
 import '/component/notification/new_message_notification_component/new_message_notification_component_widget.dart';
@@ -113,12 +112,12 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
                   ),
                   StreamBuilder<List<NotificationsRecord>>(
                     stream: queryNotificationsRecord(
-                      parent: currentUserReference,
-                      queryBuilder: (notificationsRecord) =>
-                          notificationsRecord.where(
-                        'read',
-                        isEqualTo: false,
-                      ),
+                      queryBuilder: (notificationsRecord) => notificationsRecord
+                          .where(
+                            'read',
+                            isEqualTo: false,
+                          )
+                          .orderBy('created_at'),
                     ),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.

@@ -123,7 +123,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               ),
                               StreamBuilder<List<NotificationsRecord>>(
                                 stream: queryNotificationsRecord(
-                                  parent: currentUserReference,
                                   queryBuilder: (notificationsRecord) =>
                                       notificationsRecord.where(
                                     'read',

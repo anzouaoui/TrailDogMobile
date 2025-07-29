@@ -737,19 +737,19 @@ class _ChatViewPageWidgetState extends State<ChatViewPageWidget> {
                                 lastMessageTime: getCurrentTimestamp,
                               ));
 
-                              await NotificationsRecord.createDoc(
-                                      currentUserReference!)
+                              await NotificationsRecord.collection
+                                  .doc()
                                   .set(createNotificationsRecordData(
-                                type: 'new message',
-                                userTo: functions.getOtherUserRef(
-                                    chatViewPageChatRecord.users.toList(),
-                                    currentUserReference!),
-                                userFrom: currentUserReference,
-                                createdAt: getCurrentTimestamp,
-                                read: false,
-                                content: 'Nouvelle image',
-                                chatId: chatViewPageChatRecord.reference,
-                              ));
+                                    type: 'new message',
+                                    userTo: functions.getOtherUserRef(
+                                        chatViewPageChatRecord.users.toList(),
+                                        currentUserReference!),
+                                    userFrom: currentUserReference,
+                                    createdAt: getCurrentTimestamp,
+                                    read: false,
+                                    content: 'Nouvelle image',
+                                    chatId: chatViewPageChatRecord.reference,
+                                  ));
                               safeSetState(() {
                                 _model.textController?.clear();
                               });
@@ -896,19 +896,19 @@ class _ChatViewPageWidgetState extends State<ChatViewPageWidget> {
                                 lastMessageTime: getCurrentTimestamp,
                               ));
 
-                              await NotificationsRecord.createDoc(
-                                      currentUserReference!)
+                              await NotificationsRecord.collection
+                                  .doc()
                                   .set(createNotificationsRecordData(
-                                type: 'new message',
-                                userTo: functions.getOtherUserRef(
-                                    chatViewPageChatRecord.users.toList(),
-                                    currentUserReference!),
-                                userFrom: currentUserReference,
-                                createdAt: getCurrentTimestamp,
-                                read: false,
-                                content: _model.textController.text,
-                                chatId: chatViewPageChatRecord.reference,
-                              ));
+                                    type: 'new message',
+                                    userTo: functions.getOtherUserRef(
+                                        chatViewPageChatRecord.users.toList(),
+                                        currentUserReference!),
+                                    userFrom: currentUserReference,
+                                    createdAt: getCurrentTimestamp,
+                                    read: false,
+                                    content: _model.textController.text,
+                                    chatId: chatViewPageChatRecord.reference,
+                                  ));
                               safeSetState(() {
                                 _model.textController?.clear();
                               });

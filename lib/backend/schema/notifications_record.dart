@@ -56,8 +56,6 @@ class NotificationsRecord extends FirestoreRecord {
   DocumentReference? get chatId => _chatId;
   bool hasChatId() => _chatId != null;
 
-  DocumentReference get parentReference => reference.parent.parent!;
-
   void _initializeFields() {
     _type = snapshotData['type'] as String?;
     _userTo = snapshotData['user_to'] as DocumentReference?;
@@ -69,13 +67,8 @@ class NotificationsRecord extends FirestoreRecord {
     _chatId = snapshotData['chat_id'] as DocumentReference?;
   }
 
-  static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
-      parent != null
-          ? parent.collection('notifications')
-          : FirebaseFirestore.instance.collectionGroup('notifications');
-
-  static DocumentReference createDoc(DocumentReference parent, {String? id}) =>
-      parent.collection('notifications').doc(id);
+  static CollectionReference get collection =>
+      FirebaseFirestore.instance.collection('notifications');
 
   static Stream<NotificationsRecord> getDocument(DocumentReference ref) =>
       ref.snapshots().map((s) => NotificationsRecord.fromSnapshot(s));

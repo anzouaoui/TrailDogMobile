@@ -64,11 +64,25 @@ service cloud.firestore {
       allow delete: if resource.data.user_ref == /databases/$(database)/documents/users/$(request.auth.uid);
     }
 
-    match /users/{parent}/notifications/{document} {
-      allow create: if request.auth.uid == parent;
-      allow read: if request.auth.uid == parent;
-      allow write: if request.auth.uid == parent;
-      allow delete: if request.auth.uid == parent;
+    match /notifications/{document} {
+      allow create: if request.resource.data.user_from == /databases/$(database)/documents/users/$(request.auth.uid);
+      allow read: if resource.data.user_to == /databases/$(database)/documents/users/$(request.auth.uid);
+      allow write: if resource.data.user_to == /databases/$(database)/documents/users/$(request.auth.uid);
+      allow delete: if resource.data.user_to == /databases/$(database)/documents/users/$(request.auth.uid);
+    }
+
+    match /badges/{document} {
+      allow create: if false;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /users_badge/{document} {
+      allow create: if request.resource.data.user_id == /databases/$(database)/documents/users/$(request.auth.uid);
+      allow read: if resource.data.user_id == /databases/$(database)/documents/users/$(request.auth.uid);
+      allow write: if resource.data.user_id == /databases/$(database)/documents/users/$(request.auth.uid);
+      allow delete: if resource.data.user_id == /databases/$(database)/documents/users/$(request.auth.uid);
     }
   }
 }

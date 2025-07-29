@@ -13,10 +13,14 @@ class AskFriendsComponentWidget extends StatefulWidget {
   const AskFriendsComponentWidget({
     super.key,
     required this.userParameter,
+    this.friendRequestParameter,
   });
 
   /// utilisateur concerné
   final DocumentReference? userParameter;
+
+  /// Si il y une demande d'ami
+  final DocumentReference? friendRequestParameter;
 
   @override
   State<AskFriendsComponentWidget> createState() =>
@@ -47,8 +51,9 @@ class _AskFriendsComponentWidgetState extends State<AskFriendsComponentWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<UsersRecord>(
-      stream: UsersRecord.getDocument(widget.userParameter!),
+    return StreamBuilder<FriendsRequestsRecord>(
+      stream:
+          FriendsRequestsRecord.getDocument(widget.friendRequestParameter!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -65,7 +70,7 @@ class _AskFriendsComponentWidgetState extends State<AskFriendsComponentWidget> {
           );
         }
 
-        final containerUsersRecord = snapshot.data!;
+        final containerFriendsRequestsRecord = snapshot.data!;
 
         return Container(
           decoration: BoxDecoration(
@@ -74,32 +79,53 @@ class _AskFriendsComponentWidgetState extends State<AskFriendsComponentWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 48.0,
-                    height: 48.0,
-                    clipBehavior: Clip.antiAlias,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                    ),
-                    child: Image.network(
-                      'https://images.unsplash.com/photo-1608138404239-d2f557515ecb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NTExODAyNDF8&ixlib=rb-4.1.0&q=80&w=1080',
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Flexible(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          '${containerUsersRecord.firstname} ${containerUsersRecord.lastname}',
-                          style:
-                              FlutterFlowTheme.of(context).bodyLarge.override(
+              StreamBuilder<UsersRecord>(
+                stream: UsersRecord.getDocument(widget.userParameter!),
+                builder: (context, snapshot) {
+                  // Customize what your widget looks like when it's loading.
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: SizedBox(
+                        width: 50.0,
+                        height: 50.0,
+                        child: CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                            FlutterFlowTheme.of(context).primary,
+                          ),
+                        ),
+                      ),
+                    );
+                  }
+
+                  final rowUsersRecord = snapshot.data!;
+
+                  return Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 48.0,
+                        height: 48.0,
+                        clipBehavior: Clip.antiAlias,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                        ),
+                        child: Image.network(
+                          'https://images.unsplash.com/photo-1608138404239-d2f557515ecb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NTExODAyNDF8&ixlib=rb-4.1.0&q=80&w=1080',
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      Flexible(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              '${rowUsersRecord.firstname} ${rowUsersRecord.lastname}',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyLarge
+                                  .override(
                                     font: GoogleFonts.inter(
                                       fontWeight: FontWeight.w600,
                                       fontStyle: FlutterFlowTheme.of(context)
@@ -112,114 +138,25 @@ class _AskFriendsComponentWidgetState extends State<AskFriendsComponentWidget> {
                                         .bodyLarge
                                         .fontStyle,
                                   ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Builder(
-                    builder: (context) {
-                      if (_model.requestSended == false) {
-                        return FFButtonWidget(
-                          onPressed: () async {
-                            var friendsRequestsRecordReference =
-                                FriendsRequestsRecord.collection.doc();
-                            await friendsRequestsRecordReference
-                                .set(createFriendsRequestsRecordData(
-                              userFrom: currentUserReference,
-                              userTo: containerUsersRecord.reference,
-                              status: 'Pending',
-                              createdAt: getCurrentTimestamp,
-                              uid: '',
-                            ));
-                            _model.friendsRequestOutput =
-                                FriendsRequestsRecord.getDocumentFromData(
-                                    createFriendsRequestsRecordData(
-                                      userFrom: currentUserReference,
-                                      userTo: containerUsersRecord.reference,
-                                      status: 'Pending',
-                                      createdAt: getCurrentTimestamp,
-                                      uid: '',
-                                    ),
-                                    friendsRequestsRecordReference);
-
-                            await _model.friendsRequestOutput!.reference
-                                .update(createFriendsRequestsRecordData(
-                              uid: _model.friendsRequestOutput?.reference.id,
-                            ));
-                            _model.requestSended = true;
-                            safeSetState(() {});
-
-                            var notificationsRecordReference =
-                                NotificationsRecord.createDoc(
-                                    _model.friendsRequestOutput!.userFrom!);
-                            await notificationsRecordReference
-                                .set(createNotificationsRecordData(
-                              type: 'Friend request',
-                              userTo: _model.friendsRequestOutput?.userTo,
-                              userFrom: currentUserReference,
-                              createdAt: getCurrentTimestamp,
-                              read: false,
-                              friendRequestId:
-                                  _model.friendsRequestOutput?.reference,
-                            ));
-                            _model.notificationsOutput =
-                                NotificationsRecord.getDocumentFromData(
-                                    createNotificationsRecordData(
-                                      type: 'Friend request',
-                                      userTo:
-                                          _model.friendsRequestOutput?.userTo,
-                                      userFrom: currentUserReference,
-                                      createdAt: getCurrentTimestamp,
-                                      read: false,
-                                      friendRequestId: _model
-                                          .friendsRequestOutput?.reference,
-                                    ),
-                                    notificationsRecordReference);
-
-                            safeSetState(() {});
-                          },
-                          text: FFLocalizations.of(context).getText(
-                            '7jalmnxd' /* Follow */,
-                          ),
-                          options: FFButtonOptions(
-                            height: 36.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                16.0, 0.0, 16.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).primary,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  font: GoogleFonts.inter(
-                                    fontWeight: FontWeight.w600,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontStyle,
-                                  ),
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w600,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontStyle,
-                                ),
-                            elevation: 0.0,
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).primary,
-                              width: 1.0,
                             ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                        );
-                      } else {
-                        return Text(
-                          FFLocalizations.of(context).getText(
-                            'nmanwo3z' /* Request sended */,
-                          ),
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
+                          ],
+                        ),
+                      ),
+                      Builder(
+                        builder: (context) {
+                          if ((containerFriendsRequestsRecord.userFrom ==
+                                  currentUserReference) &&
+                              (containerFriendsRequestsRecord.userTo ==
+                                  rowUsersRecord.reference) &&
+                              (containerFriendsRequestsRecord.status ==
+                                  'pending')) {
+                            return Text(
+                              FFLocalizations.of(context).getText(
+                                'nmanwo3z' /* Request sended */,
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
                                     font: GoogleFonts.inter(
                                       fontWeight: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -236,11 +173,108 @@ class _AskFriendsComponentWidgetState extends State<AskFriendsComponentWidget> {
                                         .bodyMedium
                                         .fontStyle,
                                   ),
-                        );
-                      }
-                    },
-                  ),
-                ].divide(SizedBox(width: 12.0)),
+                            );
+                          } else {
+                            return FFButtonWidget(
+                              onPressed: () async {
+                                var friendsRequestsRecordReference =
+                                    FriendsRequestsRecord.collection.doc();
+                                await friendsRequestsRecordReference
+                                    .set(createFriendsRequestsRecordData(
+                                  userFrom: currentUserReference,
+                                  userTo: rowUsersRecord.reference,
+                                  status: 'Pending',
+                                  createdAt: getCurrentTimestamp,
+                                  uid: '',
+                                ));
+                                _model.friendsRequestOutput =
+                                    FriendsRequestsRecord.getDocumentFromData(
+                                        createFriendsRequestsRecordData(
+                                          userFrom: currentUserReference,
+                                          userTo: rowUsersRecord.reference,
+                                          status: 'Pending',
+                                          createdAt: getCurrentTimestamp,
+                                          uid: '',
+                                        ),
+                                        friendsRequestsRecordReference);
+
+                                await _model.friendsRequestOutput!.reference
+                                    .update(createFriendsRequestsRecordData(
+                                  uid:
+                                      _model.friendsRequestOutput?.reference.id,
+                                ));
+                                _model.requestSended = true;
+                                safeSetState(() {});
+
+                                var notificationsRecordReference =
+                                    NotificationsRecord.collection.doc();
+                                await notificationsRecordReference
+                                    .set(createNotificationsRecordData(
+                                  type: 'Friend request',
+                                  userTo: _model.friendsRequestOutput?.userTo,
+                                  userFrom: currentUserReference,
+                                  createdAt: getCurrentTimestamp,
+                                  read: false,
+                                  friendRequestId:
+                                      _model.friendsRequestOutput?.reference,
+                                ));
+                                _model.notificationsOutput =
+                                    NotificationsRecord.getDocumentFromData(
+                                        createNotificationsRecordData(
+                                          type: 'Friend request',
+                                          userTo: _model
+                                              .friendsRequestOutput?.userTo,
+                                          userFrom: currentUserReference,
+                                          createdAt: getCurrentTimestamp,
+                                          read: false,
+                                          friendRequestId: _model
+                                              .friendsRequestOutput?.reference,
+                                        ),
+                                        notificationsRecordReference);
+
+                                safeSetState(() {});
+                              },
+                              text: FFLocalizations.of(context).getText(
+                                '7jalmnxd' /* Follow */,
+                              ),
+                              options: FFButtonOptions(
+                                height: 36.0,
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 0.0, 16.0, 0.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: FlutterFlowTheme.of(context).primary,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FontWeight.w600,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w600,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                                elevation: 0.0,
+                                borderSide: BorderSide(
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                            );
+                          }
+                        },
+                      ),
+                    ].divide(SizedBox(width: 12.0)),
+                  );
+                },
               ),
               Divider(
                 height: 1.0,

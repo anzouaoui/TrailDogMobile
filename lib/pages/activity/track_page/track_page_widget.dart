@@ -12,6 +12,7 @@ import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/gps_tracking_manager.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -1149,6 +1150,43 @@ class _TrackPageWidgetState extends State<TrackPageWidget> {
                                 FFAppState().pathList = [];
                                 FFAppState().pace = 0.0;
                                 safeSetState(() {});
+                                _model.badgeFirstActivityOutput =
+                                    await queryBadgesRecordOnce(
+                                  queryBuilder: (badgesRecord) =>
+                                      badgesRecord.where(
+                                    'id',
+                                    isEqualTo: 'first_activity',
+                                  ),
+                                  singleRecord: true,
+                                ).then((s) => s.firstOrNull);
+                                _model.checkUserBadgesOutput =
+                                    await queryUsersBadgeRecordOnce(
+                                  queryBuilder: (usersBadgeRecord) =>
+                                      usersBadgeRecord
+                                          .where(
+                                            'user_id',
+                                            isEqualTo: currentUserReference,
+                                          )
+                                          .where(
+                                            'badge_id',
+                                            isEqualTo: _model
+                                                .badgeFirstActivityOutput
+                                                ?.reference,
+                                          ),
+                                  singleRecord: true,
+                                ).then((s) => s.firstOrNull);
+                                if (!(_model.checkUserBadgesOutput != null)) {
+                                  await UsersBadgeRecord.collection
+                                      .doc()
+                                      .set(createUsersBadgeRecordData(
+                                        userId: currentUserReference,
+                                        badgeId: _model.badgeFirstActivityOutput
+                                            ?.reference,
+                                        earnedAt: getCurrentTimestamp,
+                                        activityId:
+                                            _model.newActivityOutput?.reference,
+                                      ));
+                                }
 
                                 context.pushNamed(
                                   ActivityPageWidget.routeName,
@@ -1159,6 +1197,8 @@ class _TrackPageWidgetState extends State<TrackPageWidget> {
                                     ),
                                   }.withoutNulls,
                                 );
+
+                                safeSetState(() {});
                               },
                               text: FFLocalizations.of(context).getText(
                                 '8s5w3s9h' /* Stop */,

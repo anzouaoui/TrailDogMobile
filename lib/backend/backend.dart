@@ -15,6 +15,8 @@ import 'schema/messages_record.dart';
 import 'schema/posts_record.dart';
 import 'schema/comments_record.dart';
 import 'schema/notifications_record.dart';
+import 'schema/badges_record.dart';
+import 'schema/users_badge_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart' hide Order;
@@ -33,6 +35,8 @@ export 'schema/messages_record.dart';
 export 'schema/posts_record.dart';
 export 'schema/comments_record.dart';
 export 'schema/notifications_record.dart';
+export 'schema/badges_record.dart';
+export 'schema/users_badge_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -381,24 +385,22 @@ Future<List<CommentsRecord>> queryCommentsRecordOnce({
 
 /// Functions to query NotificationsRecords (as a Stream and as a Future).
 Future<int> queryNotificationsRecordCount({
-  DocumentReference? parent,
   Query Function(Query)? queryBuilder,
   int limit = -1,
 }) =>
     queryCollectionCount(
-      NotificationsRecord.collection(parent),
+      NotificationsRecord.collection,
       queryBuilder: queryBuilder,
       limit: limit,
     );
 
 Stream<List<NotificationsRecord>> queryNotificationsRecord({
-  DocumentReference? parent,
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollection(
-      NotificationsRecord.collection(parent),
+      NotificationsRecord.collection,
       NotificationsRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
@@ -406,14 +408,87 @@ Stream<List<NotificationsRecord>> queryNotificationsRecord({
     );
 
 Future<List<NotificationsRecord>> queryNotificationsRecordOnce({
-  DocumentReference? parent,
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollectionOnce(
-      NotificationsRecord.collection(parent),
+      NotificationsRecord.collection,
       NotificationsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query BadgesRecords (as a Stream and as a Future).
+Future<int> queryBadgesRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      BadgesRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<BadgesRecord>> queryBadgesRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      BadgesRecord.collection,
+      BadgesRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<BadgesRecord>> queryBadgesRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      BadgesRecord.collection,
+      BadgesRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query UsersBadgeRecords (as a Stream and as a Future).
+Future<int> queryUsersBadgeRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      UsersBadgeRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<UsersBadgeRecord>> queryUsersBadgeRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      UsersBadgeRecord.collection,
+      UsersBadgeRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<UsersBadgeRecord>> queryUsersBadgeRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      UsersBadgeRecord.collection,
+      UsersBadgeRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
