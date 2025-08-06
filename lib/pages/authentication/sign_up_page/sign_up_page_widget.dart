@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -555,6 +556,10 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                 onChanged: (newValue) async {
                                   safeSetState(
                                       () => _model.checkboxValue = newValue!);
+                                  if (newValue!) {
+                                    _model.isTermsAccepted = true;
+                                    safeSetState(() {});
+                                  }
                                 },
                                 side: (FlutterFlowTheme.of(context)
                                             .secondaryText !=
@@ -599,7 +604,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                     ),
                                     TextSpan(
                                       text: FFLocalizations.of(context).getText(
-                                        'p66j5q6c' /* Terms of Service */,
+                                        'p66j5q6c' /* Terms of Service  */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -620,6 +625,12 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
+                                      mouseCursor: SystemMouseCursors.click,
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () async {
+                                          context.pushNamed(
+                                              TermsOfUsePageWidget.routeName);
+                                        },
                                     ),
                                     TextSpan(
                                       text: FFLocalizations.of(context).getText(
@@ -672,6 +683,13 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
+                                      mouseCursor: SystemMouseCursors.click,
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () async {
+                                          context.pushNamed(
+                                              PrivacyPolicyPageWidget
+                                                  .routeName);
+                                        },
                                     )
                                   ],
                                   style: FlutterFlowTheme.of(context)
@@ -706,30 +724,51 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                 ),
                 FFButtonWidget(
                   onPressed: () async {
-                    GoRouter.of(context).prepareAuthEvent();
-                    if (_model.passwordTextController.text !=
-                        _model.confirmPasswordTextController.text) {
+                    if (_model.isTermsAccepted == true) {
+                      GoRouter.of(context).prepareAuthEvent();
+                      if (_model.passwordTextController.text !=
+                          _model.confirmPasswordTextController.text) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              'Passwords don\'t match!',
+                            ),
+                          ),
+                        );
+                        return;
+                      }
+
+                      final user = await authManager.createAccountWithEmail(
+                        context,
+                        _model.emailTextController.text,
+                        _model.passwordTextController.text,
+                      );
+                      if (user == null) {
+                        return;
+                      }
+
+                      context.pushNamedAuth(
+                          CreateProfilePageWidget.routeName, context.mounted);
+                    } else {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text(
-                            'Passwords don\'t match!',
+                            FFLocalizations.of(context).getVariableText(
+                              enText:
+                                  'You must accept the Terms of Use and Privacy Policy.',
+                              frText:
+                                  'Vous devez accepter les conditions d\'utlisation et la politique de confidentialité',
+                            ),
+                            style: TextStyle(
+                              color: FlutterFlowTheme.of(context).primaryText,
+                            ),
                           ),
+                          duration: Duration(milliseconds: 4000),
+                          backgroundColor:
+                              FlutterFlowTheme.of(context).secondary,
                         ),
                       );
-                      return;
                     }
-
-                    final user = await authManager.createAccountWithEmail(
-                      context,
-                      _model.emailTextController.text,
-                      _model.passwordTextController.text,
-                    );
-                    if (user == null) {
-                      return;
-                    }
-
-                    context.pushNamedAuth(
-                        CreateProfilePageWidget.routeName, context.mounted);
                   },
                   text: FFLocalizations.of(context).getText(
                     'xpp7ecs3' /* Create account */,
@@ -794,111 +833,201 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
-                          width: 150.0,
-                          height: 50.0,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            borderRadius: BorderRadius.circular(8.0),
-                            border: Border.all(
-                              color: FlutterFlowTheme.of(context).alternate,
-                              width: 1.0,
-                            ),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                12.0, 12.0, 12.0, 12.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                FaIcon(
-                                  FontAwesomeIcons.google,
-                                  color: FlutterFlowTheme.of(context).google,
-                                  size: 24.0,
-                                ),
-                                Text(
-                                  FFLocalizations.of(context).getText(
-                                    'r5vygmrx' /* Google */,
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        font: GoogleFonts.inter(
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
-                                        ),
-                                        letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontStyle,
+                        Flexible(
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              if (_model.isTermsAccepted == false) {
+                                GoRouter.of(context).prepareAuthEvent();
+                                final user =
+                                    await authManager.signInWithGoogle(context);
+                                if (user == null) {
+                                  return;
+                                }
+
+                                context.pushNamedAuth(
+                                    CreateProfilePageWidget.routeName,
+                                    context.mounted);
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      FFLocalizations.of(context)
+                                          .getVariableText(
+                                        enText:
+                                            'You must accept the Terms of Use and Privacy Policy.',
+                                        frText:
+                                            'Vous devez accepter les conditions d\'utlisation et la politique de confidentialité',
                                       ),
+                                      style: TextStyle(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                      ),
+                                    ),
+                                    duration: Duration(milliseconds: 4000),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context).secondary,
+                                  ),
+                                );
+                              }
+                            },
+                            child: Container(
+                              height: 50.0,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                borderRadius: BorderRadius.circular(8.0),
+                                border: Border.all(
+                                  color: FlutterFlowTheme.of(context).alternate,
+                                  width: 1.0,
                                 ),
-                              ].divide(SizedBox(width: 8.0)),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    12.0, 12.0, 12.0, 12.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    FaIcon(
+                                      FontAwesomeIcons.google,
+                                      color:
+                                          FlutterFlowTheme.of(context).google,
+                                      size: 24.0,
+                                    ),
+                                    Text(
+                                      FFLocalizations.of(context).getText(
+                                        'r5vygmrx' /* Google */,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            font: GoogleFonts.inter(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
+                                    ),
+                                  ].divide(SizedBox(width: 8.0)),
+                                ),
+                              ),
                             ),
                           ),
                         ),
-                        Container(
-                          width: 150.0,
-                          height: 50.0,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            borderRadius: BorderRadius.circular(8.0),
-                            border: Border.all(
-                              color: FlutterFlowTheme.of(context).alternate,
-                              width: 1.0,
-                            ),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                12.0, 12.0, 12.0, 12.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.facebook,
-                                  color: FlutterFlowTheme.of(context).facebook,
-                                  size: 24.0,
-                                ),
-                                Text(
-                                  FFLocalizations.of(context).getText(
-                                    '197fmvhm' /* Facebook */,
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        font: GoogleFonts.inter(
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
-                                        ),
-                                        letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontStyle,
+                        Flexible(
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              if (_model.isTermsAccepted == false) {
+                                GoRouter.of(context).prepareAuthEvent();
+                                final user =
+                                    await authManager.signInWithApple(context);
+                                if (user == null) {
+                                  return;
+                                }
+
+                                context.pushNamedAuth(
+                                    CreateProfilePageWidget.routeName,
+                                    context.mounted);
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      FFLocalizations.of(context)
+                                          .getVariableText(
+                                        enText:
+                                            'You must accept the Terms of Use and Privacy Policy.',
+                                        frText:
+                                            'Vous devez accepter les conditions d\'utlisation et la politique de confidentialité',
                                       ),
+                                      style: TextStyle(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                      ),
+                                    ),
+                                    duration: Duration(milliseconds: 4000),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context).secondary,
+                                  ),
+                                );
+                              }
+                            },
+                            child: Container(
+                              height: 50.0,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                borderRadius: BorderRadius.circular(8.0),
+                                border: Border.all(
+                                  color: FlutterFlowTheme.of(context).alternate,
+                                  width: 1.0,
                                 ),
-                              ].divide(SizedBox(width: 8.0)),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    12.0, 12.0, 12.0, 12.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.apple,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      size: 24.0,
+                                    ),
+                                    Text(
+                                      FFLocalizations.of(context).getText(
+                                        '5p8ay445' /* Apple */,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            font: GoogleFonts.inter(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
+                                    ),
+                                  ].divide(SizedBox(width: 8.0)),
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -931,25 +1060,35 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                         .fontStyle,
                                   ),
                         ),
-                        Text(
-                          FFLocalizations.of(context).getText(
-                            '8rx179ov' /* Sign in */,
-                          ),
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    font: GoogleFonts.inter(
-                                      fontWeight: FontWeight.w500,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontStyle,
-                                    ),
-                                    color: Color(0xFF4D6B4A),
-                                    letterSpacing: 0.0,
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed(LoginPageWidget.routeName);
+                          },
+                          child: Text(
+                            FFLocalizations.of(context).getText(
+                              '8rx179ov' /* Sign in */,
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  font: GoogleFonts.inter(
                                     fontWeight: FontWeight.w500,
                                     fontStyle: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .fontStyle,
                                   ),
+                                  color: Color(0xFF4D6B4A),
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w500,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontStyle,
+                                ),
+                          ),
                         ),
                       ].divide(SizedBox(width: 4.0)),
                     ),

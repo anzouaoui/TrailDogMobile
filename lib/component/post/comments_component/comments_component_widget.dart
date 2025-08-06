@@ -141,154 +141,180 @@ class _CommentsComponentWidgetState extends State<CommentsComponentWidget> {
                         decoration: BoxDecoration(),
                         child: Builder(
                           builder: (context) {
-                            return Align(
-                              alignment: AlignmentDirectional(0.0, 1.0),
-                              child: StreamBuilder<List<CommentsRecord>>(
-                                stream: queryCommentsRecord(
-                                  queryBuilder: (commentsRecord) =>
-                                      commentsRecord
-                                          .where(
-                                            'post_ref',
-                                            isEqualTo: containerPostsRecord
-                                                .reference,
-                                          )
-                                          .orderBy('timestamp',
-                                              descending: true),
-                                ),
-                                builder: (context, snapshot) {
-                                  // Customize what your widget looks like when it's loading.
-                                  if (!snapshot.hasData) {
-                                    return Center(
-                                      child: SizedBox(
-                                        width: 50.0,
-                                        height: 50.0,
-                                        child: CircularProgressIndicator(
-                                          valueColor:
-                                              AlwaysStoppedAnimation<Color>(
-                                            FlutterFlowTheme.of(context)
-                                                .primary,
-                                          ),
-                                        ),
-                                      ),
-                                    );
-                                  }
-                                  List<CommentsRecord>
-                                      listViewCommentsRecordList =
-                                      snapshot.data!;
-
-                                  return ListView.separated(
-                                    padding: EdgeInsets.zero,
-                                    primary: false,
-                                    shrinkWrap: true,
-                                    scrollDirection: Axis.vertical,
-                                    itemCount:
-                                        listViewCommentsRecordList.length,
-                                    separatorBuilder: (_, __) =>
-                                        SizedBox(height: 12.0),
-                                    itemBuilder: (context, listViewIndex) {
-                                      final listViewCommentsRecord =
-                                          listViewCommentsRecordList[
-                                              listViewIndex];
-                                      return InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onLongPress: () async {
-                                          if (listViewCommentsRecord
-                                                  .userRef ==
-                                              currentUserReference) {
-                                            var confirmDialogResponse =
-                                                await showDialog<bool>(
-                                                      context: context,
-                                                      builder:
-                                                          (alertDialogContext) {
-                                                        return AlertDialog(
-                                                          title: Text(
-                                                              FFLocalizations.of(
-                                                                      context)
-                                                                  .getVariableText(
-                                                            enText:
-                                                                'Delete comment',
-                                                            frText:
-                                                                'Supprimer mon commentaire',
-                                                          )),
-                                                          content: Text(
-                                                              FFLocalizations.of(
-                                                                      context)
-                                                                  .getVariableText(
-                                                            enText:
-                                                                'Do you really want to delete the comment?',
-                                                            frText:
-                                                                'Veux-tu vraiment supprimer le commentaire ?',
-                                                          )),
-                                                          actions: [
-                                                            TextButton(
-                                                              onPressed: () =>
-                                                                  Navigator.pop(
-                                                                      alertDialogContext,
-                                                                      false),
-                                                              child: Text(FFLocalizations.of(
-                                                                      context)
-                                                                  .getVariableText(
-                                                                enText:
-                                                                    'Cancel',
-                                                                frText:
-                                                                    'Annuler',
-                                                              )),
-                                                            ),
-                                                            TextButton(
-                                                              onPressed: () =>
-                                                                  Navigator.pop(
-                                                                      alertDialogContext,
-                                                                      true),
-                                                              child: Text(FFLocalizations.of(
-                                                                      context)
-                                                                  .getVariableText(
-                                                                enText:
-                                                                    'Delete',
-                                                                frText:
-                                                                    'Supprimer',
-                                                              )),
-                                                            ),
-                                                          ],
-                                                        );
-                                                      },
-                                                    ) ??
-                                                    false;
-                                            if (confirmDialogResponse) {
-                                              await listViewCommentsRecord
-                                                  .reference
-                                                  .delete();
-                                            }
-                                          }
-                                        },
-                                        child: wrapWithModel(
-                                          model: _model
-                                              .viewCommentComponentModels
-                                              .getModel(
-                                            listViewCommentsRecord
-                                                .reference.id,
-                                            listViewIndex,
-                                          ),
-                                          updateCallback: () =>
-                                              safeSetState(() {}),
-                                          child: ViewCommentComponentWidget(
-                                            key: Key(
-                                              'Key9cq_${listViewCommentsRecord.reference.id}',
+                            if (containerPostsRecord.commentsCount == 0) {
+                              return Align(
+                                alignment: AlignmentDirectional(0.0, 1.0),
+                                child: StreamBuilder<List<CommentsRecord>>(
+                                  stream: queryCommentsRecord(
+                                    parent: containerPostsRecord.reference,
+                                    queryBuilder: (commentsRecord) =>
+                                        commentsRecord.orderBy('timestamp',
+                                            descending: true),
+                                  ),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50.0,
+                                          height: 50.0,
+                                          child: CircularProgressIndicator(
+                                            valueColor:
+                                                AlwaysStoppedAnimation<Color>(
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
                                             ),
-                                            commentParameter:
-                                                listViewCommentsRecord
-                                                    .reference,
                                           ),
                                         ),
                                       );
-                                    },
-                                  );
-                                },
-                              ),
-                            );
-                                                    },
+                                    }
+                                    List<CommentsRecord>
+                                        listViewCommentsRecordList =
+                                        snapshot.data!;
+
+                                    return ListView.separated(
+                                      padding: EdgeInsets.zero,
+                                      primary: false,
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.vertical,
+                                      itemCount:
+                                          listViewCommentsRecordList.length,
+                                      separatorBuilder: (_, __) =>
+                                          SizedBox(height: 12.0),
+                                      itemBuilder: (context, listViewIndex) {
+                                        final listViewCommentsRecord =
+                                            listViewCommentsRecordList[
+                                                listViewIndex];
+                                        return InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onLongPress: () async {
+                                            if (containerPostsRecord.userRef ==
+                                                currentUserReference) {
+                                              var confirmDialogResponse =
+                                                  await showDialog<bool>(
+                                                        context: context,
+                                                        builder:
+                                                            (alertDialogContext) {
+                                                          return AlertDialog(
+                                                            title: Text(
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getVariableText(
+                                                              enText:
+                                                                  'Delete comment',
+                                                              frText:
+                                                                  'Supprimer mon commentaire',
+                                                            )),
+                                                            content: Text(
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getVariableText(
+                                                              enText:
+                                                                  'Do you really want to delete the comment?',
+                                                              frText:
+                                                                  'Veux-tu vraiment supprimer le commentaire ?',
+                                                            )),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext,
+                                                                        false),
+                                                                child: Text(FFLocalizations.of(
+                                                                        context)
+                                                                    .getVariableText(
+                                                                  enText:
+                                                                      'Cancel',
+                                                                  frText:
+                                                                      'Annuler',
+                                                                )),
+                                                              ),
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext,
+                                                                        true),
+                                                                child: Text(FFLocalizations.of(
+                                                                        context)
+                                                                    .getVariableText(
+                                                                  enText:
+                                                                      'Delete',
+                                                                  frText:
+                                                                      'Supprimer',
+                                                                )),
+                                                              ),
+                                                            ],
+                                                          );
+                                                        },
+                                                      ) ??
+                                                      false;
+                                              if (confirmDialogResponse) {
+                                                await listViewCommentsRecord
+                                                    .reference
+                                                    .delete();
+                                              }
+                                            }
+                                          },
+                                          child: wrapWithModel(
+                                            model: _model
+                                                .viewCommentComponentModels
+                                                .getModel(
+                                              listViewCommentsRecord
+                                                  .reference.id,
+                                              listViewIndex,
+                                            ),
+                                            updateCallback: () =>
+                                                safeSetState(() {}),
+                                            child: ViewCommentComponentWidget(
+                                              key: Key(
+                                                'Key9cq_${listViewCommentsRecord.reference.id}',
+                                              ),
+                                              commentParameter:
+                                                  listViewCommentsRecord
+                                                      .reference,
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  },
+                                ),
+                              );
+                            } else {
+                              return Align(
+                                alignment: AlignmentDirectional(0.0, 0.0),
+                                child: Text(
+                                  FFLocalizations.of(context).getText(
+                                    'uii732q5' /* No comments yet */,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        font: GoogleFonts.inter(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
+                                        letterSpacing: 0.0,
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
+                                ),
+                              );
+                            }
+                          },
                         ),
                       ),
                     ],
@@ -395,14 +421,14 @@ class _CommentsComponentWidgetState extends State<CommentsComponentWidget> {
                           size: 20.0,
                         ),
                         onPressed: () async {
-                          await CommentsRecord.collection
-                              .doc()
+                          await CommentsRecord.createDoc(
+                                  containerPostsRecord.reference)
                               .set(createCommentsRecordData(
-                                postRef: containerPostsRecord.reference,
-                                userRef: currentUserReference,
-                                text: _model.textController.text,
-                                timestamp: getCurrentTimestamp,
-                              ));
+                            postRef: containerPostsRecord.reference,
+                            userRef: currentUserReference,
+                            text: _model.textController.text,
+                            timestamp: getCurrentTimestamp,
+                          ));
 
                           await containerPostsRecord.reference.update({
                             ...mapToFirestore(

@@ -13,10 +13,8 @@ import 'schema/friends_requests_record.dart';
 import 'schema/chat_record.dart';
 import 'schema/messages_record.dart';
 import 'schema/posts_record.dart';
-import 'schema/comments_record.dart';
 import 'schema/notifications_record.dart';
-import 'schema/badges_record.dart';
-import 'schema/users_badge_record.dart';
+import 'schema/comments_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart' hide Order;
@@ -33,10 +31,8 @@ export 'schema/friends_requests_record.dart';
 export 'schema/chat_record.dart';
 export 'schema/messages_record.dart';
 export 'schema/posts_record.dart';
-export 'schema/comments_record.dart';
 export 'schema/notifications_record.dart';
-export 'schema/badges_record.dart';
-export 'schema/users_badge_record.dart';
+export 'schema/comments_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -346,43 +342,6 @@ Future<List<PostsRecord>> queryPostsRecordOnce({
       singleRecord: singleRecord,
     );
 
-/// Functions to query CommentsRecords (as a Stream and as a Future).
-Future<int> queryCommentsRecordCount({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-}) =>
-    queryCollectionCount(
-      CommentsRecord.collection,
-      queryBuilder: queryBuilder,
-      limit: limit,
-    );
-
-Stream<List<CommentsRecord>> queryCommentsRecord({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollection(
-      CommentsRecord.collection,
-      CommentsRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<List<CommentsRecord>> queryCommentsRecordOnce({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollectionOnce(
-      CommentsRecord.collection,
-      CommentsRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
 /// Functions to query NotificationsRecords (as a Stream and as a Future).
 Future<int> queryNotificationsRecordCount({
   Query Function(Query)? queryBuilder,
@@ -420,75 +379,41 @@ Future<List<NotificationsRecord>> queryNotificationsRecordOnce({
       singleRecord: singleRecord,
     );
 
-/// Functions to query BadgesRecords (as a Stream and as a Future).
-Future<int> queryBadgesRecordCount({
+/// Functions to query CommentsRecords (as a Stream and as a Future).
+Future<int> queryCommentsRecordCount({
+  DocumentReference? parent,
   Query Function(Query)? queryBuilder,
   int limit = -1,
 }) =>
     queryCollectionCount(
-      BadgesRecord.collection,
+      CommentsRecord.collection(parent),
       queryBuilder: queryBuilder,
       limit: limit,
     );
 
-Stream<List<BadgesRecord>> queryBadgesRecord({
+Stream<List<CommentsRecord>> queryCommentsRecord({
+  DocumentReference? parent,
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollection(
-      BadgesRecord.collection,
-      BadgesRecord.fromSnapshot,
+      CommentsRecord.collection(parent),
+      CommentsRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
 
-Future<List<BadgesRecord>> queryBadgesRecordOnce({
+Future<List<CommentsRecord>> queryCommentsRecordOnce({
+  DocumentReference? parent,
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollectionOnce(
-      BadgesRecord.collection,
-      BadgesRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-/// Functions to query UsersBadgeRecords (as a Stream and as a Future).
-Future<int> queryUsersBadgeRecordCount({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-}) =>
-    queryCollectionCount(
-      UsersBadgeRecord.collection,
-      queryBuilder: queryBuilder,
-      limit: limit,
-    );
-
-Stream<List<UsersBadgeRecord>> queryUsersBadgeRecord({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollection(
-      UsersBadgeRecord.collection,
-      UsersBadgeRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<List<UsersBadgeRecord>> queryUsersBadgeRecordOnce({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollectionOnce(
-      UsersBadgeRecord.collection,
-      UsersBadgeRecord.fromSnapshot,
+      CommentsRecord.collection(parent),
+      CommentsRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

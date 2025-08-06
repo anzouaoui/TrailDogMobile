@@ -318,4 +318,41 @@ class FFAppState extends ChangeNotifier {
   set activitySelected(DocumentReference? value) {
     _activitySelected = value;
   }
+
+  /// Vitesse en km/h
+  double _speedKmh = 0.0;
+  double get speedKmh => _speedKmh;
+  set speedKmh(double value) {
+    _speedKmh = value;
+  }
+
+  /// Liste des vitesses enregistré
+  List<double> _speedList = [];
+  List<double> get speedList => _speedList;
+  set speedList(List<double> value) {
+    _speedList = value;
+  }
+
+  void addToSpeedList(double value) {
+    speedList.add(value);
+  }
+
+  void removeFromSpeedList(double value) {
+    speedList.remove(value);
+  }
+
+  void removeAtIndexFromSpeedList(int index) {
+    speedList.removeAt(index);
+  }
+
+  void updateSpeedListAtIndex(
+    int index,
+    double Function(double) updateFn,
+  ) {
+    speedList[index] = updateFn(_speedList[index]);
+  }
+
+  void insertAtIndexInSpeedList(int index, double value) {
+    speedList.insert(index, value);
+  }
 }

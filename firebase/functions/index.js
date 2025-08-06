@@ -60,14 +60,4 @@ exports.onUserDeleted = functions
           await doc.ref.delete();
         }
       });
-    await firestore
-      .collection("comments")
-      .where("user_ref", "==", userRef)
-      .get()
-      .then(async (querySnapshot) => {
-        for (var doc of querySnapshot.docs) {
-          console.log(`Deleting document ${doc.id} from collection comments`);
-          await doc.ref.delete();
-        }
-      });
   });

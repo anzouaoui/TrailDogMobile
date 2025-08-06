@@ -47,8 +47,8 @@ class _CreateProfilDogPageWidgetState extends State<CreateProfilDogPageWidget> {
     _model.textFieldWeightTextController ??= TextEditingController();
     _model.textFieldWeightFocusNode ??= FocusNode();
 
-    _model.textFieldHealthTextController ??= TextEditingController();
-    _model.textFieldHealthFocusNode ??= FocusNode();
+    _model.textController5 ??= TextEditingController();
+    _model.textFieldFocusNode ??= FocusNode();
 
     _model.textFieldTattooTextController ??= TextEditingController();
     _model.textFieldTattooFocusNode ??= FocusNode();
@@ -123,83 +123,100 @@ class _CreateProfilDogPageWidgetState extends State<CreateProfilDogPageWidget> {
                           children: [
                             Align(
                               alignment: AlignmentDirectional(0.0, -1.0),
-                              child: Container(
-                                width: 100.0,
-                                height: 100.0,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                    color:
-                                        FlutterFlowTheme.of(context).tertiary,
-                                    width: 4.0,
-                                  ),
-                                ),
-                                child: InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    final selectedMedia =
-                                        await selectMediaWithSourceBottomSheet(
-                                      context: context,
-                                      maxWidth: 90.00,
-                                      maxHeight: 90.00,
-                                      allowPhoto: true,
-                                    );
-                                    if (selectedMedia != null &&
-                                        selectedMedia.every((m) =>
-                                            validateFileFormat(
-                                                m.storagePath, context))) {
-                                      safeSetState(() => _model
-                                          .isDataUploading_dogUploaded = true);
-                                      var selectedUploadedFiles =
-                                          <FFUploadedFile>[];
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  final selectedMedia =
+                                      await selectMediaWithSourceBottomSheet(
+                                    context: context,
+                                    maxWidth: 60.00,
+                                    maxHeight: 60.00,
+                                    imageQuality: 80,
+                                    allowPhoto: true,
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                    textColor: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    pickerFontFamily: 'Outfit',
+                                  );
+                                  if (selectedMedia != null &&
+                                      selectedMedia.every((m) =>
+                                          validateFileFormat(
+                                              m.storagePath, context))) {
+                                    safeSetState(() => _model
+                                        .isDataUploading_uploadData2mc = true);
+                                    var selectedUploadedFiles =
+                                        <FFUploadedFile>[];
 
-                                      var downloadUrls = <String>[];
-                                      try {
-                                        selectedUploadedFiles = selectedMedia
-                                            .map((m) => FFUploadedFile(
-                                                  name: m.storagePath
-                                                      .split('/')
-                                                      .last,
-                                                  bytes: m.bytes,
-                                                  height: m.dimensions?.height,
-                                                  width: m.dimensions?.width,
-                                                  blurHash: m.blurHash,
-                                                ))
-                                            .toList();
+                                    var downloadUrls = <String>[];
+                                    try {
+                                      showUploadMessage(
+                                        context,
+                                        'Uploading file...',
+                                        showLoading: true,
+                                      );
+                                      selectedUploadedFiles = selectedMedia
+                                          .map((m) => FFUploadedFile(
+                                                name: m.storagePath
+                                                    .split('/')
+                                                    .last,
+                                                bytes: m.bytes,
+                                                height: m.dimensions?.height,
+                                                width: m.dimensions?.width,
+                                                blurHash: m.blurHash,
+                                              ))
+                                          .toList();
 
-                                        downloadUrls = (await Future.wait(
-                                          selectedMedia.map(
-                                            (m) async => await uploadData(
-                                                m.storagePath, m.bytes),
-                                          ),
-                                        ))
-                                            .where((u) => u != null)
-                                            .map((u) => u!)
-                                            .toList();
-                                      } finally {
-                                        _model.isDataUploading_dogUploaded =
-                                            false;
-                                      }
-                                      if (selectedUploadedFiles.length ==
-                                              selectedMedia.length &&
-                                          downloadUrls.length ==
-                                              selectedMedia.length) {
-                                        safeSetState(() {
-                                          _model.uploadedLocalFile_dogUploaded =
-                                              selectedUploadedFiles.first;
-                                          _model.uploadedFileUrl_dogUploaded =
-                                              downloadUrls.first;
-                                        });
-                                      } else {
-                                        safeSetState(() {});
-                                        return;
-                                      }
+                                      downloadUrls = (await Future.wait(
+                                        selectedMedia.map(
+                                          (m) async => await uploadData(
+                                              m.storagePath, m.bytes),
+                                        ),
+                                      ))
+                                          .where((u) => u != null)
+                                          .map((u) => u!)
+                                          .toList();
+                                    } finally {
+                                      ScaffoldMessenger.of(context)
+                                          .hideCurrentSnackBar();
+                                      _model.isDataUploading_uploadData2mc =
+                                          false;
                                     }
-                                  },
+                                    if (selectedUploadedFiles.length ==
+                                            selectedMedia.length &&
+                                        downloadUrls.length ==
+                                            selectedMedia.length) {
+                                      safeSetState(() {
+                                        _model.uploadedLocalFile_uploadData2mc =
+                                            selectedUploadedFiles.first;
+                                        _model.uploadedFileUrl_uploadData2mc =
+                                            downloadUrls.first;
+                                      });
+                                      showUploadMessage(context, 'Success!');
+                                    } else {
+                                      safeSetState(() {});
+                                      showUploadMessage(
+                                          context, 'Failed to upload data');
+                                      return;
+                                    }
+                                  }
+                                },
+                                child: Container(
+                                  width: 100.0,
+                                  height: 100.0,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    shape: BoxShape.circle,
+                                    border: Border.all(
+                                      color:
+                                          FlutterFlowTheme.of(context).tertiary,
+                                      width: 4.0,
+                                    ),
+                                  ),
                                   child: Container(
                                     width: 200.0,
                                     height: 200.0,
@@ -208,7 +225,7 @@ class _CreateProfilDogPageWidgetState extends State<CreateProfilDogPageWidget> {
                                       shape: BoxShape.circle,
                                     ),
                                     child: Image.network(
-                                      'https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHwxfHxkb2d8ZW58MHx8fHwxNzQ5NjUyNDE3fDA&ixlib=rb-4.1.0&q=80&w=1080',
+                                      _model.uploadedFileUrl_uploadData2mc,
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -636,7 +653,6 @@ class _CreateProfilDogPageWidgetState extends State<CreateProfilDogPageWidget> {
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                  keyboardType: TextInputType.number,
                                   validator: _model
                                       .textFieldOtherBreedTextControllerValidator
                                       .asValidator(context),
@@ -1228,9 +1244,8 @@ class _CreateProfilDogPageWidgetState extends State<CreateProfilDogPageWidget> {
                             Container(
                               width: double.infinity,
                               child: TextFormField(
-                                controller:
-                                    _model.textFieldHealthTextController,
-                                focusNode: _model.textFieldHealthFocusNode,
+                                controller: _model.textController5,
+                                focusNode: _model.textFieldFocusNode,
                                 autofocus: false,
                                 obscureText: false,
                                 decoration: InputDecoration(
@@ -1257,7 +1272,7 @@ class _CreateProfilDogPageWidgetState extends State<CreateProfilDogPageWidget> {
                                             .fontStyle,
                                       ),
                                   hintText: FFLocalizations.of(context).getText(
-                                    'kiuikx4v' /* TextField */,
+                                    'xq049vc1' /* TextField */,
                                   ),
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .labelMedium
@@ -1279,7 +1294,6 @@ class _CreateProfilDogPageWidgetState extends State<CreateProfilDogPageWidget> {
                                         fontStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .fontStyle,
-                                        lineHeight: 10.0,
                                       ),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -1333,10 +1347,11 @@ class _CreateProfilDogPageWidgetState extends State<CreateProfilDogPageWidget> {
                                           .bodyMedium
                                           .fontStyle,
                                     ),
+                                maxLines: 10,
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primaryText,
-                                validator: _model
-                                    .textFieldHealthTextControllerValidator
+                                enableInteractiveSelection: true,
+                                validator: _model.textController5Validator
                                     .asValidator(context),
                               ),
                             ),
@@ -1501,13 +1516,12 @@ class _CreateProfilDogPageWidgetState extends State<CreateProfilDogPageWidget> {
                                   _model.textFieldWeightTextController.text),
                               mainActivity: _model.dropDownActivityValue,
                               experience: _model.dropDownExperienceValue,
-                              healthInformation:
-                                  _model.textFieldHealthTextController.text,
+                              healthInformation: _model.textController5.text,
                               puce: _model.textFieldTattooTextController.text,
                               age: int.tryParse(_model
                                   .textFieldOtherBreedTextController.text),
                               activitiesCount: 0,
-                              imagePath: _model.uploadedFileUrl_dogUploaded,
+                              imagePath: _model.uploadedFileUrl_uploadData2mc,
                             ));
                             _model.dogOutput = DogRecord.getDocumentFromData(
                                 createDogRecordData(
@@ -1523,13 +1537,14 @@ class _CreateProfilDogPageWidgetState extends State<CreateProfilDogPageWidget> {
                                   mainActivity: _model.dropDownActivityValue,
                                   experience: _model.dropDownExperienceValue,
                                   healthInformation:
-                                      _model.textFieldHealthTextController.text,
+                                      _model.textController5.text,
                                   puce:
                                       _model.textFieldTattooTextController.text,
                                   age: int.tryParse(_model
                                       .textFieldOtherBreedTextController.text),
                                   activitiesCount: 0,
-                                  imagePath: _model.uploadedFileUrl_dogUploaded,
+                                  imagePath:
+                                      _model.uploadedFileUrl_uploadData2mc,
                                 ),
                                 dogRecordReference);
 

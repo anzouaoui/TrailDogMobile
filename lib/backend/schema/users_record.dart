@@ -118,6 +118,11 @@ class UsersRecord extends FirestoreRecord {
   int get totalActivities => _totalActivities ?? 0;
   bool hasTotalActivities() => _totalActivities != null;
 
+  // "is_premium" field.
+  bool? _isPremium;
+  bool get isPremium => _isPremium ?? false;
+  bool hasIsPremium() => _isPremium != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -139,6 +144,7 @@ class UsersRecord extends FirestoreRecord {
     _totalHours = castToType<int>(snapshotData['total_hours']);
     _badgesCount = castToType<int>(snapshotData['badges_count']);
     _totalActivities = castToType<int>(snapshotData['total_activities']);
+    _isPremium = snapshotData['is_premium'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -220,6 +226,7 @@ class UsersRecord extends FirestoreRecord {
             ParamType.int,
             false,
           ),
+          'is_premium': snapshot.data['is_premium'],
         },
         UsersRecord.collection.doc(snapshot.objectID),
       );
@@ -276,6 +283,7 @@ Map<String, dynamic> createUsersRecordData({
   int? totalHours,
   int? badgesCount,
   int? totalActivities,
+  bool? isPremium,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -299,6 +307,7 @@ Map<String, dynamic> createUsersRecordData({
       'total_hours': totalHours,
       'badges_count': badgesCount,
       'total_activities': totalActivities,
+      'is_premium': isPremium,
     }.withoutNulls,
   );
 
@@ -329,7 +338,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.totalDitance == e2?.totalDitance &&
         e1?.totalHours == e2?.totalHours &&
         e1?.badgesCount == e2?.badgesCount &&
-        e1?.totalActivities == e2?.totalActivities;
+        e1?.totalActivities == e2?.totalActivities &&
+        e1?.isPremium == e2?.isPremium;
   }
 
   @override
@@ -353,7 +363,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.totalDitance,
         e?.totalHours,
         e?.badgesCount,
-        e?.totalActivities
+        e?.totalActivities,
+        e?.isPremium
       ]);
 
   @override

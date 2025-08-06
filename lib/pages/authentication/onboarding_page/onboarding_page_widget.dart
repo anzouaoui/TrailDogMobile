@@ -65,9 +65,9 @@ class _OnboardingPageWidgetState extends State<OnboardingPageWidget> {
                           width: double.infinity,
                           height: double.infinity,
                           decoration: BoxDecoration(
-                            color: Color(0xFF2F4C37),
+                            color: Color(0xFF1F4332),
                             image: DecorationImage(
-                              fit: BoxFit.cover,
+                              fit: BoxFit.contain,
                               image: Image.asset(
                                 'assets/images/37311a74-55d8-494d-bf5a-8d4ea7cb1cfe.png',
                               ).image,

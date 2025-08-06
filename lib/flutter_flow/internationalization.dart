@@ -150,22 +150,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Activity Details',
       'fr': 'Détails de l\'activité',
     },
-    'wojb60c6': {
-      'en': 'Duration',
-      'fr': 'Durée',
-    },
-    'v5znqu7y': {
-      'en': 'Distance',
-      'fr': 'Distance',
-    },
-    '41eub9tl': {
-      'en': 'Step',
-      'fr': 'Étape',
-    },
-    '2uvpm3it': {
-      'en': 'Step',
-      'fr': 'Étape',
-    },
     '9bdvjpst': {
       'en': 'NOTES',
       'fr': 'NOTES',
@@ -353,14 +337,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'zkhv17c4': {
       'en': 'Your bio',
       'fr': 'Votre biographie',
-    },
-    '1ui95q7q': {
-      'en': 'Birthdate',
-      'fr': 'Date de naissance',
-    },
-    '9lykncxq': {
-      'en': 'Your Birthdate',
-      'fr': 'Votre date de naissance',
     },
     'll34a27q': {
       'en': 'Gender',
@@ -556,9 +532,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'health information',
       'fr': 'informations sur la santé',
     },
-    'ms6z2d8i': {
+    'ok252ojb': {
       'en': 'TextField',
-      'fr': 'Champ de texte',
+      'fr': '',
     },
     '5i9d63ze': {
       'en': 'Chip/tattoo',
@@ -630,9 +606,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Google',
       'fr': 'Google',
     },
-    'n02vqww1': {
-      'en': 'Facebook',
-      'fr': 'Facebook',
+    'emqr5ibu': {
+      'en': 'Apple',
+      'fr': 'Apple',
     },
     'oain97kp': {
       'en': 'Don\'t have an account?',
@@ -725,14 +701,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'cnkufmnm': {
       'en': 'Manage Google Fit or Apple Health apps',
       'fr': 'Gérer les applications Google Fit ou Apple Health',
-    },
-    'd6ufageb': {
-      'en': 'Health Alerts',
-      'fr': 'Alertes sanitaires',
-    },
-    'r54onir7': {
-      'en': 'Set up health monitoring and reminders',
-      'fr': 'Configurer la surveillance de la santé et les rappels',
     },
     'h1oljsf7': {
       'en': 'App Settings',
@@ -917,9 +885,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'health information',
       'fr': 'informations sur la santé',
     },
-    'kiuikx4v': {
+    'xq049vc1': {
       'en': 'TextField',
-      'fr': 'Champ de texte',
+      'fr': '',
     },
     '6yl0p9hq': {
       'en': 'Chip/tattoo',
@@ -1028,15 +996,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'hkxpks1v': {
       'en': 'accept the ',
-      'fr': 'accepter le',
+      'fr': 'accepter les ',
     },
     'p66j5q6c': {
-      'en': 'Terms of Service',
-      'fr': 'Conditions d\'utilisation',
+      'en': 'Terms of Service ',
+      'fr': 'Conditions d\'utilisation ',
     },
     'bwumualg': {
       'en': ' and ',
-      'fr': 'et',
+      'fr': 'et ',
     },
     'idpvhsy9': {
       'en': 'Privacy Policy',
@@ -1054,9 +1022,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Google',
       'fr': 'Google',
     },
-    '197fmvhm': {
-      'en': 'Facebook',
-      'fr': 'Facebook',
+    '5p8ay445': {
+      'en': 'Apple',
+      'fr': 'Apple',
     },
     'liuqs1uu': {
       'en': 'Already have an account? ',
@@ -1735,6 +1703,1006 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Soumettre un avis',
     },
   },
+  // PaywallPage
+  {
+    'on5b6x22': {
+      'en': 'Cancel',
+      'fr': 'Annuler',
+    },
+    '13dx609j': {
+      'en': 'Becom a Premium trailer ',
+      'fr': 'Devenez un trailer Premium',
+    },
+    '8fy83t4b': {
+      'en': 'Advanced analytics : ',
+      'fr': 'Analyses avancées : ',
+    },
+    'm6rm4or8': {
+      'en': 'speed, elevation, and cadence charts',
+      'fr': 'tableaux de vitesse, d\'élévation et de cadence',
+    },
+    'gfrnvqwh': {
+      'en': 'Segments & leaderboards : ',
+      'fr': 'Segments et classements : ',
+    },
+    'revwvd5i': {
+      'en': 'automatic generation and ranking',
+      'fr': 'génération et classement automatiques',
+    },
+    '9d411qio': {
+      'en': 'Health alerts : ',
+      'fr': 'Alertes sanitaires : ',
+    },
+    'qgzxepm9': {
+      'en': 'custom thresholds and reminders for your dog',
+      'fr': 'seuils et rappels personnalisés pour votre chien',
+    },
+    'jwqpse5m': {
+      'en': 'AI recommendations : ',
+      'fr': 'Recommandations de l\'IA : ',
+    },
+    '833kowf5': {
+      'en': 'smart route suggestions',
+      'fr': 'suggestions d\'itinéraires intelligents',
+    },
+    'key8ja4x': {
+      'en': '  Personalized insights & suggestions :  ',
+      'fr': 'Informations et suggestions personnalisées :',
+    },
+    '0qak866p': {
+      'en': 'based on your activity',
+      'fr': 'en fonction de votre activité',
+    },
+    'oxf36xb1': {
+      'en': 'Device integration : ',
+      'fr': 'Intégration des appareils :',
+    },
+    'iej6ofu7': {
+      'en': 'connect GPS trackers and smartwatches',
+      'fr': 'connecter les trackers GPS et les montres connectées',
+    },
+    'tmqnq7qy': {
+      'en': 'Monthly',
+      'fr': 'Mensuel',
+    },
+    'w9rnhrrf': {
+      'en': '\$6.99 / month',
+      'fr': '6,99 € / mois',
+    },
+    'ol6yj558': {
+      'en': 'Buy',
+      'fr': 'Acheter',
+    },
+  },
+  // ForgotPasswordPage
+  {
+    'hdv83vy0': {
+      'en': 'Forgot Password',
+      'fr': 'Mot de passe oublié',
+    },
+    '5ac1ip9d': {
+      'en':
+          'We will send you an email with a link to reset your password, please enter the email associated with your account below.',
+      'fr':
+          'Nous vous enverrons un e-mail avec un lien pour réinitialiser votre mot de passe, veuillez saisir l\'e-mail associé à votre compte ci-dessous.',
+    },
+    'zmxiqv15': {
+      'en': 'Your email address...',
+      'fr': 'Votre adresse e-mail...',
+    },
+    'nasgs8ny': {
+      'en': 'Enter your email...',
+      'fr': '',
+    },
+    'o0fywjyj': {
+      'en': 'Send Link',
+      'fr': 'Envoyer le lien',
+    },
+    'c60tgicg': {
+      'en': 'Home',
+      'fr': '',
+    },
+  },
+  // TermsOfUsePage
+  {
+    'hxvhc0rk': {
+      'en': 'Terms of Use',
+      'fr': 'Conditions d\'utilisation',
+    },
+    'z4vksbx4': {
+      'en': 'Last updated: August  2025',
+      'fr': 'Dernière mise à jour : août 2025',
+    },
+    'uy9evh3k': {
+      'en':
+          'Welcome to TrailDog! By using our mobile application, you agree to comply with the following Terms of Use. Please read them carefully.',
+      'fr':
+          'Bienvenue sur TrailDog ! En utilisant notre application mobile, vous acceptez les conditions d\'utilisation suivantes. Veuillez les lire attentivement.',
+    },
+    'rob688jf': {
+      'en': '1. Purpose of the App',
+      'fr': '1. Objectif de l\'application',
+    },
+    'v5x7rgmd': {
+      'en':
+          'TrailDog is a mobile application designed for dog owners to record, track, and share their outdoor activities (hiking, canicross, walking, etc.). Some features are only available through a premium subscription.',
+      'fr':
+          'TrailDog est une application mobile conçue pour les propriétaires de chiens, permettant d\'enregistrer, de suivre et de partager leurs activités de plein air (randonnée, canicross, promenade, etc.). Certaines fonctionnalités sont uniquement disponibles via un abonnement premium.',
+    },
+    'c6ttz9uo': {
+      'en': '2. User Account',
+      'fr': '2. Compte utilisateur',
+    },
+    '3tyihk2t': {
+      'en':
+          '• You must create an account to use TrailDog.\n• You are responsible for the accuracy of the information you provide.\n• You agree not to impersonate others or create fake accounts.',
+      'fr':
+          '• Vous devez créer un compte pour utiliser TrailDog.\n• Vous êtes responsable de l\'exactitude des informations que vous fournissez.\n• Vous vous engagez à ne pas vous faire passer pour quelqu\'un d\'autre ni à créer de faux comptes.',
+    },
+    'kx2663z5': {
+      'en': '3. Respect and Safety',
+      'fr': '3. Respect et sécurité',
+    },
+    'cynt7nhv': {
+      'en':
+          '• All shared content (text, photos, comments) must remain respectful and appropriate.\n• It is strictly forbidden to harass, threaten, or share offensive, discriminatory, or illegal content.\n• The TrailDog team reserves the right to delete inappropriate content or suspend accounts.',
+      'fr':
+          '• Tout contenu partagé (texte, photos, commentaires) doit rester respectueux et approprié.\n• Il est strictement interdit de harceler, de menacer ou de partager du contenu offensant, discriminatoire ou illégal.\n• L\'équipe TrailDog se réserve le droit de supprimer tout contenu inapproprié ou de suspendre un compte.',
+    },
+    'vdsxghou': {
+      'en': '4. Activity Tracking and Health Data',
+      'fr': '4. Suivi des activités et données de santé',
+    },
+    'bluz9vxm': {
+      'en':
+          '• TrailDog uses GPS tracking and, with your explicit consent, may access health data (heart rate, calories, etc.).\n• This data is used solely to improve your experience and will never be shared with third parties without your consent.',
+      'fr':
+          '• TrailDog utilise le suivi GPS et, avec votre consentement explicite, peut accéder à vos données de santé (fréquence cardiaque, calories, etc.).\n• Ces données sont utilisées uniquement pour améliorer votre expérience et ne seront jamais partagées avec des tiers sans votre consentement.',
+    },
+    'x624uyup': {
+      'en': '5. Subscriptions and Premium Features',
+      'fr': '5. Abonnements et fonctionnalités premium',
+    },
+    'vkpb3l3r': {
+      'en':
+          '• Some features (exclusive badges, health alerts, personalized route recommendations, etc.) require a paid subscription.\n• You can view and manage your subscription anytime through the App Store or Google Play',
+      'fr':
+          '• Certaines fonctionnalités (badges exclusifs, alertes santé, recommandations d\'itinéraires personnalisées, etc.) nécessitent un abonnement payant.\n• Vous pouvez consulter et gérer votre abonnement à tout moment via l\'App Store ou Google Play.',
+    },
+    'cf7x0nmg': {
+      'en': '6. Intellectual Property',
+      'fr': '6. Propriété intellectuelle',
+    },
+    '261jobwh': {
+      'en':
+          '• All content in the app (logos, illustrations, text, algorithms) is the property of TrailDog or its partners.\n• Any unauthorized reproduction or use is strictly prohibited.',
+      'fr':
+          '• L\'ensemble du contenu de l\'application (logos, illustrations, textes, algorithmes) est la propriété de TrailDog ou de ses partenaires.\n• Toute reproduction ou utilisation non autorisée est strictement interdite.',
+    },
+    '6iss7deo': {
+      'en': '7. Liability',
+      'fr': '7. Responsabilité',
+    },
+    'xjlash3c': {
+      'en':
+          '• You use the app at your own risk.\n• TrailDog cannot be held responsible for accidents, misinterpretation of data, or data loss.',
+      'fr':
+          '• Vous utilisez l\'application à vos propres risques.\n• TrailDog ne peut être tenu responsable des accidents, de la mauvaise interprétation des données ou de la perte de données.',
+    },
+    '0vf771v2': {
+      'en': '8. Changes to the Terms',
+      'fr': '8. Modifications des conditions',
+    },
+    '98mk75fw': {
+      'en':
+          'We reserve the right to modify these Terms of Use at any time. Any changes will be communicated via the app.',
+      'fr':
+          '• Vous utilisez l\'application à vos propres risques.\n• TrailDog ne peut être tenu responsable des accidents, de la mauvaise interprétation des données ou de la perte de données.',
+    },
+    'y1txr5dm': {
+      'en': '9. Contact',
+      'fr': '9. Contact',
+    },
+    'vslyeqea': {
+      'en': 'For any questions, suggestions, or reports:',
+      'fr': 'Pour toute question, suggestion ou signalement :',
+    },
+    'hws08f12': {
+      'en': 'devmobflutterflow@gmail.com',
+      'fr': 'devmobflutterflow@gmail.com',
+    },
+    'qvfem0pe': {
+      'en':
+          'By continuing to use this application, you acknowledge that you have read, understood, and agree to be bound by these Terms of Use.',
+      'fr':
+          'En continuant à utiliser cette application, vous reconnaissez avoir lu, compris et accepté d\'être lié par ces conditions d\'utilisation.',
+    },
+  },
+  // PrivacyPolicyPage
+  {
+    '36sqvdkt': {
+      'en': 'Privacy Policy',
+      'fr': 'politique de confidentialité',
+    },
+    'wu8gl4vl': {
+      'en': 'Last updated: August  2025',
+      'fr': 'Dernière mise à jour : août 2025',
+    },
+    'rdxjjk4c': {
+      'en':
+          'By using TrailDog, you agree to the collection, use, and disclosure of your personal data as described in this Privacy Policy.',
+      'fr':
+          'En utilisant TrailDog, vous acceptez la collecte, l\'utilisation et la divulgation de vos données personnelles comme décrit dans cette politique de confidentialité.',
+    },
+    'dx7b50k8': {
+      'en': '1. Data We Collect',
+      'fr': '1. Données que nous collectons',
+    },
+    'sqo2duaq': {
+      'en':
+          '• Non‑personally identifiable data: Device type, operating system, app usage logs, aggregated analytics.\n• Personal data: Account registration information (name, email), GPS location during activities, optional health metrics (heart rate, calories) if you give explicit consent.',
+      'fr':
+          '• Données non personnelles identifiables : type d’appareil, système d’exploitation, journaux d’utilisation des applications, analyses agrégées.\n• Données personnelles : informations d’enregistrement du compte (nom, e-mail), localisation GPS pendant les activités, mesures de santé facultatives (fréquence cardiaque, calories) si vous donnez votre consentement explicite.',
+    },
+    'lz6b372k': {
+      'en': '2. How We Collect Information',
+      'fr': '2. Comment nous collectons les informations',
+    },
+    'brabipn7': {
+      'en':
+          '• You provide personal data when creating an account or updating your profile.\n• The app collects location and activity data during use if enabled.\n• Analytics data is collected automatically to improve app performance and user experience.',
+      'fr':
+          '• Vous fournissez des données personnelles lors de la création d\'un compte ou de la mise à jour de votre profil.\n• L\'application collecte des données de localisation et d\'activité pendant l\'utilisation si cette option est activée.\n• Les données d\'analyse sont collectées automatiquement pour améliorer les performances de l\'application et l\'expérience utilisateur.',
+    },
+    'oy611k4b': {
+      'en': '3. How We Use Your Information',
+      'fr': '3. Comment nous utilisons vos informations',
+    },
+    'laycbaph': {
+      'en':
+          '• To register and manage your TrailDog account.\n• To track and display your outdoor activities (e.g., hiking, canicross).\n• To personalize your experience (badges, alerts, route recommendations).\n• For analytics and app optimization.\n• To communicate with you about updates, support issues, or changes to the Terms and Policies.',
+      'fr':
+          '• Pour enregistrer et gérer votre compte TrailDog.\n• Pour suivre et afficher vos activités de plein air (par exemple, randonnée, canicross).\n• Pour personnaliser votre expérience (badges, alertes, recommandations d\'itinéraires).\n• Pour l\'analyse et l\'optimisation de l\'application.\n• Pour vous informer des mises à jour, des problèmes d\'assistance ou des modifications des Conditions générales.',
+    },
+    'qi5y03e2': {
+      'en': '4. Third‑Party Sharing & Disclosure',
+      'fr': '4. Partage et divulgation à des tiers',
+    },
+    '04w4r6dl': {
+      'en':
+          '• We do not sell or rent your personal data.\n• Data may be shared with trusted third-party service providers (analytics, hosting) under GDPR-compliant agreements.\n• We may disclose personal information if required by law or to protect the safety and rights of users or TrailDog.',
+      'fr':
+          '• Nous ne vendons ni ne louons vos données personnelles.\n• Les données peuvent être partagées avec des prestataires de services tiers de confiance (analyse, hébergement) dans le cadre d\'accords conformes au RGPD.\n• Nous pouvons divulguer des informations personnelles si la loi l\'exige ou pour protéger la sécurité et les droits des utilisateurs ou de TrailDog.',
+    },
+    'gw3uu62z': {
+      'en': '5. Cookies and Tracking',
+      'fr': '5. Abonnements et fonctionnalités premium',
+    },
+    'gnm4my7o': {
+      'en':
+          '• We use cookies and similar technologies for functional, analytical, and optional marketing purposes.\n• You can manage or disable cookies in your device settings. Disabling cookies may affect app functionality.',
+      'fr':
+          '• Nous utilisons des cookies et des technologies similaires à des fins fonctionnelles, analytiques et marketing facultatives.\n• Vous pouvez gérer ou désactiver les cookies dans les paramètres de votre appareil. La désactivation des cookies peut affecter les fonctionnalités de l\'application.',
+    },
+    'fsqvnyr2': {
+      'en': '6. Data Retention & Storage',
+      'fr': '6. Conservation et stockage des données',
+    },
+    '9agld065': {
+      'en':
+          '• We retain personal data only as long as necessary to fulfill service functions, comply with legal obligations, or resolve disputes.\n• When no longer needed, data is securely deleted or anonymized.',
+      'fr':
+          '• Nous conservons les données personnelles uniquement le temps nécessaire à l\'exécution des fonctions de service, au respect des obligations légales ou à la résolution des litiges.\n• Lorsqu\'elles ne sont plus nécessaires, les données sont supprimées ou anonymisées en toute sécurité.',
+    },
+    '9qwfy5c6': {
+      'en': '7. Your Rights (GDPR & Similar Laws)',
+      'fr': '7. Vos droits (RGPD et lois similaires)',
+    },
+    'lzhmyv9p': {
+      'en':
+          'If you are within applicable jurisdictions, you may:\n  • Access your personal data.\n  • Request correction or deletion.\n  • Object to or restrict processing.\n  • Request data portability.\n  • Withdraw consent at any time without affecting prior lawful processing.\n\nTo exercise any rights, contact us via email.',
+      'fr':
+          'Si vous résidez dans les juridictions compétentes, vous pouvez :\n  • Accéder à vos données personnelles ;\n  • Demander leur rectification ou leur suppression ;\n  • Vous opposer au traitement ou le restreindre ;\n  • Demander la portabilité des données ;\n  • Retirer votre consentement à tout moment sans affecter le traitement légal antérieur.\n\nPour exercer vos droits, contactez-nous par e-mail.',
+    },
+    'ka9rf86a': {
+      'en': '8. Data Security & International Transfers',
+      'fr': '8. Sécurité des données et transferts internationaux',
+    },
+    'f03o9u1i': {
+      'en':
+          '• We implement industry-standard security measures to protect your data.\n• If data is transferred outside the EU/EEA, we use appropriate safeguards (e.g., EU Standard Contractual Clauses).',
+      'fr':
+          '• Nous mettons en œuvre des mesures de sécurité conformes aux normes du secteur pour protéger vos données.\n• Si des données sont transférées hors de l\'UE/EEE, nous utilisons des garanties appropriées (par exemple, les clauses contractuelles types de l\'UE).',
+    },
+    'rwpe5vo9': {
+      'en': '9. Minors',
+      'fr': '9. Mineurs',
+    },
+    '7ibyvgdi': {
+      'en':
+          '• TrailDog is not intended for use by children under 16 without parental consent.\n• We do not knowingly collect data from minors. If discovered, such data will be deleted promptly.',
+      'fr':
+          '• TrailDog n\'est pas destiné à être utilisé par des enfants de moins de 16 ans sans le consentement de leurs parents.\n• Nous ne collectons pas sciemment de données auprès de mineurs. Si nous les découvrons, ces données seront immédiatement supprimées.',
+    },
+    '8rt6p3cc': {
+      'en': '10. Changes to This Policy',
+      'fr': '10. Modifications de cette politique',
+    },
+    'qb7gpmhg': {
+      'en':
+          'We may update this Privacy Policy as needed. Material changes will be communicated via in-app notification or email. Continued use after changes constitutes acceptance.',
+      'fr':
+          'Nous pouvons mettre à jour cette politique de confidentialité si nécessaire. Toute modification importante sera communiquée par notification intégrée à l\'application ou par e-mail. L\'utilisation continue après modification vaut acceptation.',
+    },
+    'o7uosxom': {
+      'en': '11. Contact Us',
+      'fr': '11. Contactez-nous',
+    },
+    'oaa2mbkc': {
+      'en': 'For any questions, suggestions, or reports:',
+      'fr': 'Pour toute question, suggestion ou signalement :',
+    },
+    'q3in4xh6': {
+      'en': 'devmobflutterflow@gmail.com',
+      'fr': 'devmobflutterflow@gmail.com',
+    },
+    'y8wg55bv': {
+      'en':
+          'By continuing to use this application, you acknowledge that you have read, understood, and agree to be bound by this Privacy Policy.',
+      'fr':
+          'En continuant à utiliser cette application, vous reconnaissez avoir lu, compris et accepté d\'être lié par cette politique de confidentialité.',
+    },
+  },
+  // EditActivityPage
+  {
+    '8k8sn58d': {
+      'en': 'edit activity',
+      'fr': 'modifier l\'activité',
+    },
+    '2og6o44r': {
+      'en': 'Activity Name',
+      'fr': 'Nom de l\'activité',
+    },
+    '4vd7bxfy': {
+      'en': 'Enter activity name',
+      'fr': 'Entrez le nom de l\'activité',
+    },
+    'et2ux204': {
+      'en': 'Activity Type',
+      'fr': 'Type d\'activité',
+    },
+    'j13buwmq': {
+      'en': 'Select activity type',
+      'fr': '',
+    },
+    '8idx01p9': {
+      'en': 'Cani-cross',
+      'fr': 'Cani-cross',
+    },
+    'o97knoad': {
+      'en': 'Cani-VTT',
+      'fr': 'Cani-VTT',
+    },
+    '94f8chp0': {
+      'en': 'Cani-hicking',
+      'fr': 'Cani-randonnée',
+    },
+    'fe105i8e': {
+      'en': 'Activity Details',
+      'fr': 'Détails de l\'activité',
+    },
+    'uink5sj3': {
+      'en': 'Created',
+      'fr': 'Créé',
+    },
+    'cx4quup4': {
+      'en': 'Duration',
+      'fr': 'Durée',
+    },
+    '0v7shc7v': {
+      'en': 'Save Changes',
+      'fr': 'Enregistrer les modifications',
+    },
+  },
+  // DeviceConnectPage
+  {
+    'vcx91hwf': {
+      'en': 'Connect a Device',
+      'fr': 'Connecter un appareil',
+    },
+    'uwkmzu6z': {
+      'en': 'Devices for the User',
+      'fr': 'Dispositifs pour l\'utilisateur',
+    },
+    'p62669jq': {
+      'en': 'Smartwatch',
+      'fr': 'Montre connectée',
+    },
+    'gqtmxq5y': {
+      'en': 'Heart Rate Belt',
+      'fr': 'Ceinture de fréquence cardiaque',
+    },
+    'njb3lp6y': {
+      'en': 'Coming soon',
+      'fr': '',
+    },
+    'cgdfqrp1': {
+      'en': 'Devices for the Dog',
+      'fr': 'Appareils pour le chien',
+    },
+    '7m2koobn': {
+      'en': 'Tractive GPS',
+      'fr': 'GPS Tractive',
+    },
+    'x9eunvnx': {
+      'en': 'Wennect GPS',
+      'fr': 'Wennect GPS',
+    },
+    '1nlbtczf': {
+      'en': 'Device Connection Tips',
+      'fr': 'Conseils de connexion des appareils',
+    },
+    '35imseev': {
+      'en':
+          'Make sure your devices are powered on and within range. Some devices may require additional setup in their respective apps.',
+      'fr':
+          'Assurez-vous que vos appareils sont allumés et à portée. Certains appareils peuvent nécessiter une configuration supplémentaire dans leurs applications respectives.',
+    },
+  },
+  // SupportPage
+  {
+    'jpmimj2t': {
+      'en': 'Help & Support',
+      'fr': 'Aide et support',
+    },
+    'pznul6jb': {
+      'en': 'Need help? Check our FAQ or contact us directly.',
+      'fr':
+          'Besoin d\'aide ? Consultez notre FAQ ou contactez-nous directement.',
+    },
+    '8pdcllhp': {
+      'en': 'How do I use TrailDog?',
+      'fr': 'Comment utiliser TrailDog ?',
+    },
+    'hwp5jxx7': {
+      'en':
+          'TrailDog helps you record your activities, track your dog\'s progress, and share adventures with the community.',
+      'fr':
+          'TrailDog vous aide à enregistrer vos activités, à suivre les progrès de votre chien et à partager vos aventures avec la communauté.',
+    },
+    '4z07q29v': {
+      'en': 'How do I report a bug?',
+      'fr': 'Comment signaler un bug ?',
+    },
+    '6s3n0rhw': {
+      'en':
+          'Click the \'Contact Support\' button below or email us at devmobflutterflow@gmail.com.',
+      'fr':
+          'Cliquez sur le bouton « Contacter l\'assistance » ci-dessous ou envoyez-nous un e-mail à devmobflutterflow@gmail.com.',
+    },
+    'a8vrwnjq': {
+      'en': 'How do I sync my data across devices?',
+      'fr': 'Comment synchroniser mes données sur plusieurs appareils ?',
+    },
+    'it6a3ol9': {
+      'en':
+          'Your data automatically syncs when you\'re logged in to your TrailDog account. Make sure you\'re connected to the internet for the best experience.',
+      'fr':
+          'Vos données se synchronisent automatiquement lorsque vous êtes connecté à votre compte TrailDog. Assurez-vous d\'être connecté à Internet pour une expérience optimale.',
+    },
+    'y6erwg9a': {
+      'en': 'Can I track multiple dogs?',
+      'fr': 'Puis-je suivre plusieurs chiens ?',
+    },
+    'en563zu8': {
+      'en':
+          'Yes! You can add multiple dog profiles and track each of their activities separately. Go to Settings > Manage Dogs to add more furry friends.',
+      'fr':
+          'Oui ! Vous pouvez ajouter plusieurs profils de chiens et suivre leurs activités séparément. Accédez à Paramètres > Gérer les chiens pour ajouter d\'autres compagnons à quatre pattes.',
+    },
+    '1xzhaa18': {
+      'en': 'Still need help? Send us a message:',
+      'fr': 'Besoin d\'aide ? Envoyez-nous un message :',
+    },
+    'srgsbrwu': {
+      'en': 'Contact Support',
+      'fr': 'Contacter le support',
+    },
+  },
+  // MessageSettingsPage
+  {
+    'zwafdm7v': {
+      'en': 'Messages Settings',
+      'fr': 'Paramètres des messages',
+    },
+    '83kpa6qc': {
+      'en': 'Allow messages from',
+      'fr': 'Autoriser les messages de',
+    },
+    '30hahyvy': {
+      'en': 'Everyone',
+      'fr': 'Tout le monde',
+    },
+    'l2hvr05a': {
+      'en': 'Read receipts',
+      'fr': 'Lire les reçus',
+    },
+    'dxfs5voy': {
+      'en': 'New message notifications',
+      'fr': 'Notifications de nouveaux messages',
+    },
+    '98cic5e3': {
+      'en': 'Blocked users',
+      'fr': 'Utilisateurs bloqués',
+    },
+    'xkgc1e3o': {
+      'en': 'Blocked users',
+      'fr': 'Utilisateurs bloqués',
+    },
+    'ztov6dn0': {
+      'en': 'Home',
+      'fr': '',
+    },
+  },
+  // PrivacySecurityPage
+  {
+    'mp4hn5rq': {
+      'en': 'Privacy & Security',
+      'fr': 'Confidentialité et sécurité',
+    },
+    '1p2b1j49': {
+      'en': 'Manage your privacy and security settings.',
+      'fr': 'Gérez vos paramètres de confidentialité et de sécurité.',
+    },
+    '0e5nhb3o': {
+      'en': 'Terms of Service',
+      'fr': 'Conditions d\'utilisation',
+    },
+    'qwiqqp8f': {
+      'en': 'Read our Terms of Service',
+      'fr': 'Lisez nos conditions d\'utilisation',
+    },
+    '6cm36l64': {
+      'en': 'Privacy Policy',
+      'fr': 'politique de confidentialité',
+    },
+    'd7k3uh7s': {
+      'en': 'Read our Privacy Policy',
+      'fr': 'Lisez notre politique de confidentialité',
+    },
+    'zc4jcskg': {
+      'en': 'Change password',
+      'fr': 'Changer le mot de passe',
+    },
+    'uvikb1uk': {
+      'en': 'Download my data',
+      'fr': 'Télécharger mes données',
+    },
+    'thd2g6sv': {
+      'en': 'Delete my account',
+      'fr': 'Supprimer mon compte',
+    },
+    'ly59vwoe': {
+      'en': 'Home',
+      'fr': '',
+    },
+  },
+  // HealthRecordsPage
+  {
+    '15p1ksxv': {
+      'en': 'Health Records',
+      'fr': 'dossiers de santé',
+    },
+    '6gnf6ogw': {
+      'en': 'Vaccinations',
+      'fr': 'Vaccinations',
+    },
+    '3umkhtee': {
+      'en': 'Rabies Vaccine',
+      'fr': 'Vaccin contre la rage',
+    },
+    '2u83p2cw': {
+      'en': 'Due: March 15, 2024',
+      'fr': 'Date limite : 15 mars 2024',
+    },
+    'j4qcjcue': {
+      'en': 'DHPP Vaccine',
+      'fr': 'Vaccin DHPP',
+    },
+    'uubi1e7m': {
+      'en': 'Overdue: Feb 20, 2024',
+      'fr': 'En retard : 20 février 2024',
+    },
+    '5whucwwz': {
+      'en': 'Bordetella Vaccine',
+      'fr': 'Vaccin contre la Bordetella',
+    },
+    '5mp7ijty': {
+      'en': 'Completed: Jan 10, 2024',
+      'fr': 'Terminé : 10 janvier 2024',
+    },
+    '8ktdrmmm': {
+      'en': 'Veterinary Reports',
+      'fr': 'Rapports vétérinaires',
+    },
+    'kgo46z5g': {
+      'en': 'Annual Checkup Report',
+      'fr': 'Rapport de contrôle annuel',
+    },
+    'v3ii8tt5': {
+      'en': 'Dr. Smith • Feb 28, 2024',
+      'fr': 'Dr Smith • 28 février 2024',
+    },
+    'ihsjezj5': {
+      'en': 'X-Ray Results',
+      'fr': 'Résultats des radiographies',
+    },
+    'd9yebnxs': {
+      'en': 'Emergency Vet • Jan 15, 2024',
+      'fr': 'Urgence vétérinaire • 15 janvier 2024',
+    },
+    'vzayvtpp': {
+      'en': 'Blood Test Results',
+      'fr': 'Résultats des analyses de sang',
+    },
+    'k7ulwn54': {
+      'en': 'VetCare Clinic • Dec 20, 2023',
+      'fr': 'Clinique vétérinaire • 20 déc. 2023',
+    },
+    'eidc3bk7': {
+      'en': 'Medical History',
+      'fr': 'Antécédents médicaux',
+    },
+    'snbeu0l1': {
+      'en': 'Allergies',
+      'fr': 'Allergies',
+    },
+    'vqx24cql': {
+      'en': 'Updated: Feb 1, 2024',
+      'fr': 'Mis à jour : 1er février 2024',
+    },
+    'n6q3aho6': {
+      'en': 'Chicken, certain antibiotics (Penicillin)',
+      'fr': 'Poulet, certains antibiotiques (pénicilline)',
+    },
+    'x92635zm': {
+      'en': 'Chronic Conditions',
+      'fr': 'maladies chroniques',
+    },
+    't0v7yncr': {
+      'en': 'Updated: Jan 10, 2024',
+      'fr': 'Mis à jour : 10 janvier 2024',
+    },
+    '3wd71oi0': {
+      'en':
+          'Mild hip dysplasia, managed with supplements and exercise modification',
+      'fr':
+          'Dysplasie légère de la hanche, gérée avec des suppléments et une modification de l\'exercice',
+    },
+    'k73c972o': {
+      'en': 'Previous Surgeries',
+      'fr': 'Chirurgies antérieures',
+    },
+    'qy3bnmwt': {
+      'en': 'Updated: Dec 15, 2023',
+      'fr': 'Mis à jour : 15 décembre 2023',
+    },
+    'fetljmea': {
+      'en': 'Spay surgery (2022), Dental cleaning with extractions (2023)',
+      'fr':
+          'Chirurgie de stérilisation (2022), Nettoyage dentaire avec extractions (2023)',
+    },
+    'dv0m7wun': {
+      'en': 'Current Medications',
+      'fr': 'Médicaments actuels',
+    },
+    'yp5oclim': {
+      'en': 'Updated: Feb 28, 2024',
+      'fr': 'Mis à jour : 28 février 2024',
+    },
+    '4auqa86r': {
+      'en': 'Glucosamine supplement (daily), Omega-3 fish oil (daily)',
+      'fr':
+          'Supplément de glucosamine (quotidien), huile de poisson oméga-3 (quotidien)',
+    },
+    'tv9tppfn': {
+      'en': 'Add New Record',
+      'fr': 'Ajouter un nouvel enregistrement',
+    },
+  },
+  // AdvancedAnalyticsPage
+  {
+    'jg3it4di': {
+      'en': 'Advanced Analytics',
+      'fr': 'Analyse avancée',
+    },
+    'eg3cbgan': {
+      'en': 'Performance Graphs',
+      'fr': 'Graphiques de performances',
+    },
+    's56j9tnp': {
+      'en': 'Month',
+      'fr': 'Mois',
+    },
+    '7peu0nxd': {
+      'en': 'Period',
+      'fr': '',
+    },
+    'tocqll8b': {
+      'en': 'Week',
+      'fr': 'Semaine',
+    },
+    'am9but25': {
+      'en': 'Month',
+      'fr': 'Mois',
+    },
+    'w6agh5p0': {
+      'en': 'Year',
+      'fr': 'Année',
+    },
+    'qf2l1znz': {
+      'en': 'Activity',
+      'fr': '',
+    },
+    'jkf0blgz': {
+      'en': 'Cani-cross',
+      'fr': 'Cani-cross',
+    },
+    'blv7um0n': {
+      'en': 'Cani-VTT',
+      'fr': 'Cani-VTT',
+    },
+    'yf4sakgk': {
+      'en': 'Canii-hicking',
+      'fr': 'Cani-randonnée',
+    },
+    'cemhtgkd': {
+      'en': 'All',
+      'fr': 'Tous',
+    },
+    'wgtlztl3': {
+      'en': 'Speed Performance Chart',
+      'fr': 'Tableau des performances de vitesse',
+    },
+    'k5r3y0u5': {
+      'en': 'Interactive chart showing speed trends over time',
+      'fr':
+          'Graphique interactif montrant les tendances de vitesse au fil du temps',
+    },
+    'epzeoueb': {
+      'en': 'Distance Analytics',
+      'fr': 'Analyse de distance',
+    },
+    'wf30c8qg': {
+      'en': 'Track your distance progress and milestones',
+      'fr': 'Suivez votre progression en distance et vos étapes importantes',
+    },
+    'pwktijnk': {
+      'en': 'Heart Rate Zones',
+      'fr': 'Zones de fréquence cardiaque',
+    },
+    'vexceq1e': {
+      'en': 'Monitor your heart rate patterns and zones',
+      'fr': 'Surveillez vos schémas et zones de fréquence cardiaque',
+    },
+    '2w6mxwjb': {
+      'en': 'Insights',
+      'fr': 'Connaissances',
+    },
+    'w0rf5kn1': {
+      'en': '24.5',
+      'fr': '24,5',
+    },
+    'h9car9k0': {
+      'en': 'Avg Speed (km/h)',
+      'fr': 'Vitesse moyenne (km/h)',
+    },
+    'g60s0dv5': {
+      'en': '142',
+      'fr': '142',
+    },
+    'pqactm2t': {
+      'en': 'Total Distance (km)',
+      'fr': 'Distance totale (km)',
+    },
+    'am7xqqiq': {
+      'en': '2,847',
+      'fr': '2 847',
+    },
+    'hbfgdb94': {
+      'en': 'Calories Burned',
+      'fr': 'Calories brûlées',
+    },
+    'nqmdj9no': {
+      'en': '18h 32m',
+      'fr': '18h 32m',
+    },
+    'nqc43f34': {
+      'en': 'Total Time',
+      'fr': 'Durée totale',
+    },
+    '0g9kvlpj': {
+      'en': 'Recent Trends',
+      'fr': 'Tendances récentes',
+    },
+    'fp7x9qbm': {
+      'en': 'Speed improvement',
+      'fr': 'Amélioration de la vitesse',
+    },
+    'ud3gw5yc': {
+      'en': '+12% this month',
+      'fr': '+12% ce mois-ci',
+    },
+    'koq3grx1': {
+      'en': 'Distance consistency',
+      'fr': 'Cohérence des distances',
+    },
+    'y4cogbqe': {
+      'en': '+8% this week',
+      'fr': '+8% cette semaine',
+    },
+    'u9rwfr8g': {
+      'en': 'Heart rate efficiency',
+      'fr': 'Efficacité de la fréquence cardiaque',
+    },
+    'up5256hl': {
+      'en': '+5% improvement',
+      'fr': '+5% d\'amélioration',
+    },
+    'lftrjii0': {
+      'en': 'Achievements',
+      'fr': 'Réalisations',
+    },
+    'hziwvhj5': {
+      'en': 'Speed Demon',
+      'fr': 'Démon de la vitesse',
+    },
+    're38to3r': {
+      'en': 'Reached 30+ km/h average',
+      'fr': 'A atteint une moyenne de plus de 30 km/h',
+    },
+    'qio82dfx': {
+      'en': 'Distance Master',
+      'fr': 'Maître de distance',
+    },
+    '20kye33n': {
+      'en': 'Completed 100km milestone',
+      'fr': 'Le cap des 100 km a été franchi',
+    },
+    '66qldhsw': {
+      'en': 'Consistency King',
+      'fr': 'Roi de la cohérence',
+    },
+    'adlek8o8': {
+      'en': '7 days streak achieved',
+      'fr': 'Série de 7 jours réalisée',
+    },
+  },
+  // SubscriptionPage
+  {
+    'v9n3mbeb': {
+      'en': 'Manage Subscription',
+      'fr': 'Gérer l\'abonnement',
+    },
+    'uuqn75wo': {
+      'en': 'Current Plan',
+      'fr': 'Plan actuel',
+    },
+    'nxghuq2f': {
+      'en': 'Premium',
+      'fr': 'Premium',
+    },
+    'i7zy4diz': {
+      'en': '\$6.99/month',
+      'fr': '6,99 €/mois',
+    },
+    'tc2vjbhn': {
+      'en':
+          'Access to all premium features including unlimited storage, advanced analytics, and priority support.',
+      'fr':
+          'Accès à toutes les fonctionnalités premium, y compris le stockage illimité, les analyses avancées et l\'assistance prioritaire.',
+    },
+    'uwb2bx0z': {
+      'en': 'Subscription Details',
+      'fr': 'Détails de l\'abonnement',
+    },
+    '6vgl1od0': {
+      'en': 'Start Date',
+      'fr': 'Date de début',
+    },
+    'avh57t6r': {
+      'en': 'January 15, 2024',
+      'fr': '15 janvier 2024',
+    },
+    'h6k2bg43': {
+      'en': 'Renewal Date',
+      'fr': 'Date de renouvellement',
+    },
+    'e82bpo1p': {
+      'en': 'February 15, 2024',
+      'fr': '15 février 2024',
+    },
+    'ao3ra4i1': {
+      'en': 'Next Payment',
+      'fr': 'Prochain paiement',
+    },
+    '9zdld96z': {
+      'en': '\$6.99',
+      'fr': '6,99 €',
+    },
+    'd3ppynl3': {
+      'en': 'Payment Method',
+      'fr': 'Mode de paiement',
+    },
+    '512f4duy': {
+      'en': '•••• 4242',
+      'fr': '',
+    },
+    '1a10nqxj': {
+      'en': 'Update Payment',
+      'fr': 'Mettre à jour le paiement',
+    },
+    'yg2g0xz6': {
+      'en': 'Cancel Subscription',
+      'fr': 'Annuler l\'abonnement',
+    },
+    '9evik5il': {
+      'en': 'Invoices & Payment History',
+      'fr': 'Factures et historique des paiements',
+    },
+    'thc70h8z': {
+      'en': 'Premium Subscription',
+      'fr': 'Abonnement Premium',
+    },
+    'e3jvg8t0': {
+      'en': 'January 15, 2024',
+      'fr': '15 janvier 2024',
+    },
+    'df9vj333': {
+      'en': '\$6.99',
+      'fr': '6,99 €',
+    },
+    'k9y994x6': {
+      'en': 'Paid',
+      'fr': 'Payé',
+    },
+    '0os44kc6': {
+      'en': 'Premium Subscription',
+      'fr': 'Abonnement Premium',
+    },
+    'x0oyx5mj': {
+      'en': 'December 15, 2023',
+      'fr': '15 décembre 2023',
+    },
+    'v6cmrzxy': {
+      'en': '\$6.99',
+      'fr': '6,99 €',
+    },
+    'vbus4fww': {
+      'en': 'Paid',
+      'fr': 'Payé',
+    },
+    'ae9qlw4s': {
+      'en': 'Premium Subscription',
+      'fr': 'Abonnement Premium',
+    },
+    'yxf46m7p': {
+      'en': 'November 15, 2023',
+      'fr': '15 novembre 2023',
+    },
+    'cbwjkqtj': {
+      'en': '\$6.99',
+      'fr': '6,99 €',
+    },
+    'r9n7xrnh': {
+      'en': 'Paid',
+      'fr': 'Payé',
+    },
+    'dnwbyz5c': {
+      'en': 'View All Invoices',
+      'fr': 'Afficher toutes les factures',
+    },
+  },
   // NavbarComponent
   {
     '83hf62vl': {
@@ -1843,10 +2811,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'b067qgbt': {
       'en': 'Distance',
       'fr': 'Distance',
-    },
-    'v9rgg8cr': {
-      'en': 'Avg. Pace',
-      'fr': 'Rythme moyen',
     },
     '142n7znt': {
       'en': 'Badges',
@@ -2340,6 +3304,125 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'r3a3ux48': {
       'en': 'You haven\'t found any friends',
       'fr': 'Tu n\'as pas trouvé d\'amis',
+    },
+  },
+  // SubscriptionComponent
+  {
+    'ev3r2dd9': {
+      'en': ' Unlock Premium Features!',
+      'fr': 'Débloquez des fonctionnalités Premium !',
+    },
+    '2di5iwia': {
+      'en':
+          'Get access to advanced analytics, health tracking, device integrations, and exclusive content for your furry friend.',
+      'fr':
+          'Accédez à des analyses avancées, au suivi de la santé, aux intégrations d\'appareils et au contenu exclusif pour votre ami à quatre pattes.',
+    },
+    '7tjtvgib': {
+      'en': 'Go Premium',
+      'fr': 'Passez  Premium',
+    },
+  },
+  // confidentialite
+  {
+    'i1zz4874': {
+      'en': 'Confidentialité',
+      'fr': '',
+    },
+    'myoy98d2': {
+      'en': 'Profil Privé',
+      'fr': '',
+    },
+    'upef77h6': {
+      'en': 'Seuls vos amis peuvent voir vos activités',
+      'fr': '',
+    },
+    'ft12i8kj': {
+      'en': 'Activités Visibles',
+      'fr': '',
+    },
+    'rckyrx84': {
+      'en': 'Permettre à d\'autres utilisateurs de voir vos courses',
+      'fr': '',
+    },
+    '58305x48': {
+      'en': 'Localisation',
+      'fr': '',
+    },
+    'jgmcgwtb': {
+      'en': 'Partager votre position avec vos amis pendant les courses',
+      'fr': '',
+    },
+  },
+  // MonthlyPaywallComponent
+  {
+    'a8g63tqe': {
+      'en': 'TrailDog',
+      'fr': '',
+    },
+    '7kmt5urg': {
+      'en': 'Unlock Premium Today',
+      'fr': '',
+    },
+    'p6yeiwc2': {
+      'en': 'Get access to all subscriber benefits',
+      'fr': '',
+    },
+    'gcrb9dpj': {
+      'en': 'Advanced analytics',
+      'fr': '',
+    },
+    '9vqneea7': {
+      'en':
+          'Track your performance with interactive charts for speed, elevation, and cadence.',
+      'fr': '',
+    },
+    'rm4c87jl': {
+      'en': 'Segments & leaderboards',
+      'fr': '',
+    },
+    '86nymjco': {
+      'en': 'Compare your stats with others on selected trail segments.',
+      'fr': '',
+    },
+    '7g03v8uc': {
+      'en': 'Health alerts',
+      'fr': '',
+    },
+    'b3o409ok': {
+      'en':
+          'Get reminders for vet visits and notifications when heart rate thresholds are exceeded.',
+      'fr': '',
+    },
+    '9ruqdz4f': {
+      'en': 'AI recommendations',
+      'fr': '',
+    },
+    '6z5lfyxv': {
+      'en':
+          'Discover new trails with personalized route suggestions powered by AI.',
+      'fr': '',
+    },
+    '0fdfs4ac': {
+      'en': 'Premium account management',
+      'fr': '',
+    },
+    'd1o6a6f7': {
+      'en':
+          'Easily manage your subscription and unlock all premium benefits from one place.',
+      'fr': '',
+    },
+    'r8xkj8nf': {
+      'en': 'Your subscription auto-renews for \$9.99/month until canceled.',
+      'fr': '',
+    },
+    'iljsqtut': {
+      'en': 'Upgrade to Premium',
+      'fr': '',
+    },
+    '63s53spz': {
+      'en': 'Restore purchases',
+      'fr': '',
     },
   },
   // Miscellaneous

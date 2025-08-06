@@ -250,6 +250,73 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               collectionNamePath: ['users', 'activity'],
             ),
           ),
+        ),
+        FFRoute(
+          name: PaywallPageWidget.routeName,
+          path: PaywallPageWidget.routePath,
+          builder: (context, params) => PaywallPageWidget(),
+        ),
+        FFRoute(
+          name: ForgotPasswordPageWidget.routeName,
+          path: ForgotPasswordPageWidget.routePath,
+          builder: (context, params) => ForgotPasswordPageWidget(),
+        ),
+        FFRoute(
+          name: TermsOfUsePageWidget.routeName,
+          path: TermsOfUsePageWidget.routePath,
+          builder: (context, params) => TermsOfUsePageWidget(),
+        ),
+        FFRoute(
+          name: PrivacyPolicyPageWidget.routeName,
+          path: PrivacyPolicyPageWidget.routePath,
+          builder: (context, params) => PrivacyPolicyPageWidget(),
+        ),
+        FFRoute(
+          name: EditActivityPageWidget.routeName,
+          path: EditActivityPageWidget.routePath,
+          builder: (context, params) => EditActivityPageWidget(
+            activityParameter: params.getParam(
+              'activityParameter',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['users', 'activity'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: DeviceConnectPageWidget.routeName,
+          path: DeviceConnectPageWidget.routePath,
+          builder: (context, params) => DeviceConnectPageWidget(),
+        ),
+        FFRoute(
+          name: SupportPageWidget.routeName,
+          path: SupportPageWidget.routePath,
+          builder: (context, params) => SupportPageWidget(),
+        ),
+        FFRoute(
+          name: MessageSettingsPageWidget.routeName,
+          path: MessageSettingsPageWidget.routePath,
+          builder: (context, params) => MessageSettingsPageWidget(),
+        ),
+        FFRoute(
+          name: PrivacySecurityPageWidget.routeName,
+          path: PrivacySecurityPageWidget.routePath,
+          builder: (context, params) => PrivacySecurityPageWidget(),
+        ),
+        FFRoute(
+          name: HealthRecordsPageWidget.routeName,
+          path: HealthRecordsPageWidget.routePath,
+          builder: (context, params) => HealthRecordsPageWidget(),
+        ),
+        FFRoute(
+          name: AdvancedAnalyticsPageWidget.routeName,
+          path: AdvancedAnalyticsPageWidget.routePath,
+          builder: (context, params) => AdvancedAnalyticsPageWidget(),
+        ),
+        FFRoute(
+          name: SubscriptionPageWidget.routeName,
+          path: SubscriptionPageWidget.routePath,
+          builder: (context, params) => SubscriptionPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

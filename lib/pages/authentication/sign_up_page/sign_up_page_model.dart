@@ -4,6 +4,10 @@ import 'sign_up_page_widget.dart' show SignUpPageWidget;
 import 'package:flutter/material.dart';
 
 class SignUpPageModel extends FlutterFlowModel<SignUpPageWidget> {
+  ///  Local state fields for this page.
+  /// Condition d'utilisation et politique de confidentialité accepté
+  bool isTermsAccepted = false;
+
   ///  State fields for stateful widgets in this page.
 
   // State field(s) for TextField widget.

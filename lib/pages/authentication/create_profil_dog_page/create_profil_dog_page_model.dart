@@ -16,10 +16,10 @@ class CreateProfilDogPageModel
 
   ///  State fields for stateful widgets in this page.
 
-  bool isDataUploading_dogUploaded = false;
-  FFUploadedFile uploadedLocalFile_dogUploaded =
+  bool isDataUploading_uploadData2mc = false;
+  FFUploadedFile uploadedLocalFile_uploadData2mc =
       FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl_dogUploaded = '';
+  String uploadedFileUrl_uploadData2mc = '';
 
   // State field(s) for TextFieldDogName widget.
   FocusNode? textFieldDogNameFocusNode;
@@ -52,11 +52,10 @@ class CreateProfilDogPageModel
   // State field(s) for DropDownExperience widget.
   String? dropDownExperienceValue;
   FormFieldController<String>? dropDownExperienceValueController;
-  // State field(s) for TextFieldHealth widget.
-  FocusNode? textFieldHealthFocusNode;
-  TextEditingController? textFieldHealthTextController;
-  String? Function(BuildContext, String?)?
-      textFieldHealthTextControllerValidator;
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode;
+  TextEditingController? textController5;
+  String? Function(BuildContext, String?)? textController5Validator;
   // State field(s) for TextFieldTattoo widget.
   FocusNode? textFieldTattooFocusNode;
   TextEditingController? textFieldTattooTextController;
@@ -82,8 +81,8 @@ class CreateProfilDogPageModel
     textFieldWeightFocusNode?.dispose();
     textFieldWeightTextController?.dispose();
 
-    textFieldHealthFocusNode?.dispose();
-    textFieldHealthTextController?.dispose();
+    textFieldFocusNode?.dispose();
+    textController5?.dispose();
 
     textFieldTattooFocusNode?.dispose();
     textFieldTattooTextController?.dispose();

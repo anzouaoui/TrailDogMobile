@@ -36,6 +36,8 @@ class CommentsRecord extends FirestoreRecord {
   DateTime? get timestamp => _timestamp;
   bool hasTimestamp() => _timestamp != null;
 
+  DocumentReference get parentReference => reference.parent.parent!;
+
   void _initializeFields() {
     _postRef = snapshotData['post_ref'] as DocumentReference?;
     _userRef = snapshotData['user_ref'] as DocumentReference?;
@@ -43,8 +45,13 @@ class CommentsRecord extends FirestoreRecord {
     _timestamp = snapshotData['timestamp'] as DateTime?;
   }
 
-  static CollectionReference get collection =>
-      FirebaseFirestore.instance.collection('comments');
+  static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
+      parent != null
+          ? parent.collection('comments')
+          : FirebaseFirestore.instance.collectionGroup('comments');
+
+  static DocumentReference createDoc(DocumentReference parent, {String? id}) =>
+      parent.collection('comments').doc(id);
 
   static Stream<CommentsRecord> getDocument(DocumentReference ref) =>
       ref.snapshots().map((s) => CommentsRecord.fromSnapshot(s));

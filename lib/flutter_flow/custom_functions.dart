@@ -13,11 +13,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '/backend/schema/enums/enums.dart';
 import '/auth/firebase_auth/auth_util.dart';
 
-/// Transformer une chaine de caractère en date
-DateTime stringToDateTime(String dateString) {
-  return DateTime.parse(dateString);
-}
-
 /// Récupérer le documentReference d'un user
 DocumentReference getOtherUserRef(
   List<DocumentReference> users,

@@ -94,7 +94,7 @@ class _DogSelectComponentWidgetState extends State<DogSelectComponentWidget> {
                             shape: BoxShape.circle,
                           ),
                           child: Image.network(
-                            'https://picsum.photos/seed/9/600',
+                            containerDogRecord.imagePath,
                             fit: BoxFit.cover,
                           ),
                         ),

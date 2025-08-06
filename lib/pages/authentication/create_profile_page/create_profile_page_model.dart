@@ -3,7 +3,6 @@ import '/flutter_flow/form_field_controller.dart';
 import '/index.dart';
 import 'create_profile_page_widget.dart' show CreateProfilePageWidget;
 import 'package:flutter/material.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class CreateProfilePageModel extends FlutterFlowModel<CreateProfilePageWidget> {
   ///  State fields for stateful widgets in this page.
@@ -32,11 +31,6 @@ class CreateProfilePageModel extends FlutterFlowModel<CreateProfilePageWidget> {
   FocusNode? myBioFocusNode;
   TextEditingController? myBioTextController;
   String? Function(BuildContext, String?)? myBioTextControllerValidator;
-  // State field(s) for birthdate widget.
-  FocusNode? birthdateFocusNode;
-  TextEditingController? birthdateTextController;
-  late MaskTextInputFormatter birthdateMask;
-  String? Function(BuildContext, String?)? birthdateTextControllerValidator;
   // State field(s) for gender widget.
   String? genderValue;
   FormFieldController<String>? genderValueController;
@@ -65,9 +59,6 @@ class CreateProfilePageModel extends FlutterFlowModel<CreateProfilePageWidget> {
 
     myBioFocusNode?.dispose();
     myBioTextController?.dispose();
-
-    birthdateFocusNode?.dispose();
-    birthdateTextController?.dispose();
 
     weightFocusNode1?.dispose();
     weightTextController1?.dispose();

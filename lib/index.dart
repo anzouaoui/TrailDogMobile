@@ -48,3 +48,27 @@ export '/pages/settings/dog_analytics_page/dog_analytics_page_widget.dart'
     show DogAnalyticsPageWidget;
 export '/pages/activity/activity_rate_page/activity_rate_page_widget.dart'
     show ActivityRatePageWidget;
+export '/pages/settings/paywall_page/paywall_page_widget.dart'
+    show PaywallPageWidget;
+export '/pages/authentication/forgot_password_page/forgot_password_page_widget.dart'
+    show ForgotPasswordPageWidget;
+export '/pages/authentication/terms_of_use_page/terms_of_use_page_widget.dart'
+    show TermsOfUsePageWidget;
+export '/pages/authentication/privacy_policy_page/privacy_policy_page_widget.dart'
+    show PrivacyPolicyPageWidget;
+export '/pages/activity/edit_activity_page/edit_activity_page_widget.dart'
+    show EditActivityPageWidget;
+export '/pages/settings/premium/device_connect_page/device_connect_page_widget.dart'
+    show DeviceConnectPageWidget;
+export '/pages/settings/support_page/support_page_widget.dart'
+    show SupportPageWidget;
+export '/pages/settings/message_settings_page/message_settings_page_widget.dart'
+    show MessageSettingsPageWidget;
+export '/pages/settings/privacy_security_page/privacy_security_page_widget.dart'
+    show PrivacySecurityPageWidget;
+export '/pages/settings/premium/health_records_page/health_records_page_widget.dart'
+    show HealthRecordsPageWidget;
+export '/pages/settings/premium/advanced_analytics_page/advanced_analytics_page_widget.dart'
+    show AdvancedAnalyticsPageWidget;
+export '/pages/settings/premium/subscription_page/subscription_page_widget.dart'
+    show SubscriptionPageWidget;

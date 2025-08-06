@@ -7,6 +7,11 @@ import 'package:flutter/material.dart';
 class EditProfilDogPageModel extends FlutterFlowModel<EditProfilDogPageWidget> {
   ///  State fields for stateful widgets in this page.
 
+  bool isDataUploading_uploadData6rz = false;
+  FFUploadedFile uploadedLocalFile_uploadData6rz =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+  String uploadedFileUrl_uploadData6rz = '';
+
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode1;
   TextEditingController? textController1;

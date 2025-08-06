@@ -86,6 +86,7 @@ abstract class FFAppConstants {
     'Saint-Bernard',
     'Tosa Inu',
     'Whippet',
+    'Eurasier',
     'Autre...'
   ];
 }

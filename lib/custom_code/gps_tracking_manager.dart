@@ -3,6 +3,7 @@ import 'package:geolocator/geolocator.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 class GpsTrackingManager {
+  static bool _isTracking = false;
   static Timer? _timer;
   static StreamSubscription<Position>? _positionStream;
   static Position? _previousPosition;
@@ -26,6 +27,11 @@ class GpsTrackingManager {
     _elevationGain = 0.0;
     _previousPosition = null;
 
+    if (_isTracking) {
+      print("Tracking déjà en cours");
+      return;
+    }
+    _isTracking = true;
     // Timer
     _timer = Timer.periodic(Duration(seconds: 1), (_) {
       FFAppState().update(() => FFAppState().durationSec += 1);
@@ -57,15 +63,41 @@ class GpsTrackingManager {
         pos.longitude,
       );
 
-      if (distance >= 5) {
-        _distanceMeters += distance;
-        FFAppState().update(() => FFAppState().totalDistance =
-            double.parse((_distanceMeters / 1000).toStringAsFixed(3)));
-
-        FFAppState().update(() => FFAppState().elevationGain =
-            double.parse(pos.altitude.toStringAsFixed(1)));
-        _previousPosition = pos;
+      // 🔒 Filtrage du bruit GPS (distance < 10m)
+      if (distance < 10) {
+        print("Mouvement ignoré (<10m)");
+        return;
       }
+
+      final timeDiff =
+          pos.timestamp!.difference(_previousPosition!.timestamp!).inSeconds;
+
+      // Mise à jour distance
+      _distanceMeters += distance;
+      // Distance totale (km)
+      FFAppState().update(() => FFAppState().totalDistance =
+          double.parse((_distanceMeters / 1000).toStringAsFixed(3)));
+
+      // ➕ Dénivelé positif cumulé (filtré)
+      final elevationDiff = pos.altitude - _previousPosition!.altitude;
+      if (elevationDiff > 0.5) {
+        _elevationGain += elevationDiff;
+        FFAppState().update(() => FFAppState().elevationGain =
+            double.parse(_elevationGain.toStringAsFixed(1)));
+      }
+
+      // Vitesse instantanée (si timeDiff cohérent)
+      if (timeDiff > 0) {
+        final instSpeed = (distance / timeDiff) * 3.6; // m/s → km/h
+        FFAppState().update(() =>
+            FFAppState().speedKmh = double.parse(instSpeed.toStringAsFixed(2)));
+
+        // Liste pour graphe si besoin
+        FFAppState().addToSpeedList(double.parse(instSpeed.toStringAsFixed(2)));
+      }
+      // Mise à jour de la position
+      _previousPosition = pos;
+      FFAppState().addToPathList(LatLng(pos.latitude, pos.longitude));
     }, onError: (e) {
       print("GPS Error: $e");
     });
@@ -75,6 +107,7 @@ class GpsTrackingManager {
   static Future<void> stop() async {
     await _positionStream?.cancel();
     _positionStream = null;
+    _isTracking = false;
 
     _timer?.cancel();
     _timer = null;

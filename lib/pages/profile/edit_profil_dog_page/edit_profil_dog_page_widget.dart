@@ -1,9 +1,11 @@
 import '/backend/backend.dart';
+import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/upload_data.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -139,29 +141,101 @@ class _EditProfilDogPageWidgetState extends State<EditProfilDogPageWidget> {
                               children: [
                                 Align(
                                   alignment: AlignmentDirectional(0.0, -1.0),
-                                  child: Container(
-                                    width: 100.0,
-                                    height: 100.0,
-                                    decoration: BoxDecoration(
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      shape: BoxShape.circle,
-                                      border: Border.all(
-                                        color: FlutterFlowTheme.of(context)
-                                            .tertiary,
-                                        width: 4.0,
-                                      ),
-                                    ),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      final selectedMedia =
+                                          await selectMediaWithSourceBottomSheet(
+                                        context: context,
+                                        allowPhoto: true,
+                                      );
+                                      if (selectedMedia != null &&
+                                          selectedMedia.every((m) =>
+                                              validateFileFormat(
+                                                  m.storagePath, context))) {
+                                        safeSetState(() => _model
+                                                .isDataUploading_uploadData6rz =
+                                            true);
+                                        var selectedUploadedFiles =
+                                            <FFUploadedFile>[];
+
+                                        var downloadUrls = <String>[];
+                                        try {
+                                          selectedUploadedFiles = selectedMedia
+                                              .map((m) => FFUploadedFile(
+                                                    name: m.storagePath
+                                                        .split('/')
+                                                        .last,
+                                                    bytes: m.bytes,
+                                                    height:
+                                                        m.dimensions?.height,
+                                                    width: m.dimensions?.width,
+                                                    blurHash: m.blurHash,
+                                                  ))
+                                              .toList();
+
+                                          downloadUrls = (await Future.wait(
+                                            selectedMedia.map(
+                                              (m) async => await uploadData(
+                                                  m.storagePath, m.bytes),
+                                            ),
+                                          ))
+                                              .where((u) => u != null)
+                                              .map((u) => u!)
+                                              .toList();
+                                        } finally {
+                                          _model.isDataUploading_uploadData6rz =
+                                              false;
+                                        }
+                                        if (selectedUploadedFiles.length ==
+                                                selectedMedia.length &&
+                                            downloadUrls.length ==
+                                                selectedMedia.length) {
+                                          safeSetState(() {
+                                            _model.uploadedLocalFile_uploadData6rz =
+                                                selectedUploadedFiles.first;
+                                            _model.uploadedFileUrl_uploadData6rz =
+                                                downloadUrls.first;
+                                          });
+                                        } else {
+                                          safeSetState(() {});
+                                          return;
+                                        }
+                                      }
+
+                                      await editProfilDogPageDogRecord.reference
+                                          .update(createDogRecordData(
+                                        imagePath: _model
+                                            .uploadedFileUrl_uploadData6rz,
+                                      ));
+                                    },
                                     child: Container(
-                                      width: 200.0,
-                                      height: 200.0,
-                                      clipBehavior: Clip.antiAlias,
+                                      width: 100.0,
+                                      height: 100.0,
                                       decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
                                         shape: BoxShape.circle,
+                                        border: Border.all(
+                                          color: FlutterFlowTheme.of(context)
+                                              .tertiary,
+                                          width: 4.0,
+                                        ),
                                       ),
-                                      child: Image.network(
-                                        'https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHwxfHxkb2d8ZW58MHx8fHwxNzQ5NjUyNDE3fDA&ixlib=rb-4.1.0&q=80&w=1080',
-                                        fit: BoxFit.cover,
+                                      child: Container(
+                                        width: 200.0,
+                                        height: 200.0,
+                                        clipBehavior: Clip.antiAlias,
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                        ),
+                                        child: Image.network(
+                                          editProfilDogPageDogRecord.imagePath,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -1139,7 +1213,7 @@ class _EditProfilDogPageWidgetState extends State<EditProfilDogPageWidget> {
                                           ),
                                       hintText:
                                           FFLocalizations.of(context).getText(
-                                        'ms6z2d8i' /* TextField */,
+                                        'ok252ojb' /* TextField */,
                                       ),
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
@@ -1163,13 +1237,12 @@ class _EditProfilDogPageWidgetState extends State<EditProfilDogPageWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .labelMedium
                                                     .fontStyle,
-                                            lineHeight: 10.0,
                                           ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
                                           color: FlutterFlowTheme.of(context)
                                               .alternate,
-                                          width: 2.0,
+                                          width: 1.0,
                                         ),
                                         borderRadius:
                                             BorderRadius.circular(8.0),
@@ -1177,7 +1250,7 @@ class _EditProfilDogPageWidgetState extends State<EditProfilDogPageWidget> {
                                       focusedBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
                                           color: Color(0x00000000),
-                                          width: 2.0,
+                                          width: 1.0,
                                         ),
                                         borderRadius:
                                             BorderRadius.circular(8.0),
@@ -1186,7 +1259,7 @@ class _EditProfilDogPageWidgetState extends State<EditProfilDogPageWidget> {
                                         borderSide: BorderSide(
                                           color: FlutterFlowTheme.of(context)
                                               .error,
-                                          width: 2.0,
+                                          width: 1.0,
                                         ),
                                         borderRadius:
                                             BorderRadius.circular(8.0),
@@ -1195,7 +1268,7 @@ class _EditProfilDogPageWidgetState extends State<EditProfilDogPageWidget> {
                                         borderSide: BorderSide(
                                           color: FlutterFlowTheme.of(context)
                                               .error,
-                                          width: 2.0,
+                                          width: 1.0,
                                         ),
                                         borderRadius:
                                             BorderRadius.circular(8.0),
@@ -1227,8 +1300,10 @@ class _EditProfilDogPageWidgetState extends State<EditProfilDogPageWidget> {
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
+                                    maxLines: 10,
                                     cursorColor: FlutterFlowTheme.of(context)
                                         .primaryText,
+                                    enableInteractiveSelection: true,
                                     validator: _model.textController5Validator
                                         .asValidator(context),
                                   ),

@@ -12,7 +12,6 @@ import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/gps_tracking_manager.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -512,10 +511,10 @@ class _TrackPageWidgetState extends State<TrackPageWidget> {
                                               children: [
                                                 Text(
                                                   formatNumber(
-                                                    FFAppState().pace,
+                                                    FFAppState().speedKmh,
                                                     formatType:
                                                         FormatType.custom,
-                                                    format: '#.00 km/h',
+                                                    format: '#.00 Km/h',
                                                     locale: '',
                                                   ),
                                                   style: FlutterFlowTheme.of(
@@ -934,7 +933,7 @@ class _TrackPageWidgetState extends State<TrackPageWidget> {
                                   distance: FFAppState().totalDistance,
                                   startTime: getCurrentTimestamp,
                                   step: FFAppState().stepCount,
-                                  vitesse: FFAppState().pace,
+                                  vitesse: FFAppState().speedKmh,
                                   city: FFAppState().cityPostion,
                                 ),
                                 ...mapToFirestore(
@@ -953,7 +952,7 @@ class _TrackPageWidgetState extends State<TrackPageWidget> {
                                   distance: FFAppState().totalDistance,
                                   startTime: getCurrentTimestamp,
                                   step: FFAppState().stepCount,
-                                  vitesse: FFAppState().pace,
+                                  vitesse: FFAppState().speedKmh,
                                   city: FFAppState().cityPostion,
                                 ),
                                 ...mapToFirestore(
@@ -964,6 +963,8 @@ class _TrackPageWidgetState extends State<TrackPageWidget> {
                                   },
                                 ),
                               }, activityRecordReference);
+                              _model.currentActivity =
+                                  _model.newActivityOutput?.reference;
 
                               safeSetState(() {});
                             },
@@ -1121,7 +1122,6 @@ class _TrackPageWidgetState extends State<TrackPageWidget> {
                             ),
                             FFButtonWidget(
                               onPressed: () async {
-                                await actions.stopGpsTracking();
                                 await GpsTrackingManager.stop();
                                 await StepCounterManager.stop();
 
@@ -1144,49 +1144,17 @@ class _TrackPageWidgetState extends State<TrackPageWidget> {
                                     },
                                   ),
                                 });
+                                _model.healthOutput =
+                                    await actions.syncHealthDataFromInterval(
+                                  _model.newActivityOutput!.startTime!,
+                                  getCurrentTimestamp,
+                                );
                                 _model.isTimerRunning = false;
                                 safeSetState(() {});
                                 FFAppState().isStopwatchRunning = false;
                                 FFAppState().pathList = [];
                                 FFAppState().pace = 0.0;
                                 safeSetState(() {});
-                                _model.badgeFirstActivityOutput =
-                                    await queryBadgesRecordOnce(
-                                  queryBuilder: (badgesRecord) =>
-                                      badgesRecord.where(
-                                    'id',
-                                    isEqualTo: 'first_activity',
-                                  ),
-                                  singleRecord: true,
-                                ).then((s) => s.firstOrNull);
-                                _model.checkUserBadgesOutput =
-                                    await queryUsersBadgeRecordOnce(
-                                  queryBuilder: (usersBadgeRecord) =>
-                                      usersBadgeRecord
-                                          .where(
-                                            'user_id',
-                                            isEqualTo: currentUserReference,
-                                          )
-                                          .where(
-                                            'badge_id',
-                                            isEqualTo: _model
-                                                .badgeFirstActivityOutput
-                                                ?.reference,
-                                          ),
-                                  singleRecord: true,
-                                ).then((s) => s.firstOrNull);
-                                if (!(_model.checkUserBadgesOutput != null)) {
-                                  await UsersBadgeRecord.collection
-                                      .doc()
-                                      .set(createUsersBadgeRecordData(
-                                        userId: currentUserReference,
-                                        badgeId: _model.badgeFirstActivityOutput
-                                            ?.reference,
-                                        earnedAt: getCurrentTimestamp,
-                                        activityId:
-                                            _model.newActivityOutput?.reference,
-                                      ));
-                                }
 
                                 context.pushNamed(
                                   ActivityPageWidget.routeName,
