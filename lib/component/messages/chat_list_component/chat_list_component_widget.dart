@@ -108,6 +108,18 @@ class _ChatListComponentWidgetState extends State<ChatListComponentWidget> {
                             color: FlutterFlowTheme.of(context).primary,
                             shape: BoxShape.circle,
                           ),
+                          child: Container(
+                            width: 200.0,
+                            height: 200.0,
+                            clipBehavior: Clip.antiAlias,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                            ),
+                            child: Image.network(
+                              rowUsersRecord.photoUrl,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
                         ),
                       ],
                     ),

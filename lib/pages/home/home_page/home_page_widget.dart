@@ -155,28 +155,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
                                   return Container(
                                     decoration: BoxDecoration(),
-                                    child: Visibility(
-                                      visible: containerCount > 0,
-                                      child: badges.Badge(
-                                        badgeContent: Text(
-                                          containerCount.toString(),
-                                          style: FlutterFlowTheme.of(context)
-                                              .titleSmall
-                                              .override(
-                                                font: GoogleFonts.interTight(
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleSmall
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleSmall
-                                                          .fontStyle,
-                                                ),
-                                                color: Colors.white,
-                                                letterSpacing: 0.0,
+                                    child: badges.Badge(
+                                      badgeContent: Text(
+                                        containerCount.toString(),
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              font: GoogleFonts.interTight(
                                                 fontWeight:
                                                     FlutterFlowTheme.of(context)
                                                         .titleSmall
@@ -186,38 +171,47 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                         .titleSmall
                                                         .fontStyle,
                                               ),
-                                        ),
-                                        showBadge: true,
-                                        shape: badges.BadgeShape.circle,
-                                        badgeColor:
-                                            FlutterFlowTheme.of(context).error,
-                                        elevation: 4.0,
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            8.0, 8.0, 8.0, 0.0),
-                                        position: badges.BadgePosition.topEnd(),
-                                        animationType:
-                                            badges.BadgeAnimationType.scale,
-                                        toAnimate: true,
-                                        child: Align(
-                                          alignment:
-                                              AlignmentDirectional(1.0, -1.0),
-                                          child: InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              context.pushNamed(
-                                                  NotificationPageWidget
-                                                      .routeName);
-                                            },
-                                            child: FaIcon(
-                                              FontAwesomeIcons.bell,
-                                              color:
+                                              color: Colors.white,
+                                              letterSpacing: 0.0,
+                                              fontWeight:
                                                   FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              size: 30.0,
+                                                      .titleSmall
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .fontStyle,
                                             ),
+                                      ),
+                                      showBadge: containerCount > 0,
+                                      shape: badges.BadgeShape.circle,
+                                      badgeColor:
+                                          FlutterFlowTheme.of(context).error,
+                                      elevation: 4.0,
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          8.0, 8.0, 8.0, 0.0),
+                                      position: badges.BadgePosition.topEnd(),
+                                      animationType:
+                                          badges.BadgeAnimationType.scale,
+                                      toAnimate: true,
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional(1.0, -1.0),
+                                        child: InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            context.pushNamed(
+                                                NotificationPageWidget
+                                                    .routeName);
+                                          },
+                                          child: FaIcon(
+                                            FontAwesomeIcons.bell,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            size: 30.0,
                                           ),
                                         ),
                                       ),

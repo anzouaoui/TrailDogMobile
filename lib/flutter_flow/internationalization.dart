@@ -1148,6 +1148,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Request sended',
       'fr': 'Demande envoyée',
     },
+    'az9nihlj': {
+      'en': 'Friend',
+      'fr': 'Ami',
+    },
     'k087vzib': {
       'en': 'Follow',
       'fr': 'Suivre',
