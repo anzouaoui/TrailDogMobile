@@ -1,4 +1,6 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/component/dog_component/dog_component_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -405,6 +407,162 @@ class _EditActivityPageWidgetState extends State<EditActivityPageWidget> {
                               ].divide(SizedBox(height: 8.0)),
                             ),
                           ].divide(SizedBox(height: 20.0)),
+                        ),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          borderRadius: BorderRadius.circular(15.0),
+                          border: Border.all(
+                            color: FlutterFlowTheme.of(context).alternate,
+                            width: 2.0,
+                          ),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Icon(
+                                    FFIcons.kchien,
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    size: 24.0,
+                                  ),
+                                  Text(
+                                    FFLocalizations.of(context).getText(
+                                      'q01mkeg7' /* Dogs */,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          font: GoogleFonts.inter(
+                                            fontWeight: FontWeight.w600,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
+                                          fontSize: 18.0,
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.w600,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
+                                  ),
+                                ].divide(SizedBox(width: 8.0)),
+                              ),
+                              StreamBuilder<List<DogRecord>>(
+                                stream: queryDogRecord(
+                                  parent: currentUserReference,
+                                ),
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 50.0,
+                                        height: 50.0,
+                                        child: CircularProgressIndicator(
+                                          valueColor:
+                                              AlwaysStoppedAnimation<Color>(
+                                            FlutterFlowTheme.of(context)
+                                                .primary,
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  }
+                                  List<DogRecord> rowDogRecordList =
+                                      snapshot.data!;
+
+                                  return Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: List.generate(
+                                        rowDogRecordList.length, (rowIndex) {
+                                      final rowDogRecord =
+                                          rowDogRecordList[rowIndex];
+                                      return Stack(
+                                        children: [
+                                          InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              if (editActivityPageActivityRecord
+                                                  .dogs
+                                                  .contains(
+                                                      rowDogRecord.reference)) {
+                                                await editActivityPageActivityRecord
+                                                    .reference
+                                                    .update({
+                                                  ...mapToFirestore(
+                                                    {
+                                                      'dogs': FieldValue
+                                                          .arrayRemove([
+                                                        rowDogRecord.reference
+                                                      ]),
+                                                    },
+                                                  ),
+                                                });
+                                              } else {
+                                                await editActivityPageActivityRecord
+                                                    .reference
+                                                    .update({
+                                                  ...mapToFirestore(
+                                                    {
+                                                      'dogs': FieldValue
+                                                          .arrayUnion([
+                                                        rowDogRecord.reference
+                                                      ]),
+                                                    },
+                                                  ),
+                                                });
+                                              }
+                                            },
+                                            child: wrapWithModel(
+                                              model: _model.dogComponentModels
+                                                  .getModel(
+                                                rowDogRecord.reference.id,
+                                                rowIndex,
+                                              ),
+                                              updateCallback: () =>
+                                                  safeSetState(() {}),
+                                              child: DogComponentWidget(
+                                                key: Key(
+                                                  'Keyo3f_${rowDogRecord.reference.id}',
+                                                ),
+                                                isSelectedParameter: false,
+                                                dogParameter:
+                                                    rowDogRecord.reference,
+                                              ),
+                                            ),
+                                          ),
+                                          if (editActivityPageActivityRecord
+                                              .dogs
+                                              .contains(rowDogRecord.reference))
+                                            Icon(
+                                              Icons.check_circle,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .accent2,
+                                              size: 24.0,
+                                            ),
+                                        ],
+                                      );
+                                    }).divide(SizedBox(width: 8.0)),
+                                  );
+                                },
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       Container(

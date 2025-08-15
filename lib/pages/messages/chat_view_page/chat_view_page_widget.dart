@@ -294,6 +294,9 @@ class _ChatViewPageWidgetState extends State<ChatViewPageWidget> {
                                                       child: Column(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
                                                         children: [
                                                           if (listViewMessagesRecord
                                                                       .imageUrl !=
@@ -337,6 +340,9 @@ class _ChatViewPageWidgetState extends State<ChatViewPageWidget> {
                                                               child: Text(
                                                                 listViewMessagesRecord
                                                                     .text,
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .start,
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
@@ -473,6 +479,9 @@ class _ChatViewPageWidgetState extends State<ChatViewPageWidget> {
                                                       child: Column(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
                                                         children: [
                                                           if (listViewMessagesRecord
                                                                       .imageUrl !=

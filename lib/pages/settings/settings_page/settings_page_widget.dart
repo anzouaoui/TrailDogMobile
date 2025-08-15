@@ -1235,41 +1235,62 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Container(
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            borderRadius: BorderRadius.circular(12.0),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                12.0, 8.0, 12.0, 8.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Expanded(
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Flexible(
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'tt3aw9d1' /* Privacy and Security */,
-                                              ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyLarge
-                                                      .override(
-                                                        font: GoogleFonts.inter(
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context
+                                .pushNamed(PrivacySecurityPageWidget.routeName);
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  12.0, 8.0, 12.0, 8.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Expanded(
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Flexible(
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  'tt3aw9d1' /* Privacy and Security */,
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyLarge
+                                                        .override(
+                                                          font:
+                                                              GoogleFonts.inter(
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyLarge
+                                                                    .fontStyle,
+                                                          ),
+                                                          letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
                                                           fontStyle:
@@ -1278,42 +1299,17 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
                                                                   .bodyLarge
                                                                   .fontStyle,
                                                         ),
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyLarge
-                                                                .fontStyle,
-                                                      ),
-                                            ),
-                                            Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                't9denwbs' /* Manage your privacy and securi... */,
                                               ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodySmall
-                                                      .override(
-                                                        font: GoogleFonts.inter(
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodySmall
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodySmall
-                                                                  .fontStyle,
-                                                        ),
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryText,
-                                                        letterSpacing: 0.0,
+                                              Text(
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  't9denwbs' /* Manage your privacy and securi... */,
+                                                ),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodySmall
+                                                    .override(
+                                                      font: GoogleFonts.inter(
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -1325,20 +1321,37 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
                                                                 .bodySmall
                                                                 .fontStyle,
                                                       ),
-                                            ),
-                                          ],
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodySmall
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodySmall
+                                                              .fontStyle,
+                                                    ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                    ].divide(SizedBox(width: 16.0)),
+                                      ].divide(SizedBox(width: 16.0)),
+                                    ),
                                   ),
-                                ),
-                                Icon(
-                                  Icons.chevron_right,
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  size: 24.0,
-                                ),
-                              ].divide(SizedBox(width: 12.0)),
+                                  Icon(
+                                    Icons.chevron_right,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    size: 24.0,
+                                  ),
+                                ].divide(SizedBox(width: 12.0)),
+                              ),
                             ),
                           ),
                         ),
@@ -1348,39 +1361,59 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
                           endIndent: 16.0,
                           color: FlutterFlowTheme.of(context).alternate,
                         ),
-                        Container(
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                          ),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                12.0, 8.0, 12.0, 8.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Flexible(
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Flexible(
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'r2mjmus5' /* Messages */,
-                                              ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyLarge
-                                                      .override(
-                                                        font: GoogleFonts.inter(
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context
+                                .pushNamed(MessageSettingsPageWidget.routeName);
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                            ),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  12.0, 8.0, 12.0, 8.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Flexible(
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Flexible(
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  'r2mjmus5' /* Messages */,
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyLarge
+                                                        .override(
+                                                          font:
+                                                              GoogleFonts.inter(
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyLarge
+                                                                    .fontStyle,
+                                                          ),
+                                                          letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
                                                           fontStyle:
@@ -1389,42 +1422,17 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
                                                                   .bodyLarge
                                                                   .fontStyle,
                                                         ),
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyLarge
-                                                                .fontStyle,
-                                                      ),
-                                            ),
-                                            Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'iw0eowpz' /* Chat and Communication Setting... */,
                                               ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodySmall
-                                                      .override(
-                                                        font: GoogleFonts.inter(
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodySmall
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodySmall
-                                                                  .fontStyle,
-                                                        ),
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryText,
-                                                        letterSpacing: 0.0,
+                                              Text(
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  'iw0eowpz' /* Chat and Communication Setting... */,
+                                                ),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodySmall
+                                                    .override(
+                                                      font: GoogleFonts.inter(
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -1436,20 +1444,37 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
                                                                 .bodySmall
                                                                 .fontStyle,
                                                       ),
-                                            ),
-                                          ],
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodySmall
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodySmall
+                                                              .fontStyle,
+                                                    ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                    ].divide(SizedBox(width: 16.0)),
+                                      ].divide(SizedBox(width: 16.0)),
+                                    ),
                                   ),
-                                ),
-                                Icon(
-                                  Icons.chevron_right,
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  size: 24.0,
-                                ),
-                              ].divide(SizedBox(width: 12.0)),
+                                  Icon(
+                                    Icons.chevron_right,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    size: 24.0,
+                                  ),
+                                ].divide(SizedBox(width: 12.0)),
+                              ),
                             ),
                           ),
                         ),

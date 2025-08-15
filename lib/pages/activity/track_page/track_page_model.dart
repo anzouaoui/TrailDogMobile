@@ -76,6 +76,8 @@ class TrackPageModel extends FlutterFlowModel<TrackPageWidget> {
       dogSelectComponentModels;
   // Stores action output result for [Backend Call - API (getCity)] action in Button widget.
   ApiCallResponse? cityOutput;
+  // Stores action output result for [Custom Action - manageTrackingPermission] action in Button widget.
+  bool? isGrantedOutput;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   ActivityRecord? newActivityOutput;
   // Stores action output result for [Custom Action - syncHealthDataFromInterval] action in Button widget.

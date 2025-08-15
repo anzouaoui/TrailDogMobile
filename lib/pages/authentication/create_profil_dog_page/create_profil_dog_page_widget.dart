@@ -132,9 +132,7 @@ class _CreateProfilDogPageWidgetState extends State<CreateProfilDogPageWidget> {
                                   final selectedMedia =
                                       await selectMediaWithSourceBottomSheet(
                                     context: context,
-                                    maxWidth: 60.00,
-                                    maxHeight: 60.00,
-                                    imageQuality: 80,
+                                    imageQuality: 90,
                                     allowPhoto: true,
                                     backgroundColor:
                                         FlutterFlowTheme.of(context)
@@ -759,7 +757,7 @@ class _CreateProfilDogPageWidgetState extends State<CreateProfilDogPageWidget> {
                           children: [
                             Text(
                               FFLocalizations.of(context).getText(
-                                's0538zcq' /* Age */,
+                                's0538zcq' /* Age (year) */,
                               ),
                               textAlign: TextAlign.center,
                               style: FlutterFlowTheme.of(context)
@@ -1009,6 +1007,7 @@ class _CreateProfilDogPageWidgetState extends State<CreateProfilDogPageWidget> {
                                           .bodyMedium
                                           .fontStyle,
                                     ),
+                                keyboardType: TextInputType.number,
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primaryText,
                                 validator: _model
@@ -1518,8 +1517,8 @@ class _CreateProfilDogPageWidgetState extends State<CreateProfilDogPageWidget> {
                               experience: _model.dropDownExperienceValue,
                               healthInformation: _model.textController5.text,
                               puce: _model.textFieldTattooTextController.text,
-                              age: int.tryParse(_model
-                                  .textFieldOtherBreedTextController.text),
+                              age: int.tryParse(
+                                  _model.textFieldAgeTextController.text),
                               activitiesCount: 0,
                               imagePath: _model.uploadedFileUrl_uploadData2mc,
                             ));
@@ -1540,8 +1539,8 @@ class _CreateProfilDogPageWidgetState extends State<CreateProfilDogPageWidget> {
                                       _model.textController5.text,
                                   puce:
                                       _model.textFieldTattooTextController.text,
-                                  age: int.tryParse(_model
-                                      .textFieldOtherBreedTextController.text),
+                                  age: int.tryParse(
+                                      _model.textFieldAgeTextController.text),
                                   activitiesCount: 0,
                                   imagePath:
                                       _model.uploadedFileUrl_uploadData2mc,

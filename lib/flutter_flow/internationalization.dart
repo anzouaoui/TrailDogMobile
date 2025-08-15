@@ -461,8 +461,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Femelle',
     },
     'nq9rz26j': {
-      'en': 'Age',
-      'fr': 'Âge',
+      'en': 'Age (year)',
+      'fr': 'Âge (ans)',
     },
     'pimb5lph': {
       'en': '',
@@ -806,8 +806,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Femelle',
     },
     's0538zcq': {
-      'en': 'Age',
-      'fr': 'Âge',
+      'en': 'Age (year)',
+      'fr': 'Âge (ans)',
     },
     'wzzxoo01': {
       'en': '',
@@ -1143,6 +1143,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'i1qkxtle': {
       'en': 'Runners',
       'fr': 'Coureurs',
+    },
+    '4moog5jv': {
+      'en': 'Request sended',
+      'fr': 'Demande envoyée',
+    },
+    'k087vzib': {
+      'en': 'Follow',
+      'fr': 'Suivre',
     },
   },
   // FriendsPage
@@ -2087,6 +2095,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Cani-hicking',
       'fr': 'Cani-randonnée',
     },
+    'q01mkeg7': {
+      'en': 'Dogs',
+      'fr': 'Chiens',
+    },
     'fe105i8e': {
       'en': 'Activity Details',
       'fr': 'Détails de l\'activité',
@@ -2701,6 +2713,35 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'dnwbyz5c': {
       'en': 'View All Invoices',
       'fr': 'Afficher toutes les factures',
+    },
+  },
+  // ChangePasswordPage
+  {
+    '4h0h4thy': {
+      'en': 'Change Password',
+      'fr': 'Changer le mot de passe',
+    },
+    'q984p253': {
+      'en': 'New password',
+      'fr': 'Nouveau mot de passe',
+    },
+    '8wcxqnt5': {
+      'en': 'Confirm new password',
+      'fr': 'Confirmer le nouveau mot de passe',
+    },
+    'oirtqn39': {
+      'en': 'Passwords do not match',
+      'fr': 'Les mots de passe ne correspondent pas',
+    },
+    'nd4kah3w': {
+      'en': 'Update Password',
+      'fr': 'Mettre à jour le mot de passe',
+    },
+    'l87txm8m': {
+      'en':
+          'Password must be at least 8 characters long and contain a mix of letters, numbers, and special characters.',
+      'fr':
+          'Le mot de passe doit comporter au moins 8 caractères et contenir un mélange de lettres, de chiffres et de caractères spéciaux.',
     },
   },
   // NavbarComponent
@@ -3423,6 +3464,48 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '63s53spz': {
       'en': 'Restore purchases',
       'fr': '',
+    },
+  },
+  // ReauthenticateDialogComponent
+  {
+    'io9j9tlh': {
+      'en': 'Security Confirmation',
+      'fr': 'Confirmation de sécurité',
+    },
+    '5mipapg5': {
+      'en':
+          'For security reasons, please re-authenticate before deleting your account.',
+      'fr':
+          'Pour des raisons de sécurité, veuillez vous réauthentifier avant de supprimer votre compte.',
+    },
+    '2t93x86c': {
+      'en': 'Email',
+      'fr': 'E-mail',
+    },
+    'zktpy4d8': {
+      'en': 'Enter your email',
+      'fr': 'Entrez votre email',
+    },
+    '9czotngc': {
+      'en': 'Password',
+      'fr': 'Mot de passe',
+    },
+    'hsf09a1j': {
+      'en': 'Enter your password',
+      'fr': 'Entrez votre mot de passe',
+    },
+    '1ruwfv4c': {
+      'en': 'Re-authentication failed. Please check your credentials.',
+      'fr':
+          'Échec de la réauthentification. Veuillez vérifier vos identifiants.',
+    },
+    '6nhkpyw5': {
+      'en': 'Cancel',
+      'fr': 'Annuler',
+    },
+    'u6ngppu4': {
+      'en': 'Re-authenticate',
+      'fr': 'Ré-authentifier',
     },
   },
   // Miscellaneous

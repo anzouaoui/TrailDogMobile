@@ -1,3 +1,4 @@
+import '/component/dog_component/dog_component_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'edit_activity_page_widget.dart' show EditActivityPageWidget;
@@ -14,13 +15,19 @@ class EditActivityPageModel extends FlutterFlowModel<EditActivityPageWidget> {
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
+  // Models for DogComponent dynamic component.
+  late FlutterFlowDynamicModels<DogComponentModel> dogComponentModels;
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    dogComponentModels = FlutterFlowDynamicModels(() => DogComponentModel());
+  }
 
   @override
   void dispose() {
     textFieldFocusNode?.dispose();
     textController?.dispose();
+
+    dogComponentModels.dispose();
   }
 }

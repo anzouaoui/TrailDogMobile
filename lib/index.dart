@@ -72,3 +72,5 @@ export '/pages/settings/premium/advanced_analytics_page/advanced_analytics_page_
     show AdvancedAnalyticsPageWidget;
 export '/pages/settings/premium/subscription_page/subscription_page_widget.dart'
     show SubscriptionPageWidget;
+export '/pages/settings/change_password_page/change_password_page_widget.dart'
+    show ChangePasswordPageWidget;

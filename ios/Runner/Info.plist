@@ -1,105 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>CFBundleDevelopmentRegion</key>
-	<string>$(DEVELOPMENT_LANGUAGE)</string>
-	<key>CFBundleDisplayName</key>
-	<string>TrailDog</string>
-	<key>CFBundleExecutable</key>
-	<string>$(EXECUTABLE_NAME)</string>
-	<key>CFBundleIdentifier</key>
-	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
-	<key>CFBundleInfoDictionaryVersion</key>
-	<string>6.0</string>
-	<key>CFBundleName</key>
-	<string>TrailDog</string>
-	<key>CFBundlePackageType</key>
-	<string>APPL</string>
-	<key>CFBundleLocalizations</key>
-	<array>
-		<string>en</string>
-		<string>fr</string>
-	</array>
-
-	<key>CFBundleShortVersionString</key>
-	<string>$(FLUTTER_BUILD_NAME)</string>
-	<key>CFBundleSignature</key>
-	<string>????</string>
-	<key>CFBundleURLTypes</key>
-	<array>
-        <dict>
-            <key>CFBundleTypeRole</key>
-            <string>Editor</string>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <string>com.googleusercontent.apps.155891952495-mj2brfqmn3r2usea16gpoijc2o85v9de</string>
-                
-            </array>
-        </dict>
-
-        <dict>
+  <dict>
+    <key>CFBundleDevelopmentRegion</key>
+    <string>$(DEVELOPMENT_LANGUAGE)</string>
+    <key>CFBundleDisplayName</key>
+    <string>TrailDog</string>
+    <key>CFBundleExecutable</key>
+    <string>$(EXECUTABLE_NAME)</string>
+    <key>CFBundleIdentifier</key>
+    <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+    <key>CFBundleInfoDictionaryVersion</key>
+    <string>6.0</string>
+    <key>CFBundleName</key>
+    <string>TrailDog</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleLocalizations</key>
+    <array>
+      <string>en</string>
+      <string>fr</string>
+    </array>
+    <key>CFBundleShortVersionString</key>
+    <string>$(FLUTTER_BUILD_NAME)</string>
+    <key>CFBundleSignature</key>
+    <string>????</string>
+    <key>CFBundleURLTypes</key>
+    <array>
+      <dict>
+        <key>CFBundleTypeRole</key>
+        <string>Editor</string>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>com.googleusercontent.apps.155891952495-mj2brfqmn3r2usea16gpoijc2o85v9de</string>
+        </array>
+      </dict>
+      <dict>
         <key>CFBundleTypeRole</key>
         <string>Editor</string>
         <key>CFBundleURLName</key>
         <string>traildog.com</string>
         <key>CFBundleURLSchemes</key>
         <array>
-        <string>traildog</string>
+          <string>traildog</string>
         </array>
-        </dict>
+      </dict>
     </array>
     <key>FlutterDeepLinkingEnabled</key>
     <true/>
-
-
-	<key>CFBundleVersion</key>
-	<string>$(FLUTTER_BUILD_NUMBER)</string>
-	<key>LSRequiresIPhoneOS</key>
-	<true/>
-
-	<key>NSLocationWhenInUseUsageDescription</key>
-    <string>In order to search nearby, this app requires access to your current location.</string>
-	<key>NSCameraUsageDescription</key>
+    <key>CFBundleVersion</key>
+    <string>$(FLUTTER_BUILD_NUMBER)</string>
+    <key>LSRequiresIPhoneOS</key>
+    <true/>
+    <key>NSCameraUsageDescription</key>
     <string>Autorisez l’accès à l’appareil photo pour capturer des photos pendant l’activité.</string>
-	<key>NSMicrophoneUsageDescription</key>
+    <key>NSMicrophoneUsageDescription</key>
     <string>In order to record audio for video, this app requires permission to access the microphone.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
+    <key>NSPhotoLibraryUsageDescription</key>
     <string>Autorisez l’accès à votre galerie pour sélectionner et ajouter des photos à l’activité.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-    <string>Nécessaire pour suivre votre trajet en activité.</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Autorisez la localisation pour suivre votre parcours avec précision pendant l'activité.</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
     <string>Pour suivre l’activité même en fond.</string>
-	<key>NSLocationAlwaysUsageDescription</key>
+    <key>NSLocationAlwaysUsageDescription</key>
     <string>Pour l’enregistrement continu de votre parcours.</string>
-	<key>NSMotionUsageDescription</key>
+    <key>NSMotionUsageDescription</key>
     <string>Utilisé pour compter vos pas pendant l'activité</string>
-	<key>NSHealthShareUsageDescription</key>
+    <key>NSHealthShareUsageDescription</key>
     <string>Utiliser pour lire vos données Apple Santé.</string>
-	<key>NSHealthUpdateUsageDescription</key>
-    <string>	Utiliser pour synchroniser vos données santé avec l’application.</string>
-
-
-
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
-	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
-	<key>UISupportedInterfaceOrientations</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>UISupportedInterfaceOrientations~ipad</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
-
-</dict>
+    <key>NSHealthUpdateUsageDescription</key>
+    <string>Utiliser pour synchroniser vos données santé avec l’application.</string>
+    <key>UILaunchStoryboardName</key>
+    <string>LaunchScreen</string>
+    <key>UISupportedInterfaceOrientations</key>
+    <array>
+      <string>UIInterfaceOrientationPortrait</string>
+      <string>UIInterfaceOrientationLandscapeLeft</string>
+      <string>UIInterfaceOrientationLandscapeRight</string>
+    </array>
+    <key>UISupportedInterfaceOrientations~ipad</key>
+    <array>
+      <string>UIInterfaceOrientationPortrait</string>
+      <string>UIInterfaceOrientationPortraitUpsideDown</string>
+      <string>UIInterfaceOrientationLandscapeLeft</string>
+      <string>UIInterfaceOrientationLandscapeRight</string>
+    </array>
+    <key>UIViewControllerBasedStatusBarAppearance</key>
+    <false/>
+  </dict>
 </plist>

@@ -358,6 +358,11 @@ class _ActivityPageWidgetState extends State<ActivityPageWidget> {
                                   width: double.infinity,
                                   height: double.infinity,
                                   polylineCoordinates: stackActivityRecord.path,
+                                  borderRadius: 16.0,
+                                  strokeColor:
+                                      FlutterFlowTheme.of(context).secondary,
+                                  strokeWidth: 6,
+                                  cameraPadding: 50.0,
                                 ),
                               ),
                             ),

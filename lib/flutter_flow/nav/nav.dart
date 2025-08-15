@@ -317,6 +317,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: SubscriptionPageWidget.routeName,
           path: SubscriptionPageWidget.routePath,
           builder: (context, params) => SubscriptionPageWidget(),
+        ),
+        FFRoute(
+          name: ChangePasswordPageWidget.routeName,
+          path: ChangePasswordPageWidget.routePath,
+          builder: (context, params) => ChangePasswordPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

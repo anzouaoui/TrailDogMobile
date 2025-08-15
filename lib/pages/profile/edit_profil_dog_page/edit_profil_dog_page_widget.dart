@@ -150,6 +150,7 @@ class _EditProfilDogPageWidgetState extends State<EditProfilDogPageWidget> {
                                       final selectedMedia =
                                           await selectMediaWithSourceBottomSheet(
                                         context: context,
+                                        imageQuality: 90,
                                         allowPhoto: true,
                                       );
                                       if (selectedMedia != null &&
@@ -233,7 +234,11 @@ class _EditProfilDogPageWidgetState extends State<EditProfilDogPageWidget> {
                                           shape: BoxShape.circle,
                                         ),
                                         child: Image.network(
-                                          editProfilDogPageDogRecord.imagePath,
+                                          _model.isDataUploading_uploadData6rz
+                                              ? _model
+                                                  .uploadedFileUrl_uploadData6rz
+                                              : editProfilDogPageDogRecord
+                                                  .imagePath,
                                           fit: BoxFit.cover,
                                         ),
                                       ),
@@ -649,7 +654,7 @@ class _EditProfilDogPageWidgetState extends State<EditProfilDogPageWidget> {
                               children: [
                                 Text(
                                   FFLocalizations.of(context).getText(
-                                    'nq9rz26j' /* Age */,
+                                    'nq9rz26j' /* Age (year) */,
                                   ),
                                   textAlign: TextAlign.center,
                                   style: FlutterFlowTheme.of(context)
@@ -938,6 +943,7 @@ class _EditProfilDogPageWidgetState extends State<EditProfilDogPageWidget> {
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
+                                    keyboardType: TextInputType.number,
                                     cursorColor: FlutterFlowTheme.of(context)
                                         .primaryText,
                                     validator: _model.textController4Validator

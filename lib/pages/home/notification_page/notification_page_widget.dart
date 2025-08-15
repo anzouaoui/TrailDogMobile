@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/component/notification/friend_request_notification_component/friend_request_notification_component_widget.dart';
 import '/component/notification/new_message_notification_component/new_message_notification_component_widget.dart';
@@ -117,7 +118,12 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
                             'read',
                             isEqualTo: false,
                           )
-                          .orderBy('created_at'),
+                          .where(
+                            'user_to',
+                            isEqualTo: currentUserReference,
+                          )
+                          .orderBy('created_at', descending: true),
+                      limit: 50,
                     ),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
@@ -148,7 +154,7 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
                               listViewNotificationsRecordList[listViewIndex];
                           return StreamBuilder<UsersRecord>(
                             stream: UsersRecord.getDocument(
-                                listViewNotificationsRecord.userTo!),
+                                listViewNotificationsRecord.userFrom!),
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
                               if (!snapshot.hasData) {
@@ -189,12 +195,12 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
                                         userformParamter:
                                             conditionalBuilderUsersRecord
                                                 .reference,
-                                        referenceFirendRequest:
-                                            listViewNotificationsRecord
-                                                .friendRequestId?.id,
                                         notificationParameter:
                                             listViewNotificationsRecord
                                                 .reference,
+                                        friendRequestParameter:
+                                            listViewNotificationsRecord
+                                                .friendRequestId!,
                                       ),
                                     );
                                   } else if (listViewNotificationsRecord.type ==

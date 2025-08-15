@@ -116,11 +116,14 @@ class _FeedComponentWidgetState extends State<FeedComponentWidget> {
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                           ),
-                          child: Image.network(
-                            columnUsersRecord.photoUrl,
-                            width: 40.0,
-                            height: 40.0,
-                            fit: BoxFit.cover,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(8.0),
+                            child: Image.network(
+                              columnUsersRecord.photoUrl,
+                              width: 40.0,
+                              height: 40.0,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                         Expanded(

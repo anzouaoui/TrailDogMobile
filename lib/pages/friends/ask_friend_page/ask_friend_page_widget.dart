@@ -1,10 +1,10 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/component/friends/ask_friends_component/ask_friends_component_widget.dart';
 import '/component/friends/not_found_friend_component/not_found_friend_component_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'ask_friend_page_model.dart';
@@ -300,13 +300,7 @@ class _AskFriendPageWidgetState extends State<AskFriendPageWidget> {
                                 padding: EdgeInsets.all(16.0),
                                 child: FutureBuilder<List<UsersRecord>>(
                                   future: UsersRecord.search(
-                                    term: _model.textController.text != ''
-                                        ? _model.textController.text
-                                        : FFLocalizations.of(context)
-                                            .getVariableText(
-                                            enText: 'unknown name',
-                                            frText: 'Nom inconnu',
-                                          ),
+                                    term: _model.textController.text,
                                   ),
                                   builder: (context, snapshot) {
                                     // Customize what your widget looks like when it's loading.
@@ -344,55 +338,285 @@ class _AskFriendPageWidgetState extends State<AskFriendPageWidget> {
                                           builder: (context) {
                                             if (listViewUsersRecord.reference !=
                                                 currentUserReference) {
-                                              return StreamBuilder<UsersRecord>(
-                                                stream: UsersRecord.getDocument(
-                                                    listViewUsersRecord
-                                                        .reference),
-                                                builder: (context, snapshot) {
-                                                  // Customize what your widget looks like when it's loading.
-                                                  if (!snapshot.hasData) {
-                                                    return Center(
-                                                      child: SizedBox(
-                                                        width: 50.0,
-                                                        height: 50.0,
-                                                        child:
-                                                            CircularProgressIndicator(
-                                                          valueColor:
-                                                              AlwaysStoppedAnimation<
-                                                                  Color>(
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
+                                              return Container(
+                                                width: 100.0,
+                                                height: 100.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                ),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceBetween,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Container(
+                                                          width: 48.0,
+                                                          height: 48.0,
+                                                          clipBehavior:
+                                                              Clip.antiAlias,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            shape:
+                                                                BoxShape.circle,
+                                                          ),
+                                                          child: Image.network(
+                                                            listViewUsersRecord
+                                                                .photoUrl,
+                                                            fit: BoxFit.cover,
                                                           ),
                                                         ),
-                                                      ),
-                                                    );
-                                                  }
+                                                        Flexible(
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                '${listViewUsersRecord.firstname} ${listViewUsersRecord.lastname}',
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyLarge
+                                                                    .override(
+                                                                      font: GoogleFonts
+                                                                          .inter(
+                                                                        fontWeight:
+                                                                            FontWeight.w600,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyLarge
+                                                                            .fontStyle,
+                                                                      ),
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyLarge
+                                                                          .fontStyle,
+                                                                    ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                        Builder(
+                                                          builder: (context) {
+                                                            if ((_model.requestSended ==
+                                                                    true) &&
+                                                                (_model.friendsRequestOutput
+                                                                        ?.userFrom ==
+                                                                    currentUserReference) &&
+                                                                (_model.friendsRequestOutput
+                                                                        ?.userTo ==
+                                                                    listViewUsersRecord
+                                                                        .reference)) {
+                                                              return Text(
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getText(
+                                                                  '4moog5jv' /* Request sended */,
+                                                                ),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      font: GoogleFonts
+                                                                          .inter(
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
+                                                                      ),
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
+                                                              );
+                                                            } else {
+                                                              return FFButtonWidget(
+                                                                onPressed:
+                                                                    () async {
+                                                                  var friendsRequestsRecordReference =
+                                                                      FriendsRequestsRecord
+                                                                          .collection
+                                                                          .doc();
+                                                                  await friendsRequestsRecordReference
+                                                                      .set(
+                                                                          createFriendsRequestsRecordData(
+                                                                    userFrom:
+                                                                        currentUserReference,
+                                                                    userTo: listViewUsersRecord
+                                                                        .reference,
+                                                                    status:
+                                                                        'Pending',
+                                                                    createdAt:
+                                                                        getCurrentTimestamp,
+                                                                    uid: '',
+                                                                  ));
+                                                                  _model.friendsRequestOutput =
+                                                                      FriendsRequestsRecord.getDocumentFromData(
+                                                                          createFriendsRequestsRecordData(
+                                                                            userFrom:
+                                                                                currentUserReference,
+                                                                            userTo:
+                                                                                listViewUsersRecord.reference,
+                                                                            status:
+                                                                                'Pending',
+                                                                            createdAt:
+                                                                                getCurrentTimestamp,
+                                                                            uid:
+                                                                                '',
+                                                                          ),
+                                                                          friendsRequestsRecordReference);
+                                                                  _model.requestSended =
+                                                                      true;
+                                                                  safeSetState(
+                                                                      () {});
 
-                                                  final askFriendsComponentUsersRecord =
-                                                      snapshot.data!;
+                                                                  var notificationsRecordReference =
+                                                                      NotificationsRecord
+                                                                          .collection
+                                                                          .doc();
+                                                                  await notificationsRecordReference
+                                                                      .set(
+                                                                          createNotificationsRecordData(
+                                                                    type:
+                                                                        'Friend request',
+                                                                    userTo: listViewUsersRecord
+                                                                        .reference,
+                                                                    userFrom:
+                                                                        currentUserReference,
+                                                                    createdAt:
+                                                                        getCurrentTimestamp,
+                                                                    read: false,
+                                                                    friendRequestId: _model
+                                                                        .friendsRequestOutput
+                                                                        ?.reference,
+                                                                  ));
+                                                                  _model.notificationsOutput =
+                                                                      NotificationsRecord.getDocumentFromData(
+                                                                          createNotificationsRecordData(
+                                                                            type:
+                                                                                'Friend request',
+                                                                            userTo:
+                                                                                listViewUsersRecord.reference,
+                                                                            userFrom:
+                                                                                currentUserReference,
+                                                                            createdAt:
+                                                                                getCurrentTimestamp,
+                                                                            read:
+                                                                                false,
+                                                                            friendRequestId:
+                                                                                _model.friendsRequestOutput?.reference,
+                                                                          ),
+                                                                          notificationsRecordReference);
 
-                                                  return wrapWithModel(
-                                                    model: _model
-                                                        .askFriendsComponentModels
-                                                        .getModel(
-                                                      askFriendsComponentUsersRecord
-                                                          .uid,
-                                                      listViewIndex,
+                                                                  safeSetState(
+                                                                      () {});
+                                                                },
+                                                                text: FFLocalizations.of(
+                                                                        context)
+                                                                    .getText(
+                                                                  'k087vzib' /* Follow */,
+                                                                ),
+                                                                options:
+                                                                    FFButtonOptions(
+                                                                  height: 36.0,
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          16.0,
+                                                                          0.0,
+                                                                          16.0,
+                                                                          0.0),
+                                                                  iconPadding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                                  textStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        font: GoogleFonts
+                                                                            .inter(
+                                                                          fontWeight:
+                                                                              FontWeight.w600,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
+                                                                        ),
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryBackground,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        fontWeight:
+                                                                            FontWeight.w600,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
+                                                                      ),
+                                                                  elevation:
+                                                                      0.0,
+                                                                  borderSide:
+                                                                      BorderSide(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primary,
+                                                                    width: 1.0,
+                                                                  ),
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              8.0),
+                                                                ),
+                                                              );
+                                                            }
+                                                          },
+                                                        ),
+                                                      ].divide(SizedBox(
+                                                          width: 12.0)),
                                                     ),
-                                                    updateCallback: () =>
-                                                        safeSetState(() {}),
-                                                    child:
-                                                        AskFriendsComponentWidget(
-                                                      key: Key(
-                                                        'Key0a7_${askFriendsComponentUsersRecord.uid}',
-                                                      ),
-                                                      userParameter:
-                                                          askFriendsComponentUsersRecord
-                                                              .reference,
+                                                    Divider(
+                                                      height: 1.0,
+                                                      thickness: 1.0,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .alternate,
                                                     ),
-                                                  );
-                                                },
+                                                  ]
+                                                      .divide(
+                                                          SizedBox(height: 8.0))
+                                                      .around(SizedBox(
+                                                          height: 8.0)),
+                                                ),
                                               );
                                             } else {
                                               return Container(

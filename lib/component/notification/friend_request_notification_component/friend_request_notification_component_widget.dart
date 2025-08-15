@@ -2,7 +2,6 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'friend_request_notification_component_model.dart';
@@ -13,13 +12,13 @@ class FriendRequestNotificationComponentWidget extends StatefulWidget {
   const FriendRequestNotificationComponentWidget({
     super.key,
     this.userformParamter,
-    this.referenceFirendRequest,
     this.notificationParameter,
+    required this.friendRequestParameter,
   });
 
   final DocumentReference? userformParamter;
-  final String? referenceFirendRequest;
   final DocumentReference? notificationParameter;
+  final DocumentReference? friendRequestParameter;
 
   @override
   State<FriendRequestNotificationComponentWidget> createState() =>
@@ -187,64 +186,92 @@ class _FriendRequestNotificationComponentWidgetState
                             ],
                           ),
                           Expanded(
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text(
-                                  FFLocalizations.of(context).getText(
-                                    '7ztoxo3p' /* Friend request by :  */,
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        font: GoogleFonts.inter(
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
+                            child: StreamBuilder<UsersRecord>(
+                              stream: UsersRecord.getDocument(
+                                  rowNotificationsRecord.userFrom!),
+                              builder: (context, snapshot) {
+                                // Customize what your widget looks like when it's loading.
+                                if (!snapshot.hasData) {
+                                  return Center(
+                                    child: SizedBox(
+                                      width: 50.0,
+                                      height: 50.0,
+                                      child: CircularProgressIndicator(
+                                        valueColor:
+                                            AlwaysStoppedAnimation<Color>(
+                                          FlutterFlowTheme.of(context).primary,
                                         ),
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryText,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontStyle,
                                       ),
-                                ),
-                                Text(
-                                  '${containerUsersRecord.firstname} ${containerUsersRecord.lastname}',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        font: GoogleFonts.inter(
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
-                                        ),
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryText,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontStyle,
+                                    ),
+                                  );
+                                }
+
+                                final rowUsersRecord = snapshot.data!;
+
+                                return Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(
+                                      FFLocalizations.of(context).getText(
+                                        '7ztoxo3p' /* Friend request by :  */,
                                       ),
-                                ),
-                              ].divide(SizedBox(width: 4.0)),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            font: GoogleFonts.inter(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
+                                    ),
+                                    Text(
+                                      '${rowUsersRecord.firstname} ${rowUsersRecord.lastname}',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            font: GoogleFonts.inter(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
+                                    ),
+                                  ].divide(SizedBox(width: 4.0)),
+                                );
+                              },
                             ),
                           ),
                           Row(
@@ -252,74 +279,15 @@ class _FriendRequestNotificationComponentWidgetState
                             children: [
                               FFButtonWidget(
                                 onPressed: () async {
-                                  // récupération du document FriendRequest à partir du Documentid
-                                  _model.friendRequestOutput =
-                                      await queryFriendsRequestsRecordOnce(
-                                    queryBuilder: (friendsRequestsRecord) =>
-                                        friendsRequestsRecord.where(
-                                      'uid',
-                                      isEqualTo: widget.referenceFirendRequest,
-                                    ),
-                                    singleRecord: true,
-                                  ).then((s) => s.firstOrNull);
-
-                                  await _model.friendRequestOutput!.reference
+                                  await widget.friendRequestParameter!
                                       .update(createFriendsRequestsRecordData(
-                                    status: 'Accepted',
+                                    status: 'accepted',
                                   ));
 
-                                  var friendsRecordReference1 =
-                                      FriendsRecord.createDoc(
-                                          _model.friendRequestOutput!.userTo!);
-                                  await friendsRecordReference1
-                                      .set(createFriendsRecordData(
-                                    friendRef:
-                                        _model.friendRequestOutput?.userFrom,
-                                    since: getCurrentTimestamp,
-                                  ));
-                                  _model.friendToOutput =
-                                      FriendsRecord.getDocumentFromData(
-                                          createFriendsRecordData(
-                                            friendRef: _model
-                                                .friendRequestOutput?.userFrom,
-                                            since: getCurrentTimestamp,
-                                          ),
-                                          friendsRecordReference1);
-
-                                  await _model.friendToOutput!.reference
-                                      .update(createFriendsRecordData(
-                                    uid: _model.friendToOutput?.reference.id,
-                                  ));
-
-                                  var friendsRecordReference2 =
-                                      FriendsRecord.createDoc(_model
-                                          .friendRequestOutput!.userFrom!);
-                                  await friendsRecordReference2
-                                      .set(createFriendsRecordData(
-                                    friendRef:
-                                        _model.friendRequestOutput?.userTo,
-                                    since: getCurrentTimestamp,
-                                  ));
-                                  _model.friendFromOutput =
-                                      FriendsRecord.getDocumentFromData(
-                                          createFriendsRecordData(
-                                            friendRef: _model
-                                                .friendRequestOutput?.userTo,
-                                            since: getCurrentTimestamp,
-                                          ),
-                                          friendsRecordReference2);
-
-                                  await _model.friendFromOutput!.friendRef!
-                                      .update(createUsersRecordData(
-                                    uid: _model.friendFromOutput?.reference.id,
-                                  ));
-
-                                  await widget.notificationParameter!
+                                  await rowNotificationsRecord.reference
                                       .update(createNotificationsRecordData(
                                     read: true,
                                   ));
-
-                                  safeSetState(() {});
                                 },
                                 text: FFLocalizations.of(context).getText(
                                   'yx6obllz' /* Accept */,
@@ -359,29 +327,15 @@ class _FriendRequestNotificationComponentWidgetState
                               ),
                               FFButtonWidget(
                                 onPressed: () async {
-                                  // récupération du document FriendRequest à partir du Documentid
-                                  _model.friendRequestOutputCopy =
-                                      await queryFriendsRequestsRecordOnce(
-                                    queryBuilder: (friendsRequestsRecord) =>
-                                        friendsRequestsRecord.where(
-                                      'uid',
-                                      isEqualTo: widget.referenceFirendRequest,
-                                    ),
-                                    singleRecord: true,
-                                  ).then((s) => s.firstOrNull);
-
-                                  await _model
-                                      .friendRequestOutputCopy!.reference
+                                  await widget.friendRequestParameter!
                                       .update(createFriendsRequestsRecordData(
-                                    status: 'Rejected',
+                                    status: 'declined',
                                   ));
 
                                   await widget.notificationParameter!
                                       .update(createNotificationsRecordData(
                                     read: true,
                                   ));
-
-                                  safeSetState(() {});
                                 },
                                 text: FFLocalizations.of(context).getText(
                                   'r3t3ez79' /* Refuse */,

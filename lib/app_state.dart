@@ -150,6 +150,7 @@ class FFAppState extends ChangeNotifier {
     _pace = value;
   }
 
+  /// temps total
   int _durationSec = 0;
   int get durationSec => _durationSec;
   set durationSec(int value) {
@@ -354,5 +355,38 @@ class FFAppState extends ChangeNotifier {
 
   void insertAtIndexInSpeedList(int index, double value) {
     speedList.insert(index, value);
+  }
+
+  /// Vitesse moyenne en km/h
+  double _avgSpeedKmh = 0.0;
+  double get avgSpeedKmh => _avgSpeedKmh;
+  set avgSpeedKmh(double value) {
+    _avgSpeedKmh = value;
+  }
+
+  /// Allure moyenne en minutes par km
+  double _paceMinPerKm = 0.0;
+  double get paceMinPerKm => _paceMinPerKm;
+  set paceMinPerKm(double value) {
+    _paceMinPerKm = value;
+  }
+
+  /// temps en mouvement
+  int _movingDurationSec = 0;
+  int get movingDurationSec => _movingDurationSec;
+  set movingDurationSec(int value) {
+    _movingDurationSec = value;
+  }
+
+  double _instPaceMinPerKm = 0.0;
+  double get instPaceMinPerKm => _instPaceMinPerKm;
+  set instPaceMinPerKm(double value) {
+    _instPaceMinPerKm = value;
+  }
+
+  bool _isTracking = false;
+  bool get isTracking => _isTracking;
+  set isTracking(bool value) {
+    _isTracking = value;
   }
 }

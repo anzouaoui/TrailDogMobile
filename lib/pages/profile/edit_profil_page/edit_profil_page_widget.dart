@@ -146,7 +146,7 @@ class _EditProfilPageWidgetState extends State<EditProfilPageWidget> {
                                         validateFileFormat(
                                             m.storagePath, context))) {
                                   safeSetState(() => _model
-                                      .isDataUploading_uploadDataHbt = true);
+                                      .isDataUploading_uploadData48y = true);
                                   var selectedUploadedFiles =
                                       <FFUploadedFile>[];
 
@@ -173,7 +173,7 @@ class _EditProfilPageWidgetState extends State<EditProfilPageWidget> {
                                         .map((u) => u!)
                                         .toList();
                                   } finally {
-                                    _model.isDataUploading_uploadDataHbt =
+                                    _model.isDataUploading_uploadData48y =
                                         false;
                                   }
                                   if (selectedUploadedFiles.length ==
@@ -181,9 +181,9 @@ class _EditProfilPageWidgetState extends State<EditProfilPageWidget> {
                                       downloadUrls.length ==
                                           selectedMedia.length) {
                                     safeSetState(() {
-                                      _model.uploadedLocalFile_uploadDataHbt =
+                                      _model.uploadedLocalFile_uploadData48y =
                                           selectedUploadedFiles.first;
-                                      _model.uploadedFileUrl_uploadDataHbt =
+                                      _model.uploadedFileUrl_uploadData48y =
                                           downloadUrls.first;
                                     });
                                   } else {
@@ -191,6 +191,12 @@ class _EditProfilPageWidgetState extends State<EditProfilPageWidget> {
                                     return;
                                   }
                                 }
+
+                                await currentUserReference!
+                                    .update(createUsersRecordData(
+                                  photoUrl:
+                                      _model.uploadedFileUrl_uploadData48y,
+                                ));
                               },
                               child: Container(
                                 width: 100.0,
@@ -213,7 +219,9 @@ class _EditProfilPageWidgetState extends State<EditProfilPageWidget> {
                                       shape: BoxShape.circle,
                                     ),
                                     child: Image.network(
-                                      currentUserPhoto,
+                                      _model.isDataUploading_uploadData48y
+                                          ? _model.uploadedFileUrl_uploadData48y
+                                          : currentUserPhoto,
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -844,7 +852,7 @@ class _EditProfilPageWidgetState extends State<EditProfilPageWidget> {
                           bio: _model.textController3.text,
                           city: _model.textController4.text,
                           mainActivity: _model.dropDownValue,
-                          photoUrl: _model.uploadedFileUrl_uploadDataHbt,
+                          photoUrl: _model.uploadedFileUrl_uploadData48y,
                         ));
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(

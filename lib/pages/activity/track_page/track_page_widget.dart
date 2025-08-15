@@ -34,7 +34,6 @@ class _TrackPageWidgetState extends State<TrackPageWidget> {
   late TrackPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  LatLng? currentUserLocationValue;
 
   @override
   void initState() {
@@ -431,9 +430,13 @@ class _TrackPageWidgetState extends State<TrackPageWidget> {
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 Text(
-                                                  FFAppState()
-                                                      .totalDistance
-                                                      .toString(),
+                                                  '${formatNumber(
+                                                    FFAppState().totalDistance,
+                                                    formatType:
+                                                        FormatType.decimal,
+                                                    decimalType:
+                                                        DecimalType.automatic,
+                                                  )}km',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -510,13 +513,13 @@ class _TrackPageWidgetState extends State<TrackPageWidget> {
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 Text(
-                                                  formatNumber(
-                                                    FFAppState().speedKmh,
+                                                  '${formatNumber(
+                                                    FFAppState().paceMinPerKm,
                                                     formatType:
-                                                        FormatType.custom,
-                                                    format: '#.00 Km/h',
-                                                    locale: '',
-                                                  ),
+                                                        FormatType.decimal,
+                                                    decimalType:
+                                                        DecimalType.automatic,
+                                                  )}min/km',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -635,15 +638,6 @@ class _TrackPageWidgetState extends State<TrackPageWidget> {
                                                                     .fontStyle,
                                                           ),
                                                     ),
-                                                    FaIcon(
-                                                      FontAwesomeIcons
-                                                          .shoePrints,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .error,
-                                                      size: 24.0,
-                                                    ),
                                                   ].divide(
                                                       SizedBox(width: 8.0)),
                                                 ),
@@ -705,9 +699,14 @@ class _TrackPageWidgetState extends State<TrackPageWidget> {
                                                       MainAxisAlignment.center,
                                                   children: [
                                                     Text(
-                                                      FFAppState()
-                                                          .elevationGain
-                                                          .toString(),
+                                                      '${formatNumber(
+                                                        FFAppState()
+                                                            .elevationGain,
+                                                        formatType:
+                                                            FormatType.decimal,
+                                                        decimalType: DecimalType
+                                                            .automatic,
+                                                      )}m',
                                                       style: FlutterFlowTheme
                                                               .of(context)
                                                           .bodyMedium
@@ -891,22 +890,13 @@ class _TrackPageWidgetState extends State<TrackPageWidget> {
                   alignment: AlignmentDirectional(0.0, 1.0),
                   child: Builder(
                     builder: (context) {
-                      if (_model.isTimerRunning == false) {
+                      if (FFAppState().isTracking == false) {
                         return Align(
                           alignment: AlignmentDirectional(0.0, 1.0),
                           child: FFButtonWidget(
                             onPressed: () async {
-                              currentUserLocationValue =
-                                  await getCurrentUserLocation(
-                                      defaultLocation: LatLng(0.0, 0.0));
                               _model.isTimerRunning = true;
                               _model.isTracking = true;
-                              safeSetState(() {});
-                              FFAppState().pathList = [];
-                              FFAppState().isStopwatchRunning = true;
-                              FFAppState().isTrackingPaused = false;
-                              FFAppState().currentPosition =
-                                  currentUserLocationValue;
                               safeSetState(() {});
                               _model.cityOutput = await GetCityCall.call(
                                 lat: functions
@@ -919,52 +909,73 @@ class _TrackPageWidgetState extends State<TrackPageWidget> {
                                   functions.extractCityFromComponents(
                                       (_model.cityOutput?.jsonBody ?? ''));
                               safeSetState(() {});
-                              await actions.managePermission();
-                              GpsTrackingManager.start();
-                              StepCounterManager.start();
+                              _model.isGrantedOutput =
+                                  await actions.manageTrackingPermission();
+                              if (_model.isGrantedOutput == true) {
+                                GpsTrackingManager.start();
+                                FFAppState().isTrackingPaused = false;
+                                FFAppState().isTracking = true;
+                                safeSetState(() {});
+                                StepCounterManager.start();
 
-                              var activityRecordReference =
-                                  ActivityRecord.createDoc(
-                                      currentUserReference!);
-                              await activityRecordReference.set({
-                                ...createActivityRecordData(
-                                  activityType:
-                                      _model.dropDownTypeActiviteValue,
-                                  distance: FFAppState().totalDistance,
-                                  startTime: getCurrentTimestamp,
-                                  step: FFAppState().stepCount,
-                                  vitesse: FFAppState().speedKmh,
-                                  city: FFAppState().cityPostion,
-                                ),
-                                ...mapToFirestore(
-                                  {
-                                    'path': convertToGeoPointList(
-                                        FFAppState().pathList),
-                                    'dogs': _model.dogsSelected,
-                                  },
-                                ),
-                              });
-                              _model.newActivityOutput =
-                                  ActivityRecord.getDocumentFromData({
-                                ...createActivityRecordData(
-                                  activityType:
-                                      _model.dropDownTypeActiviteValue,
-                                  distance: FFAppState().totalDistance,
-                                  startTime: getCurrentTimestamp,
-                                  step: FFAppState().stepCount,
-                                  vitesse: FFAppState().speedKmh,
-                                  city: FFAppState().cityPostion,
-                                ),
-                                ...mapToFirestore(
-                                  {
-                                    'path': convertToGeoPointList(
-                                        FFAppState().pathList),
-                                    'dogs': _model.dogsSelected,
-                                  },
-                                ),
-                              }, activityRecordReference);
-                              _model.currentActivity =
-                                  _model.newActivityOutput?.reference;
+                                var activityRecordReference =
+                                    ActivityRecord.createDoc(
+                                        currentUserReference!);
+                                await activityRecordReference.set({
+                                  ...createActivityRecordData(
+                                    activityType:
+                                        _model.dropDownTypeActiviteValue,
+                                    distance: FFAppState().totalDistance,
+                                    startTime: getCurrentTimestamp,
+                                    step: FFAppState().stepCount,
+                                    vitesse: FFAppState().speedKmh,
+                                    city: FFAppState().cityPostion,
+                                  ),
+                                  ...mapToFirestore(
+                                    {
+                                      'path': convertToGeoPointList(
+                                          FFAppState().pathList),
+                                      'dogs': _model.dogsSelected,
+                                    },
+                                  ),
+                                });
+                                _model.newActivityOutput =
+                                    ActivityRecord.getDocumentFromData({
+                                  ...createActivityRecordData(
+                                    activityType:
+                                        _model.dropDownTypeActiviteValue,
+                                    distance: FFAppState().totalDistance,
+                                    startTime: getCurrentTimestamp,
+                                    step: FFAppState().stepCount,
+                                    vitesse: FFAppState().speedKmh,
+                                    city: FFAppState().cityPostion,
+                                  ),
+                                  ...mapToFirestore(
+                                    {
+                                      'path': convertToGeoPointList(
+                                          FFAppState().pathList),
+                                      'dogs': _model.dogsSelected,
+                                    },
+                                  ),
+                                }, activityRecordReference);
+                                _model.currentActivity =
+                                    _model.newActivityOutput?.reference;
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Activez la localisation pour démarrer le tracking',
+                                      style: TextStyle(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                      ),
+                                    ),
+                                    duration: Duration(milliseconds: 3000),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context).secondary,
+                                  ),
+                                );
+                              }
 
                               safeSetState(() {});
                             },
@@ -1015,10 +1026,13 @@ class _TrackPageWidgetState extends State<TrackPageWidget> {
                           children: [
                             Builder(
                               builder: (context) {
-                                if (_model.isTimerPause == false) {
+                                if (FFAppState().isTrackingPaused == false) {
                                   return FFButtonWidget(
-                                    onPressed: () {
-                                      print('Button pressed ...');
+                                    onPressed: () async {
+                                      await GpsTrackingManager.pause();
+                                      StepCounterManager.pause();
+                                      FFAppState().isTrackingPaused = true;
+                                      safeSetState(() {});
                                     },
                                     text: FFLocalizations.of(context).getText(
                                       '9spuyv02' /* Pause */,
@@ -1069,8 +1083,11 @@ class _TrackPageWidgetState extends State<TrackPageWidget> {
                                   );
                                 } else {
                                   return FFButtonWidget(
-                                    onPressed: () {
-                                      print('Button pressed ...');
+                                    onPressed: () async {
+                                      await GpsTrackingManager.resume();
+                                      StepCounterManager.resume();
+                                      FFAppState().isTrackingPaused = false;
+                                      safeSetState(() {});
                                     },
                                     text: FFLocalizations.of(context).getText(
                                       'nxmhw3dw' /* Resume */,
@@ -1151,9 +1168,10 @@ class _TrackPageWidgetState extends State<TrackPageWidget> {
                                 );
                                 _model.isTimerRunning = false;
                                 safeSetState(() {});
-                                FFAppState().isStopwatchRunning = false;
                                 FFAppState().pathList = [];
                                 FFAppState().pace = 0.0;
+                                FFAppState().isTracking = false;
+                                FFAppState().isTrackingPaused = false;
                                 safeSetState(() {});
 
                                 context.pushNamed(

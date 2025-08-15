@@ -137,16 +137,18 @@ class _NewPostPageWidgetState extends State<NewPostPageWidget> {
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Container(
-                            width: 48.0,
-                            height: 48.0,
-                            clipBehavior: Clip.antiAlias,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                            ),
-                            child: Image.network(
-                              'https://images.unsplash.com/photo-1492567291473-fe3dfc175b45?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NTIwOTQ3MDJ8&ixlib=rb-4.1.0&q=80&w=1080',
-                              fit: BoxFit.cover,
+                          AuthUserStreamWidget(
+                            builder: (context) => Container(
+                              width: 48.0,
+                              height: 48.0,
+                              clipBehavior: Clip.antiAlias,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                              ),
+                              child: Image.network(
+                                currentUserPhoto,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                           Expanded(
